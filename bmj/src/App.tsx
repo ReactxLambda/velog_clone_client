@@ -6,6 +6,8 @@ import React, {useState,useCallback} from 'react';
 import Chip from '@material-ui/core/Chip';
 import {useDropzone} from 'react-dropzone';
 import { Avatar, CardHeader, IconButton, Button,TextField,Grid } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import FaceIcon from '@material-ui/icons/Face';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -31,7 +33,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 345,
+      maxWidth: 330,
     },
     grid: {
       flexGrow: 1,
@@ -66,9 +68,150 @@ function App() {
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
   };
+
+  const data  = ()=>{
+    let array = [
+      {
+        key : 1,
+        title : "title1",
+        content : "content1",
+        date : "date1",
+        CntCmmt : 1,
+        fileURL : "fileURL1"
+      },
+        {
+          key : 2,
+          title : "title2",
+        content : "content2",
+        date : "date2",
+        CntCmmt :2,
+        fileURL : "fileUR2"
+      },
+        {
+          key : 3,
+          title : "title3",
+        content : "content3",
+        date : "date3",
+        CntCmmt :3,
+        fileURL : "fileUR3"
+      },
+        {
+          key : 4,
+          title : "title4",
+        content : "content4",
+        date : "date4",
+        CntCmmt :4,
+        fileURL : "fileUR4"
+      },
+        {
+          key : 5,
+          title : "title5",
+        content : "content5",
+        date : "date5",
+        CntCmmt :5,
+        fileURL : "fileUR5"
+      },
+        {
+          key : 6,
+          title : "title6",
+        content : "content6",
+        date : "date6",
+        CntCmmt :6,
+        fileURL : "fileUR6"
+      },
+        {
+          key : 7,
+          title : "title7",
+        content : "content7",
+        date : "date7",
+        CntCmmt :71,
+        fileURL : "fileUR71"
+      },
+        {
+          key : 8,
+          title : "title8",
+        content : "content8",
+        date : "date8",
+        CntCmmt :81,
+        fileURL : "fileUR81"
+      },
+       
+        {
+          key : 9,
+          title : "title9",
+        content : "content9",
+        date : "date9",
+        CntCmmt :91,
+        fileURL : "fileUR91"
+      },
+        {
+          key : 10,
+          title : "title10",
+        content : "content10",
+        date : "date10",
+        CntCmmt : 10,
+        fileURL : "fileURL10"
+      },
+        {
+          key :11,
+          title : "title11",
+        content : "content11",
+        date : "date11",
+        CntCmmt :111,
+        fileURL : "fileUR111"
+      },
+        {
+          key :12,
+          title : "title12",
+        content : "content12",
+        date : "date12",
+        CntCmmt :121,
+        fileURL : "fileUR121"
+      },
+        
+        {
+          key : 13,
+          title : "title13",
+        content : "content13",
+        date : "date13",
+        CntCmmt :131,
+        fileURL : "fileUR131"
+      },
+        {
+          key : 14,
+          title : "title14",
+        content : "content14",
+        date : "date14",
+        CntCmmt :141,
+        fileURL : "fileUR141"
+      },
+        {
+        
+          key : 15,
+          title : "title15",
+        content : "content15",
+        date : "date15",
+        CntCmmt :151,
+        fileURL : "fileUR151"
+      },
+        {
+        
+          key : 16,
+          title : "title16",
+        content : "content16",
+        date : "date16",
+        CntCmmt :161,
+        fileURL : "fileUR161"
+      }
+    
+  ];
+   
+  return array;
+    
+  };
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  let [dataArray, setDataArray] = React.useState(data);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -78,13 +221,13 @@ function App() {
       // Do something with the files
       acceptedFiles.forEach((file :any) => {
         const reader = new FileReader()
-
+  
         reader.onabort = () => console.log('file reading was aborted')
         reader.onerror = () => console.log('file reading has failed')
         reader.onload = () => {
         // Do whatever you want with the file contents
           const binaryStr = reader.result
-          console.log("FILE : ", file)
+         
           console.log(binaryStr);
         
         }
@@ -128,9 +271,15 @@ function App() {
     name.innerHTML = md.render(mdText);
   };
 
+  const changeFavorite = (e: any)=>{
+    console.log(e.target.value);
+    console.log(e.target.checked);
+    // console.log(e);
+  }
+
 
  const style= {
-   margin : "10px",
+  
    width : "100%"
  }
 
@@ -170,12 +319,14 @@ function App() {
         <div id="markdown"></div>
       </header>   
 
-      <Grid container className={classes.grid} spacing={2}>
-       { [0,1,2,3,4,5,6,7,8,9,10,11].map(value =>{
+      {/* <Grid container className={classes.grid} spacing={1}> */}
+      <Box display="flex" flexWrap="wrap">
+       { dataArray.map(value =>{
          return(
-          <Grid item xs={3}>
-          <Grid container justifyContent="center" spacing={2} className={classes.paper}>
-    <Card key={value} className={classes.root}>
+          // <Grid item xs={2}>
+          // <Grid container justifyContent="center" spacing={1} className={classes.paper}>
+          <Box m={1}>
+    <Card key={value.key} className={classes.root}>
     <CardHeader
       avatar={
         <Avatar aria-label="recipe" className={classes.avatar}>
@@ -187,7 +338,7 @@ function App() {
           <MoreVertIcon />
         </IconButton>
       }
-      title="Shrimp and Chorizo Paella"
+      title={value.title}
       subheader="September 14, 2016"
     />
     <CardMedia
@@ -197,8 +348,7 @@ function App() {
     />
     <CardContent>
       <Typography variant="body2" color="textSecondary" component="p">
-        This impressive paella is a perfect party dish and a fun meal to cook together with your
-        guests. Add 1 cup of frozen peas along with the mussels, if you like.
+        {value.content}
       </Typography>
     </CardContent>
     <CardActions disableSpacing>
@@ -208,11 +358,13 @@ function App() {
        <FormControlLabel
         control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
         label=""
+        onChange={changeFavorite}
+        value={value.key}
       />
       <IconButton aria-label="share">
         <ShareIcon />
       </IconButton>
-      <IconButton
+      {/* <IconButton
         className={clsx(classes.expand, {
           [classes.expandOpen]: expanded,
         })}
@@ -221,9 +373,9 @@ function App() {
         aria-label="show more"
       >
         <ExpandMoreIcon />
-      </IconButton>
+      </IconButton> */}
     </CardActions>
-    <Collapse in={expanded} timeout="auto" unmountOnExit>
+    {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
       <CardContent>
         <Typography paragraph>Method:</Typography>
         <Typography paragraph>
@@ -249,13 +401,14 @@ function App() {
           Set aside off of the heat to let rest for 10 minutes, and then serve.
         </Typography>
       </CardContent>
-    </Collapse>
-  </Card>  
-  </Grid>
-  </Grid>
+    </Collapse> */}
+  </Card> 
+  </Box> 
+
          );
   })}
-  </Grid>
+  {/* </Grid> */}
+  </Box>
     </div>
   );
 }
