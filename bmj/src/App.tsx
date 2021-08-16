@@ -78,13 +78,13 @@ function App() {
       // Do something with the files
       acceptedFiles.forEach((file :any) => {
         const reader = new FileReader()
-  
+
         reader.onabort = () => console.log('file reading was aborted')
         reader.onerror = () => console.log('file reading has failed')
         reader.onload = () => {
         // Do whatever you want with the file contents
           const binaryStr = reader.result
-         
+          console.log("FILE : ", file)
           console.log(binaryStr);
         
         }

@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+blockquote{
+  background-color: whitesmoke;
+  border-left: thick outset lightgreen;
+  padding: 5px 5px 5px 10px;
+  margin: 10px 5px 0px 0px;
+}
+
+html{
+  overflow: hidden;
+}

@@ -8,13 +8,15 @@ function App() {
   const style = {
     margin: "10px",
     display : "flex"
+    
   }
   const textAreaStyle = {
     flex : 1,
-    height: "100%", 
-    marginRight : "10px"
+    height: "97vh", 
+    marginRight : "10px",
+    overflow : "scroll"
   }
-  const [md_value, setMd_value] = useState<String>('');
+  const [md_value, setMd_value] = useState('');
 
   const hljs = require('highlight.js');
   const md = require('markdown-it')({
@@ -62,7 +64,8 @@ function App() {
     {...getRootProps()}
     >
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css"/>
-      <TextField
+      { /** 
+        <TextField
       
         id="outlined-multiline-static"
         style={textAreaStyle}
@@ -78,8 +81,28 @@ function App() {
         
       </TextField>
       <div style={textAreaStyle}  id='markdown'>
-
-
+      </div>*/
+      }
+      
+      <textarea
+        value={md_value} 
+        onChange={onChangeMdInput}
+        style={
+          {
+            marginRight : "10px",
+            width: "510px",
+            height: "97vh",
+            /* min-height: 100%; */
+            resize: "none",
+            flex: 1  
+          }
+        }
+      >
+        <input 
+        {...getInputProps()}
+        />
+      </textarea>
+      <div style={textAreaStyle}  id='markdown'>
       </div>
     </div>
     
