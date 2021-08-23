@@ -47,3 +47,10 @@ blockquote{
 html{
   overflow: hidden;
 }
+
+li{
+  margin-top: 5px;
+}
+pre{
+  margin-right: 5px;
+}
