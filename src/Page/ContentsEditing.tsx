@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react'
-import InnerHTML from '../Component/InnerHTML';
+import MarkdownViewer from '../Component/MarkdownViewer';
 import DropZoneTextArea from '../Component/DropZoneTextArea';
 import highlighting from '../Common/highlighting'
+import Input from '../Component/Input'
 import './Style/ContentsEditing.css'
+
 const ContentsEditing : React.FC = ()=>{
     const [contents, setContents] = useState(''); // Text contents
     const [viewerContents, setViewerContents] = useState(''); // view contents
-
+    const [header, setHeader] = useState(''); // set view header
     const hljs = require('highlight.js');
 
     const markdown = require('markdown-it')({
@@ -26,15 +28,31 @@ const ContentsEditing : React.FC = ()=>{
         markdown_viewer.innerHTML = viewerContents; 
     }, [viewerContents]);
 
+    useEffect(() => {
+        console.log(header)
+        const markdown_header : any = document.getElementById("markdown-header");
+        markdown_header.innerText = header
+    }, [header])
+
     return (
-        <div>
-            <DropZoneTextArea 
-                contents={contents}
-                setContents={setContents}
-            />
-            <InnerHTML 
-                contents={viewerContents}
-            />
+        <div className='markdown-contents'>
+            <div className='contents-editor'>
+                <Input
+                    type={'text'} 
+                    contents={header}
+                    setContents={setHeader}
+                    hint={''} 
+                    disabled={false}
+                    label={'Header'} 
+                />
+                <DropZoneTextArea 
+                    contents={contents}
+                    setContents={setContents}
+                />
+            </div>
+            <div className='contents-viewer'>
+                <MarkdownViewer/>
+            </div>
         </div>
     )
 }

@@ -1,3 +1,5 @@
+// markdown 에서 사용될 highlighting 함수
+
 const highlighting = (str : string, lang : string, hljs : any, markdown : any) => {
     if (lang && hljs.getLanguage(lang)) {
         try {

@@ -28,6 +28,7 @@ const DropZoneTextArea : React.FC<DropZoneTextAreaType> = ({setContents, content
     return (
       <div {...getRootProps()}>
           <textarea
+            className='markdown-textarea'
             value={contents}
             onChange={(e)=>setContents(e.target.value)}
           >         
