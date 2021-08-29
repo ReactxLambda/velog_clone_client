@@ -1,15 +1,17 @@
 import React, {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
 
-type TextAreaProp = {
-    enableDropZone : boolean
+type DropZoneTextAreaType = {
+  setContents : Function,
+  contents : string
+
 }
-const TextArea : React.FC<TextAreaProp> = ({enableDropZone})=>{
+
+const DropZoneTextArea : React.FC<DropZoneTextAreaType> = ({setContents, contents})=>{
     // DropZone set up start
     const onDrop = useCallback((acceptedFiles) => {
         acceptedFiles.forEach((file : File) => {
           const reader = new FileReader();
-    
           reader.onabort = () => console.log('file reading was aborted');
           reader.onerror = () => console.log('file reading has failed');
           reader.onload = () => {
@@ -23,13 +25,16 @@ const TextArea : React.FC<TextAreaProp> = ({enableDropZone})=>{
     }, []);
     const {getRootProps, getInputProps} = useDropzone({onDrop});
     // DropZone set up end
-
-
     return (
-        <div>
-            
+      <div {...getRootProps()}>
+          <textarea
+            value={contents}
+            onChange={(e)=>setContents(e.target.value)}
+          >         
+          <input {...getInputProps()}/>
+          </textarea>
         </div>
     )
 }
 
-export default TextArea;
+export default DropZoneTextArea;
