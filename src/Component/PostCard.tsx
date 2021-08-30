@@ -19,7 +19,7 @@ import { red } from '@material-ui/core/colors';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 330,
+      width: 320,
     },
     grid: {
       flexGrow: 1,
@@ -75,20 +75,20 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           {value.content}
         </Typography>
       </CardContent>
-      {/* <CardActions disableSpacing> */}
-      {/* <IconButton aria-label="add to favorites">
+      <CardActions disableSpacing>
+        {/* <IconButton aria-label="add to favorites">
         <FavoriteIcon />
       </IconButton> */}
-      <FormControlLabel
-        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
-        label=""
-        onChange={changeFavorite}
-        value={value.key}
-      />
-      {/* <IconButton aria-label="share">
+        <FormControlLabel
+          control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
+          label=""
+          onChange={changeFavorite}
+          value={value.key}
+        />
+        {/* <IconButton aria-label="share">
         <ShareIcon />
       </IconButton> */}
-      {/* </CardActions> */}
+      </CardActions>
     </Card>
   );
 };

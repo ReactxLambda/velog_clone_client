@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PostCard from '../../Component/PostCard';
-import { Box } from '@material-ui/core';
+import { Box, Container } from '@material-ui/core';
 
 const data = () => {
   //받아서 넘길꺼니가아?
