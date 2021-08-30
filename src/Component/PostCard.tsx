@@ -1,4 +1,15 @@
-import {Card,CardHeader,Avatar,IconButton,CardMedia,CardContent,Typography,CardActions,FormControlLabel,Checkbox} from '@material-ui/core';
+import {
+  Card,
+  CardHeader,
+  Avatar,
+  IconButton,
+  CardMedia,
+  CardContent,
+  Typography,
+  CardActions,
+  FormControlLabel,
+  Checkbox,
+} from '@material-ui/core';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -23,11 +34,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const changeFavorite = (e: any)=>{
+const changeFavorite = (e: any) => {
   console.log(e.target.value);
   console.log(e.target.checked);
   // console.log(e);
-}
+};
 type PostCardProps = {
   post: {
     key: number;
@@ -36,43 +47,39 @@ type PostCardProps = {
     date: string;
     CntCmmt: number;
     fileURL: string;
-}
+  };
 };
 
-const PostCard : React.FC<PostCardProps> = ({post})=>{
-  const classes = useStyles();  
-  const value=post;
-  return(
-        <Card key={value.key} className={classes.root}>
-    <CardHeader
-      avatar={
-        <Avatar aria-label="recipe" className={classes.avatar}>
-          R
-        </Avatar>
-      }
-      action={
-        <IconButton aria-label="settings">
-          <MoreVertIcon />
-        </IconButton>
-      }
-      title={value.title}
-      subheader="September 14, 2016"
-    />
-    <CardMedia
-      className={classes.media}
-      image="/static/images/cards/paella.jpg"
-      title="Paella dish"
-    />
-    <CardContent>
-      <Typography variant="body2" color="textSecondary" component="p">
-        {value.content}
-      </Typography>
-    </CardContent>
-    {/* <CardActions disableSpacing> */}
+const PostCard: React.FC<PostCardProps> = ({ post }) => {
+  const classes = useStyles();
+  const value = post;
+  return (
+    <Card key={value.key} className={classes.root}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            R
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={value.title}
+        subheader="September 14, 2016"
+      />
+      <CardMedia className={classes.media} image="/static/images/cards/paella.jpg" title="Paella dish" />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {value.content}
+        </Typography>
+      </CardContent>
+      {/* <CardActions disableSpacing> */}
       {/* <IconButton aria-label="add to favorites">
         <FavoriteIcon />
       </IconButton> */}
-       <FormControlLabel
+      <FormControlLabel
         control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
         label=""
         onChange={changeFavorite}
@@ -81,8 +88,8 @@ const PostCard : React.FC<PostCardProps> = ({post})=>{
       {/* <IconButton aria-label="share">
         <ShareIcon />
       </IconButton> */}
-    {/* </CardActions> */}
-  </Card> 
-    );
-}
+      {/* </CardActions> */}
+    </Card>
+  );
+};
 export default PostCard;
