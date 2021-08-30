@@ -18,20 +18,21 @@ pre {
 
 .markdown-contents {
   display: flex;
-  width: 100%;
+  margin: 10px;
 }
 .contents-editor {
   flex: 1;
 }
 .contents-viewer {
   flex: 1;
+  overflow: scroll;
+  height: 95vh;
 }
-.markdown-header {
-  width: 100%;
+.header-editor {
+  width: 95%;
 }
 .markdown-textarea {
-  width: 100%;
+  width: 95%;
   height: 90vh;
   resize: none;
-  margin-left: 10px;
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MarkdownViewer from '../Component/MarkdownViewer';
 import DropZoneTextArea from '../Component/DropZoneTextArea';
 import highlighting from '../Common/highlighting';
-import Input from '../Component/Input';
+import TextField from '@material-ui/core/TextField';
 import './Style/ContentsEditing.css';
 
 const ContentsEditing: React.FC = () => {
@@ -37,7 +37,12 @@ const ContentsEditing: React.FC = () => {
   return (
     <div className="markdown-contents">
       <div className="contents-editor">
-        <Input type={'text'} contents={header} setContents={setHeader} hint={''} disabled={false} label={'Header'} />
+        <TextField
+          className="header-editor"
+          margin="normal"
+          value={header}
+          onChange={(e) => setHeader(e.target.value)}
+        />
         <DropZoneTextArea contents={contents} setContents={setContents} />
       </div>
       <div className="contents-viewer">
