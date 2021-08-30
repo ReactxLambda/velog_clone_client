@@ -14,7 +14,9 @@
 > prettier 추가
 
 - root 디렉토리에 .prettierrc.js 추가
-- vs code에서 ctrl + , 키를 입력하면 setting 페이지가 나타나는데, 여기에서 Format On Save옵션을 체크해주면 된다.
+
+- vs code 에서 Prettier 플러그인 설치
+- vs code에서 ctrl + , 키를 입력하면 setting 페이지가 나타나는데, 여기에서 Format On Save옵션을 체크, Default Formatter 검색 후 `esbenp.prettier-vscode`로 설정
 
 ```JSON
 {
