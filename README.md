@@ -13,10 +13,11 @@
 
 > prettier 추가
 
-- root 디렉토리에 .prettierrc.js 추가
-
+- yarn install
 - vs code 에서 Prettier 플러그인 설치
 - vs code에서 ctrl + , 키를 입력하면 setting 페이지가 나타나는데, 여기에서 Format On Save옵션을 체크, Default Formatter 검색 후 `esbenp.prettier-vscode`로 설정
+
+- root에 있는 .prettierrc 파일 내용
 
 ```JSON
 {
@@ -30,7 +31,7 @@
 }
 ```
 
-- 참고 : eslint 전체 옵션
+- 참고 : prettier 전체 옵션
 
 ```JSON
 {
