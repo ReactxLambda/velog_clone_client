@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import MarkdownViewer from '../Component/MarkdownViewer';
-import DropZoneTextArea from '../Component/DropZoneTextArea';
-import highlighting from '../Common/highlighting';
+import MarkdownViewer from '../../Component/MarkdownViewer';
+import DropZoneTextArea from '../../Component/DropZoneTextArea';
+import highlighting from '../../Common/highlighting';
 import TextField from '@material-ui/core/TextField';
 import './Style/ContentsEditing.css';
 const ContentsEditing: React.FC = () => {

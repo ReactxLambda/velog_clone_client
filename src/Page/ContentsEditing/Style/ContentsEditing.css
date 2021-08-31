@@ -31,6 +31,9 @@ pre {
   margin: 10px;
   height: 100%;
 }
+.full_height{
+  height: 100%;
+}
 .contents-editor {
   flex: 1;
   margin-left: 10px;

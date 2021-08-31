@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
-import ContentsEditing from './Page/ContentsEditing';
+import ContentsEditing from './Page/ContentsEditing/ContentsEditing';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import HomePage from './Page/home/HomePage';
 

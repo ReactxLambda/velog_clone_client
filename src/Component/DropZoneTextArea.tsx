@@ -27,10 +27,12 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
   // DropZone set up end
   return (
-    <Fragment {...getRootProps()}>
-      <textarea className="markdown-textarea" value={contents} onChange={(e) => setContents(e.target.value)}>
-        <input {...getInputProps()} />
-      </textarea>
+    <Fragment>
+      <div className="full_height">
+        <textarea className="markdown-textarea" value={contents} onChange={(e) => setContents(e.target.value)}>
+          <input {...getInputProps()} />
+        </textarea>
+      </div>
     </Fragment>
   );
 };
