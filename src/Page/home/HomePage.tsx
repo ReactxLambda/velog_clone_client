@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { Route } from 'react-router-dom';
 import TrendingPostsPage from './TrendingPostsPage';
 import { useMediaQuery } from 'react-responsive';
+import { Tab, Tabs } from '@material-ui/core';
+import { grey } from '@material-ui/core/colors';
+
 const home1 = {
   width: '1728px',
   marginLeft: 'auto',
@@ -67,8 +71,24 @@ const home = {
 // },
 
 const HomePage: React.FC = () => {
+  const [value, setValue] = useState(0);
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue);
+  };
   return (
     <div style={home}>
+      <h3>메인화면 - 트렌딩</h3>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        variant="fullWidth"
+        indicatorColor="primary"
+        textColor="primary"
+        aria-label="icon label tabs example"
+      >
+        <Tab label="트렌딩" />
+        <Tab label="최신" />
+      </Tabs>
       <div
         style={{
           display: 'flex',
