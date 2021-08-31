@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import ContentsEditing from './Page/ContentsEditing';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import HomePage from './Page/home/HomePage';
+import ReadingListPage from './Page/readingList/ReadingListPage';
 
 function App() {
   const markdownTextArea = true;
@@ -14,12 +15,14 @@ function App() {
         {/* 
       <Route path="/@:username" component={VelogPage} />
       <Route path="/setting" component={SettingPage} /> 
-      <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
-      <Route path="/:mode(trending|recent|following)" component={HomePage}/>
+      
+     
       */}
         <Switch>
           <Route path="/" component={HomePage} exact />
+          <Route path="/:mode(trending|recent|following)" component={HomePage} />
           <Route path="/write" component={ContentsEditing} />
+          <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
         </Switch>
       </BrowserRouter>
     </div>
