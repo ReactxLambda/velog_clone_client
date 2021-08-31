@@ -9,7 +9,7 @@ blockquote {
 }
 
 .hljs {
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 html {
   overflow: hidden;
