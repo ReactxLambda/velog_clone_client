@@ -16,6 +16,7 @@ li {
   margin-top: 5px;
 }
 pre {
+  padding: 10px;
   margin-right: 5px;
 }
 .App {
@@ -29,6 +30,9 @@ pre {
   flex-direction: row;
   flex-wrap: inherit;
   margin: 10px;
+  height: 100%;
+}
+.full_height {
   height: 100%;
 }
 .contents-editor {
