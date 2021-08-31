@@ -4,6 +4,7 @@ import DropZoneTextArea from '../../Component/DropZoneTextArea';
 import highlighting from '../../Common/highlighting';
 import TextField from '@material-ui/core/TextField';
 import './Style/ContentsEditing.css';
+import { classicNameResolver } from 'typescript';
 const ContentsEditing: React.FC = () => {
   const [contents, setContents] = useState(''); // Text contents
   const [viewerContents, setViewerContents] = useState(''); // view contents
@@ -39,6 +40,9 @@ const ContentsEditing: React.FC = () => {
         <TextField
           className="header-editor"
           margin="normal"
+          InputProps={{
+            style: { fontSize: '32px', fontWeight: 'bold' },
+          }}
           value={header}
           onChange={(e) => setHeader(e.target.value)}
         />
