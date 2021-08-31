@@ -45,6 +45,7 @@ pre {
   overflow: scroll;
   margin-left: 10px;
   margin-right: 10px;
+  word-break: break-word;
 }
 .header-editor {
   width: 100%;
