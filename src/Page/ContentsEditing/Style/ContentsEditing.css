@@ -16,6 +16,7 @@ li {
   margin-top: 5px;
 }
 pre {
+  padding: 10px;
   margin-right: 5px;
 }
 .App {
@@ -31,7 +32,7 @@ pre {
   margin: 10px;
   height: 100%;
 }
-.full_height{
+.full_height {
   height: 100%;
 }
 .contents-editor {

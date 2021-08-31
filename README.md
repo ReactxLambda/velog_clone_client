@@ -76,7 +76,10 @@
 
 # 2021-08-31 패치 내역
 
+- react-responsive 추가
+
 ```bash
-yarn add react-reponsive
 yarn add @types/react-responsive
 ```
+
+localhost:3000/test 페이지 추가 (반응형 테스트 페이지)

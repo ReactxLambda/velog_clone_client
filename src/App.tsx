@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import ContentsEditing from './Page/ContentsEditing/ContentsEditing';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import HomePage from './Page/home/HomePage';
-
+import TestPage from './Page/Test/Responsive';
 function App() {
   const markdownTextArea = true;
   const [textContents, setTextContents] = useState('');
@@ -20,6 +20,7 @@ function App() {
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/write" component={ContentsEditing} />
+          <Route path="/test" component={TestPage} />
         </Switch>
       </BrowserRouter>
     </div>
