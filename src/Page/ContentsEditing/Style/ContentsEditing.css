@@ -48,9 +48,13 @@ pre {
 }
 .header-editor {
   width: 100%;
+  font-size: 200px;
 }
 .markdown-textarea {
   resize: none;
   width: 100%;
   height: 90%;
+}
+.MuiInput-root {
+  font-size: 100px;
 }
