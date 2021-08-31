@@ -3,13 +3,13 @@ import { Route } from 'react-router-dom';
 import TrendingPostsPage from './TrendingPostsPage';
 import { useMediaQuery } from 'react-responsive';
 import { Tab, Tabs } from '@material-ui/core';
-import { grey } from '@material-ui/core/colors';
 
 const home1 = {
   width: '1728px',
   marginLeft: 'auto',
   marginRight: 'auto',
 };
+
 const home2 = {
   width: '1376px',
   marginLeft: 'auto',
