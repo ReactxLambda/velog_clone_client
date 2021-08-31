@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { Fragment, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import TextField from '@material-ui/core/TextField';
 type DropZoneTextAreaType = {
   setContents: Function;
   contents: string;
@@ -22,14 +23,15 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
       console.log(file);
     });
   }, []);
+
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
   // DropZone set up end
   return (
-    <div {...getRootProps()}>
+    <Fragment {...getRootProps()}>
       <textarea className="markdown-textarea" value={contents} onChange={(e) => setContents(e.target.value)}>
         <input {...getInputProps()} />
       </textarea>
-    </div>
+    </Fragment>
   );
 };
 

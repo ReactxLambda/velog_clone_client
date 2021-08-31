@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import TextField from '@material-ui/core/TextField';
 
 type InputType = {
@@ -11,7 +11,7 @@ type InputType = {
 };
 const Input: React.FC<InputType> = ({ type, label, contents, setContents, hint, disabled }) => {
   return (
-    <div>
+    <Fragment>
       <TextField
         type={type}
         label={label}
@@ -20,7 +20,7 @@ const Input: React.FC<InputType> = ({ type, label, contents, setContents, hint, 
         helperText={hint}
         disabled={disabled}
       />
-    </div>
+    </Fragment>
   );
 };
 

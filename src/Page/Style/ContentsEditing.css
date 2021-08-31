@@ -7,32 +7,46 @@ blockquote {
 
 html {
   overflow: hidden;
+  height: 100%;
 }
-
+body {
+  height: 100%;
+}
 li {
   margin-top: 5px;
 }
 pre {
   margin-right: 5px;
 }
-
+.App {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
 .markdown-contents {
   display: flex;
+  flex-direction: row;
+  flex-wrap: inherit;
   margin: 10px;
+  height: 100%;
 }
 .contents-editor {
   flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .contents-viewer {
   flex: 1;
   overflow: scroll;
-  height: 95vh;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .header-editor {
-  width: 95%;
+  width: 100%;
 }
 .markdown-textarea {
-  width: 95%;
-  height: 90vh;
   resize: none;
+  width: 100%;
+  height: 90%;
 }

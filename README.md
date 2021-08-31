@@ -71,3 +71,12 @@
 
 - 코드 자동 완성 AI 플러그인
 - 자동완성 퀄리티가 꽤 높다.
+
+---
+
+# 2021-08-31 패치 내역
+
+```bash
+yarn add react-reponsive
+yarn add @types/react-responsive
+```

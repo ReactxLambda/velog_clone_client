@@ -4,7 +4,6 @@ import DropZoneTextArea from '../Component/DropZoneTextArea';
 import highlighting from '../Common/highlighting';
 import TextField from '@material-ui/core/TextField';
 import './Style/ContentsEditing.css';
-
 const ContentsEditing: React.FC = () => {
   const [contents, setContents] = useState(''); // Text contents
   const [viewerContents, setViewerContents] = useState(''); // view contents
@@ -24,13 +23,13 @@ const ContentsEditing: React.FC = () => {
 
   useEffect(() => {
     console.log(viewerContents);
-    const markdown_viewer: any = document.getElementById('markdown-viewer');
+    const markdown_viewer: HTMLElement = document.getElementById('markdown-viewer') as HTMLElement;
     markdown_viewer.innerHTML = viewerContents;
   }, [viewerContents]);
 
   useEffect(() => {
     console.log(header);
-    const markdown_header: any = document.getElementById('markdown-header');
+    const markdown_header: HTMLElement = document.getElementById('markdown-header') as HTMLElement;
     markdown_header.innerText = header;
   }, [header]);
 
