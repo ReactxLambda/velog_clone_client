@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PostCard from '../../Component/PostCard';
+import PostCard from '../../Component/post/PostCard';
 import { Box, Container } from '@material-ui/core';
 import { RouteComponentProps } from 'react-router-dom';
 const reading = {
