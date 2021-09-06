@@ -37,15 +37,7 @@ const ContentsEditing: React.FC = () => {
   return (
     <div className="markdown-contents">
       <div className="contents-editor">
-        <TextField
-          className="header-editor"
-          margin="normal"
-          InputProps={{
-            style: { fontSize: '32px', fontWeight: 'bold' },
-          }}
-          value={header}
-          onChange={(e) => setHeader(e.target.value)}
-        />
+        <textarea className="header-editor" value={header} onChange={(e) => setHeader(e.target.value)} />
         <DropZoneTextArea contents={contents} setContents={setContents} />
       </div>
       <div className="contents-viewer">
