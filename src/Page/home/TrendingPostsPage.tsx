@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback, Fragment } from 'react';
+import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import PostCard from '../../Component/post/PostCard';
 import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
+import Wrapper from '../../Component/post/Wrapper';
 //https://slog.website/post/8
 
 const data = () => {
@@ -10,7 +11,8 @@ const data = () => {
     {
       key: 1,
       title: 'title1',
-      content: 'content1',
+      content:
+        'content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1',
       date: 'date1',
       CntCmmt: 1,
       fileURL: 'fileURL1',
@@ -179,9 +181,9 @@ const TrendingPostsPage: React.FC = () => {
   let [dataArray, setDataArray] = useState(data);
 
   return (
-    <Box display="flex" flexWrap="wrap" m={3} mx={10}>
-      {/*테스트*/}
-      Element {inView.toString()}
+    <Box display="flex" flexWrap="wrap" m={3} mx={20}>
+      {/*테스트
+      Element {inView.toString()}*/}
       {dataArray.map((value, idx) => {
         console.log('dataArray.length  : ', dataArray.length);
         console.log('idx  : ', idx);
@@ -189,22 +191,16 @@ const TrendingPostsPage: React.FC = () => {
         return (
           <Fragment>
             {dataArray.length - 1 == idx ? (
-              <PostCard post={value} ref={ref}></PostCard>
+              <Wrapper ref={ref}>
+                <PostCard post={value}></PostCard>
+              </Wrapper>
             ) : (
-              <PostCard post={value} ref={null}></PostCard>
+              <PostCard post={value}></PostCard>
             )}
           </Fragment>
         );
       })}
     </Box>
-
-    // <InfiniteScroll dataLength={items.length} next={fetchMoreData} hasMore={true} loader={<h4>Loading...</h4>}>
-    //   {items.map((i, index) => (
-    //     <div style={style} key={index}>
-    //       div - #{index}
-    //     </div>
-    //   ))}
-    // </InfiniteScroll>
   );
 };
 export default TrendingPostsPage;

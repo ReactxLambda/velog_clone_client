@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState, useEffect, useCallback } from 'react';
 import PostCard from '../../Component/post/PostCard';
-import { Box, Container } from '@material-ui/core';
+import { Box, Container, Tab, Tabs } from '@material-ui/core';
 import { RouteComponentProps } from 'react-router-dom';
-const reading = {
-  width: '1376px',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-};
+import Wrapper from '../../Component/post/Wrapper';
+import { useInView } from 'react-intersection-observer';
 
 const data = () => {
   //받아서 넘길꺼니가아?
@@ -153,21 +150,85 @@ const ReadingListPage: React.FC<ReadingListPageProps> = ({ match }) => {
   console.log(type);
 
   let [dataArray, setDataArray] = useState(data);
+
+  const [value, setValue] = useState(0);
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue);
+  };
+
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const [ref, inView] = useInView();
+  console.log('ref의 타입은????? : ', typeof ref);
+
+  // 서버에서 아이템을 가지고 오는 함수
+  const getItems = useCallback(async () => {
+    // setLoading(true)
+    // await axios.get(`${Your Server Url}/page=${page}`).then((res) => {
+    //   setItems(prevState => [...prevState, res])
+    // })
+    // setLoading(false)
+    console.log('계속 불러오나? ');
+  }, [page]);
+
+  // `getItems` 가 바뀔 때 마다 함수 실행
+  useEffect(() => {
+    getItems();
+  }, [getItems]);
+
+  useEffect(() => {
+    // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
+    console.log('befor inView : ', inView);
+    console.log('befor loading : ', loading);
+    if (inView && !loading) {
+      setPage((prevState) => prevState + 1);
+    }
+    console.log('after inView : ', inView);
+    console.log('after loading : ', loading);
+  }, [inView, loading]);
   return (
-    <div style={reading}>
+    <div
+      style={{
+        overflowY: 'auto',
+        height: '100%',
+      }}
+    >
       <h3>읽기목록</h3>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        variant="fullWidth"
+        indicatorColor="primary"
+        textColor="primary"
+        aria-label="icon label tabs example"
+      >
+        <Tab label="좋아한 포스트" />
+        <Tab label="최근 읽은 포스트" />
+      </Tabs>
       <div
         style={{
-          display: 'flex',
-          marginTop: '2rem',
+          height: '600px',
         }}
       >
-        <Box display="flex" flexWrap="wrap">
-          {dataArray.map((value) => {
+        <Box display="flex" flexWrap="wrap" m={3} mx={20}>
+          {/*테스트
+      Element {inView.toString()}*/}
+          {dataArray.map((value, idx) => {
+            console.log('dataArray.length  : ', dataArray.length);
+            console.log('idx  : ', idx);
+
             return (
-              <Box m={1}>
-                <PostCard post={value} ref={null}></PostCard>
-              </Box>
+              <Fragment>
+                {dataArray.length - 1 == idx ? (
+                  <Wrapper ref={ref}>
+                    <PostCard post={value}></PostCard>
+                  </Wrapper>
+                ) : (
+                  <PostCard post={value}></PostCard>
+                )}
+              </Fragment>
             );
           })}
         </Box>
