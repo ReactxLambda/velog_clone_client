@@ -9,6 +9,7 @@ import {
   CardActions,
   FormControlLabel,
   Checkbox,
+  Box,
 } from '@material-ui/core';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
@@ -48,48 +49,53 @@ type PostCardProps = {
     CntCmmt: number;
     fileURL: string;
   };
+  ref: any;
 };
 
-const PostCard: React.FC<PostCardProps> = ({ post }) => {
+const PostCard: React.FC<PostCardProps> = ({ post, ref }) => {
   const classes = useStyles();
   const value = post;
   return (
-    <Card key={value.key} className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={value.title}
-        subheader="September 14, 2016"
-      />
-      <CardMedia className={classes.media} image="/static/images/cards/paella.jpg" title="Paella dish" />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {value.content}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        {/* <IconButton aria-label="add to favorites">
+    <div ref={ref}>
+      <Box m={1}>
+        <Card key={value.key} className={classes.root}>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                R
+              </Avatar>
+            }
+            action={
+              <IconButton aria-label="settings">
+                <MoreVertIcon />
+              </IconButton>
+            }
+            title={value.title}
+            subheader="September 14, 2016"
+          />
+          <CardMedia className={classes.media} image="/static/images/cards/paella.jpg" title="Paella dish" />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {value.content}
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            {/* <IconButton aria-label="add to favorites">
         <FavoriteIcon />
       </IconButton> */}
-        <FormControlLabel
-          control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
-          label=""
-          onChange={changeFavorite}
-          value={value.key}
-        />
-        {/* <IconButton aria-label="share">
+            <FormControlLabel
+              control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
+              label=""
+              onChange={changeFavorite}
+              value={value.key}
+            />
+            {/* <IconButton aria-label="share">
         <ShareIcon />
       </IconButton> */}
-      </CardActions>
-    </Card>
+          </CardActions>
+        </Card>
+      </Box>
+    </div>
   );
 };
 export default PostCard;

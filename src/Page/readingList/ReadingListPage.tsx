@@ -166,7 +166,7 @@ const ReadingListPage: React.FC<ReadingListPageProps> = ({ match }) => {
           {dataArray.map((value) => {
             return (
               <Box m={1}>
-                <PostCard post={value}></PostCard>
+                <PostCard post={value} ref={null}></PostCard>
               </Box>
             );
           })}
