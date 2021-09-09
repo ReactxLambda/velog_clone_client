@@ -4,6 +4,7 @@ import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
 import Wrapper from '../../Component/post/Wrapper';
 //https://slog.website/post/8
+import GoogleOAuthButton from "../../Common/GoogleOAuthButton"
 
 const data = () => {
   //받아서 넘길꺼니가아?
@@ -180,6 +181,14 @@ const TrendingPostsPage: React.FC = () => {
 
   let [dataArray, setDataArray] = useState(data);
 
+  const onSignIn = (googleUser:any) => {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  }
+
   return (
     <Box display="flex" flexWrap="wrap" m={3} mx={20}>
       {/*테스트
@@ -190,6 +199,7 @@ const TrendingPostsPage: React.FC = () => {
 
         return (
           <Fragment>
+            <GoogleOAuthButton/>
             {dataArray.length - 1 == idx ? (
               <Wrapper ref={ref}>
                 <PostCard post={value}></PostCard>
