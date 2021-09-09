@@ -5,6 +5,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import HomePage from './Page/home/HomePage';
 import ReadingListPage from './Page/readingList/ReadingListPage';
 import TestPage from './Page/Test/Responsive';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
   const markdownTextArea = true;
@@ -20,11 +21,13 @@ function App() {
      
       */}
         <Switch>
-          <Route path="/" component={HomePage} exact />
-          <Route path="/:mode(trending|recent|following)" component={HomePage} />
-          <Route path="/write" component={ContentsEditing} />
-          <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
-          <Route path="/test" component={TestPage} />
+          <CssBaseline>
+            <Route path="/" component={HomePage} exact />
+            <Route path="/:mode(trending|recent|following)" component={HomePage} />
+            <Route path="/write" component={ContentsEditing} />
+            <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
+            <Route path="/test" component={TestPage} />
+          </CssBaseline>
         </Switch>
       </BrowserRouter>
     </div>
