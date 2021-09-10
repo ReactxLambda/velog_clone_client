@@ -6,9 +6,10 @@ const responseGoogle = (response : any) => {
 }
 
 function GoogleOAuthButton() {
+    const clientId = "330104992592-3bc3qepc1hujfo2anfmslit49klo0v42.apps.googleusercontent.com"
     return (
         <GoogleLogin
-        clientId="330104992592-3bc3qepc1hujfo2anfmslit49klo0v42.apps.googleusercontent.com"
+        clientId={clientId}
         buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}

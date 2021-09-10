@@ -191,6 +191,7 @@ const TrendingPostsPage: React.FC = () => {
 
   return (
     <Box display="flex" flexWrap="wrap" m={3} mx={20}>
+      <GoogleOAuthButton/>
       {/*테스트
       Element {inView.toString()}*/}
       {dataArray.map((value, idx) => {
@@ -199,7 +200,6 @@ const TrendingPostsPage: React.FC = () => {
 
         return (
           <Fragment>
-            <GoogleOAuthButton/>
             {dataArray.length - 1 == idx ? (
               <Wrapper ref={ref}>
                 <PostCard post={value}></PostCard>
