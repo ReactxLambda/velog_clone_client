@@ -3,7 +3,7 @@ import MarkdownViewer from '../../Component/MarkdownViewer';
 import DropZoneTextArea from '../../Component/DropZoneTextArea';
 import highlighting from '../../Common/highlighting';
 import TextField from '@material-ui/core/TextField';
-import './Style/ContentsEditing.css';
+import './Style/ContentsEditing.scss';
 import { classicNameResolver } from 'typescript';
 const ContentsEditing: React.FC = () => {
   const [contents, setContents] = useState(''); // Text contents

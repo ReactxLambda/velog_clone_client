@@ -17,6 +17,7 @@
     "codemirror": "^5.62.3",
     "highlight.js": "^11.2.0",
     "markdown-it": "^12.2.0",
+    "node-sass": "5.0.0",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-codemirror2": "^7.2.1",
@@ -51,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass-loader": "^12.1.0"
   }
 }
