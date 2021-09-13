@@ -9,15 +9,16 @@ const data = () => {
   //받아서 넘길꺼니가아?
   let array = [
     {
-      key: 1,
+      id: ' 1',
       title: 'title1',
-      content: 'content1',
+      content:
+        'content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1',
       date: 'date1',
       CntCmmt: 1,
       fileURL: 'fileURL1',
     },
     {
-      key: 2,
+      id: '2',
       title: 'title2',
       content: 'content2',
       date: 'date2',
@@ -25,7 +26,7 @@ const data = () => {
       fileURL: 'fileUR2',
     },
     {
-      key: 3,
+      id: '3',
       title: 'title3',
       content: 'content3',
       date: 'date3',
@@ -33,7 +34,7 @@ const data = () => {
       fileURL: 'fileUR3',
     },
     {
-      key: 4,
+      id: '4',
       title: 'title4',
       content: 'content4',
       date: 'date4',
@@ -41,7 +42,7 @@ const data = () => {
       fileURL: 'fileUR4',
     },
     {
-      key: 5,
+      id: '5',
       title: 'title5',
       content: 'content5',
       date: 'date5',
@@ -49,7 +50,7 @@ const data = () => {
       fileURL: 'fileUR5',
     },
     {
-      key: 6,
+      id: '6',
       title: 'title6',
       content: 'content6',
       date: 'date6',
@@ -57,7 +58,7 @@ const data = () => {
       fileURL: 'fileUR6',
     },
     {
-      key: 7,
+      id: '7',
       title: 'title7',
       content: 'content7',
       date: 'date7',
@@ -65,7 +66,7 @@ const data = () => {
       fileURL: 'fileUR71',
     },
     {
-      key: 8,
+      id: ' 8',
       title: 'title8',
       content: 'content8',
       date: 'date8',
@@ -74,7 +75,7 @@ const data = () => {
     },
 
     {
-      key: 9,
+      id: '9',
       title: 'title9',
       content: 'content9',
       date: 'date9',
@@ -82,7 +83,7 @@ const data = () => {
       fileURL: 'fileUR91',
     },
     {
-      key: 10,
+      id: '10',
       title: 'title10',
       content: 'content10',
       date: 'date10',
@@ -90,7 +91,7 @@ const data = () => {
       fileURL: 'fileURL10',
     },
     {
-      key: 11,
+      id: '11',
       title: 'title11',
       content: 'content11',
       date: 'date11',
@@ -98,7 +99,7 @@ const data = () => {
       fileURL: 'fileUR111',
     },
     {
-      key: 12,
+      id: '12',
       title: 'title12',
       content: 'content12',
       date: 'date12',
@@ -107,7 +108,7 @@ const data = () => {
     },
 
     {
-      key: 13,
+      id: '13',
       title: 'title13',
       content: 'content13',
       date: 'date13',
@@ -115,7 +116,7 @@ const data = () => {
       fileURL: 'fileUR131',
     },
     {
-      key: 14,
+      id: '14',
       title: 'title14',
       content: 'content14',
       date: 'date14',
@@ -123,7 +124,7 @@ const data = () => {
       fileURL: 'fileUR141',
     },
     {
-      key: 15,
+      id: '15',
       title: 'title15',
       content: 'content15',
       date: 'date15',
@@ -131,7 +132,7 @@ const data = () => {
       fileURL: 'fileUR151',
     },
     {
-      key: 16,
+      id: '16',
       title: 'title16',
       content: 'content16',
       date: 'date16',
@@ -212,7 +213,7 @@ const ReadingListPage: React.FC<ReadingListPageProps> = ({ match }) => {
           height: '600px',
         }}
       >
-        <Box display="flex" flexWrap="wrap" m={3} mx={20}>
+        <Box display="flex" flexWrap="wrap" mx={25} mt={3}>
           {/*테스트
       Element {inView.toString()}*/}
           {dataArray.map((value, idx) => {

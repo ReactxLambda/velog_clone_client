@@ -69,7 +69,7 @@ const changeFavorite = (e: any) => {
 };
 type PostCardProps = {
   post: {
-    key: number;
+    id: string;
     title: string;
     content: string;
     date: string;
@@ -84,7 +84,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
   return (
     <div>
       <Box m={2}>
-        <Card key={value.key} className={classes.root}>
+        <Card key={value.id} className={classes.root}>
           <Box className={classes.contents}>
             <CardMedia image="/images/sunflower.jpg" title="Paella dish" className={classes.media} />
             <CardContent className={classes.cardcontent}>
@@ -124,7 +124,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 }
                 label="50"
                 onChange={changeFavorite}
-                value={value.key}
+                value={value.id}
                 className={classes.like}
               />
               /*label = 좋아요 수 넣기*/
