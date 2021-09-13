@@ -156,7 +156,7 @@ const TrendingPostsPage: React.FC = () => {
 
   const GET_POST = gql`
     {
-      posts(take: 3) {
+      posts {
         id
         thumbnail
         title
@@ -232,12 +232,19 @@ const TrendingPostsPage: React.FC = () => {
     console.log('inView', inView);
   }, []);
 
-  useEffect(() => {
+const fetchPosts = async ()=>{
+  await fetchMore({ variables: { take: 1 } });
+  };
+
+  useEffect( () => {
     // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
     console.log(inView);
     if (inView) {
       console.log('refetch 구역 ');
-      fetchMore({ variables: { take: 1 } });
+      console.log('fetchMore async',fetchPosts());
+      console.log('fetchMore',fetchMore({ variables: { take: 1 } }));
+      
+      
     }
   }, [inView]);
 
@@ -251,7 +258,7 @@ const TrendingPostsPage: React.FC = () => {
   }, data);
 
   return (
-    <Box display="flex" flexWrap="wrap" mx={25} mt={3}>
+    <Box display="flex" flexWrap="wrap" mx={20} mt={3}>
       {/*테스트
       Element {inView.toString()}*/}
 
