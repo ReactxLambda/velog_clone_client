@@ -176,7 +176,7 @@ const TrendingPostsPage: React.FC = () => {
   //https://www.apollographql.com/docs/react/pagination/core-api/#the-fetchmore-function
   //fetchMore? reFecth?
   const { loading, error, data, fetchMore } = useQuery(GET_POST, {
-    variables: { take: 1 },
+    variables: { take: 3 },
   });
   // 서버에서 아이템을 가지고 오는 함수
   // const getItems = useCallback(async () => {
@@ -232,19 +232,17 @@ const TrendingPostsPage: React.FC = () => {
     console.log('inView', inView);
   }, []);
 
-const fetchPosts = async ()=>{
-  await fetchMore({ variables: { take: 1 } });
+  const fetchPosts = async () => {
+    await fetchMore({ variables: { offset: 1 } });
   };
 
-  useEffect( () => {
+  useEffect(() => {
     // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
     console.log(inView);
     if (inView) {
       console.log('refetch 구역 ');
-      console.log('fetchMore async',fetchPosts());
-      console.log('fetchMore',fetchMore({ variables: { take: 1 } }));
-      
-      
+      console.log('fetchMore async', fetchPosts());
+      console.log('fetchMore', fetchMore({ variables: {} }));
     }
   }, [inView]);
 
