@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+
 import TextField from '@material-ui/core/TextField';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/mode/markdown/markdown';
@@ -31,21 +31,17 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
   // DropZone set up end
   return (
     <Fragment>
-      <div className="full_height">
-        {/* <textarea className="markdown-textarea" value={contents} onChange={(e) => setContents(e.target.value)}>
-          <input {...getInputProps()} />
-        </textarea> */}
-
         <CodeMirror
-          className="contents-editor"
           options={{
             mode: 'markdown',
+            styleActiveLine: true,
+            line: true,
+            lineWrapping: true,
           }}
           onChange={(editor, data, value) => {
             setContents(value);
           }}
         />
-      </div>
     </Fragment>
   );
 };

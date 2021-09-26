@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MarkdownViewer from '../../Component/MarkdownViewer';
 import DropZoneTextArea from '../../Component/DropZoneTextArea';
 import highlighting from '../../Common/highlighting';
-import TextField from '@material-ui/core/TextField';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import './Style/ContentsEditing.scss';
 import { classicNameResolver } from 'typescript';
 const ContentsEditing: React.FC = () => {
@@ -37,7 +37,8 @@ const ContentsEditing: React.FC = () => {
   return (
     <div className="markdown-contents">
       <div className="contents-editor">
-        <textarea className="header-editor" value={header} onChange={(e) => setHeader(e.target.value)} />
+        
+        <TextareaAutosize className="header-editor" value={header} onChange={(e) => setHeader(e.target.value)} />
         <DropZoneTextArea contents={contents} setContents={setContents} />
       </div>
       <div className="contents-viewer">
