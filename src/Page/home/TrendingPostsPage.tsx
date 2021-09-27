@@ -150,6 +150,7 @@ const TrendingPostsPage: React.FC = () => {
   // const [items, setItems] = useState([]);
   // const [page, setPage] = useState(1);
   // const [loading, setLoading] = useState(false);
+
   //게시물 리스트
   let [posts, setPosts] = useState([]);
   const [ref, inView] = useInView();
@@ -164,21 +165,44 @@ const TrendingPostsPage: React.FC = () => {
         user_id
         content
         created_at
-        interest {
-          created_at
-          user {
-            id
-          }
+        user {
+          id
         }
       }
     }
+  }
   `;
+
+  // const GET_POST = gql`
+  // query($take : int!){
+  //   posts (
+  //     take:$take
+  //   ){
+  //     id
+  //     thumbnail
+  //     title
+  //     url
+  //     user_id
+  //     content
+  //     created_at
+  //     interest {
+  //       created_at
+  //       user {
+  //         id
+  //       }
+  //     }
+  //   }
+  // }
+  // `;
+
   //https://www.apollographql.com/docs/react/pagination/core-api/#the-fetchmore-function
   //fetchMore? reFecth?
+
   const { loading, error, data, fetchMore, networkStatus } = useQuery(GET_POST, {
     // https://github.com/apollographql/apollo-client/issues/1617
     notifyOnNetworkStatusChange: true,
   });
+
   // 서버에서 아이템을 가지고 오는 함수
   // const getItems = useCallback(async () => {
   //   // await axios.get(`${Your Server Url}/page=${page}`).then((res) => {
@@ -236,6 +260,7 @@ const TrendingPostsPage: React.FC = () => {
 
   useEffect(() => {
     console.log('inView', inView);
+
     console.log('data', data);
     console.log('loading', loading);
     if (!loading) {
@@ -252,6 +277,7 @@ const TrendingPostsPage: React.FC = () => {
     console.log(inView);
     if (inView) {
       console.log('refetch 구역 ');
+
       // console.log('fetchMore async', fetchPosts());
 
       // const result = fetchMore({ variables: { take: 1 } });
@@ -282,14 +308,18 @@ const TrendingPostsPage: React.FC = () => {
 
   return (
     <Box display="flex" flexWrap="wrap" mx={20} mt={3}>
-      {/*테스트
-      Element {inView.toString()}*/}
+      {
+        /*테스트
+      Element {inView.toString()}*/
+        // console.log(data);
+        console.log(posts)
+      }
 
       {!loading &&
         posts.length > 0 &&
         posts.map((value, idx) => {
           console.log('posts.length  : ', posts.length);
-          console.log('data.posts.length  : ', data.posts.length);
+          console.log('posts.length  : ', posts.length);
           console.log('idx  : ', idx);
 
           return (
