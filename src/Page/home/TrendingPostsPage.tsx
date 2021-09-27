@@ -4,7 +4,7 @@ import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
 import Wrapper from '../../Component/post/Wrapper';
 import { gql } from '@apollo/client';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, NetworkStatus } from '@apollo/react-hooks';
 //https://slog.website/post/8
 
 const datas = () => {
@@ -170,7 +170,6 @@ const TrendingPostsPage: React.FC = () => {
         }
       }
     }
-  }
   `;
 
   // const GET_POST = gql`
@@ -198,6 +197,7 @@ const TrendingPostsPage: React.FC = () => {
   //https://www.apollographql.com/docs/react/pagination/core-api/#the-fetchmore-function
   //fetchMore? reFecth?
 
+  //refetch시 loading 동작 x -> networkStatus / notifyOnNetworkStatusChange: true 사용
   const { loading, error, data, fetchMore, networkStatus } = useQuery(GET_POST, {
     // https://github.com/apollographql/apollo-client/issues/1617
     notifyOnNetworkStatusChange: true,
@@ -277,6 +277,7 @@ const TrendingPostsPage: React.FC = () => {
     console.log(inView);
     if (inView) {
       console.log('refetch 구역 ');
+      console.log('networkStatus : ', networkStatus);
 
       // console.log('fetchMore async', fetchPosts());
 
@@ -290,9 +291,11 @@ const TrendingPostsPage: React.FC = () => {
 
       (async function fetchData() {
         setPosts(posts.concat((await fetchMore({ variables: { take: 2 } })).data));
-        console.log((await fetchMore({ variables: { take: 2 } })).data);
+        // console.log((await fetchMore({ variables: { take: 2 } })).data);
       })();
-
+      console.log('networkStatus : ', networkStatus);
+      console.log('NetworkStatus : ', NetworkStatus.fetchMore);
+      console.log('NetworkStatus : ', NetworkStatus.ready);
       console.log(data);
     }
   }, [inView]);
