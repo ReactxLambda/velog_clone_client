@@ -290,10 +290,16 @@ const TrendingPostsPage: React.FC = () => {
       // console.log('res2', res2);
 
       (async function fetchData() {
-        setPosts(posts.concat((await fetchMore({ variables: { take: 2 } })).data));
+        const data = (await fetchMore({ variables: { take: 2 } })).data;
+        console.log('함수 안networkStatus : ', networkStatus);
+        console.log('함수 안loading : ', loading);
+        if (!loading) {
+          setPosts(posts.concat(data.posts));
+        }
+
         // console.log((await fetchMore({ variables: { take: 2 } })).data);
       })();
-      console.log('networkStatus : ', networkStatus);
+
       console.log('NetworkStatus : ', NetworkStatus.fetchMore);
       console.log('NetworkStatus : ', NetworkStatus.ready);
       console.log(data);
