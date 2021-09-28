@@ -4,6 +4,7 @@ import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
 import Wrapper from '../../Component/post/Wrapper';
 import { gql } from '@apollo/client';
+//import {client} from '../../Common/apollo';
 import { useQuery, NetworkStatus } from '@apollo/react-hooks';
 //https://slog.website/post/8
 
@@ -11,136 +12,148 @@ const datas = () => {
   //받아서 넘길꺼니가아?
   let array = [
     {
-      id: ' 1',
-      title: 'title1',
-      content:
-        'content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1',
-      date: 'date1',
-      CntCmmt: 1,
-      fileURL: 'fileURL1',
+      id: 'dfsdf',
+      thumbnail: 'sdfsd',
+      title: 'sdf',
+      url: 'sdfsdf',
+      user_id: 'sdfsd',
+      content: 'sdf',
+      created_at: 'sdfsdf',
+      user: {
+        id: 'sdfsdf',
+      },
     },
-    {
-      id: '2',
-      title: 'title2',
-      content: 'content2',
-      date: 'date2',
-      CntCmmt: 2,
-      fileURL: 'fileUR2',
-    },
-    {
-      id: '3',
-      title: 'title3',
-      content: 'content3',
-      date: 'date3',
-      CntCmmt: 3,
-      fileURL: 'fileUR3',
-    },
-    {
-      id: '4',
-      title: 'title4',
-      content: 'content4',
-      date: 'date4',
-      CntCmmt: 4,
-      fileURL: 'fileUR4',
-    },
-    {
-      id: '5',
-      title: 'title5',
-      content: 'content5',
-      date: 'date5',
-      CntCmmt: 5,
-      fileURL: 'fileUR5',
-    },
-    {
-      id: '6',
-      title: 'title6',
-      content: 'content6',
-      date: 'date6',
-      CntCmmt: 6,
-      fileURL: 'fileUR6',
-    },
-    {
-      id: '7',
-      title: 'title7',
-      content: 'content7',
-      date: 'date7',
-      CntCmmt: 71,
-      fileURL: 'fileUR71',
-    },
-    {
-      id: ' 8',
-      title: 'title8',
-      content: 'content8',
-      date: 'date8',
-      CntCmmt: 81,
-      fileURL: 'fileUR81',
-    },
+    // {
+    //   id: ' 1',
+    //   title: 'title1',
+    //   content:
+    //     'content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1',
+    //   date: 'date1',
+    //   CntCmmt: 1,
+    //   fileURL: 'fileURL1',
+    // },
+    // {
+    //   id: '2',
+    //   title: 'title2',
+    //   content: 'content2',
+    //   date: 'date2',
+    //   CntCmmt: 2,
+    //   fileURL: 'fileUR2',
+    // },
+    // {
+    //   id: '3',
+    //   title: 'title3',
+    //   content: 'content3',
+    //   date: 'date3',
+    //   CntCmmt: 3,
+    //   fileURL: 'fileUR3',
+    // },
+    // {
+    //   id: '4',
+    //   title: 'title4',
+    //   content: 'content4',
+    //   date: 'date4',
+    //   CntCmmt: 4,
+    //   fileURL: 'fileUR4',
+    // },
+    // {
+    //   id: '5',
+    //   title: 'title5',
+    //   content: 'content5',
+    //   date: 'date5',
+    //   CntCmmt: 5,
+    //   fileURL: 'fileUR5',
+    // },
+    // {
+    //   id: '6',
+    //   title: 'title6',
+    //   content: 'content6',
+    //   date: 'date6',
+    //   CntCmmt: 6,
+    //   fileURL: 'fileUR6',
+    // },
+    // {
+    //   id: '7',
+    //   title: 'title7',
+    //   content: 'content7',
+    //   date: 'date7',
+    //   CntCmmt: 71,
+    //   fileURL: 'fileUR71',
+    // },
+    // {
+    //   id: ' 8',
+    //   title: 'title8',
+    //   content: 'content8',
+    //   date: 'date8',
+    //   CntCmmt: 81,
+    //   fileURL: 'fileUR81',
+    // },
 
-    {
-      id: '9',
-      title: 'title9',
-      content: 'content9',
-      date: 'date9',
-      CntCmmt: 91,
-      fileURL: 'fileUR91',
-    },
-    {
-      id: '10',
-      title: 'title10',
-      content: 'content10',
-      date: 'date10',
-      CntCmmt: 10,
-      fileURL: 'fileURL10',
-    },
-    {
-      id: '11',
-      title: 'title11',
-      content: 'content11',
-      date: 'date11',
-      CntCmmt: 111,
-      fileURL: 'fileUR111',
-    },
-    {
-      id: '12',
-      title: 'title12',
-      content: 'content12',
-      date: 'date12',
-      CntCmmt: 121,
-      fileURL: 'fileUR121',
-    },
+    // {
+    //   id: '9',
+    //   title: 'title9',
+    //   content: 'content9',
+    //   date: 'date9',
+    //   CntCmmt: 91,
+    //   fileURL: 'fileUR91',
+    // },
+    // {
+    //   id: '10',
+    //   title: 'title10',
+    //   content: 'content10',
+    //   date: 'date10',
+    //   CntCmmt: 10,
+    //   fileURL: 'fileURL10',
+    // },
+    // {
+    //   id: '11',
+    //   title: 'title11',
+    //   content: 'content11',
+    //   date: 'date11',
+    //   CntCmmt: 111,
+    //   fileURL: 'fileUR111',
+    // },
+    // {
+    //   id: '12',
+    //   title: 'title12',
+    //   content: 'content12',
+    //   date: 'date12',
+    //   CntCmmt: 121,
+    //   fileURL: 'fileUR121',
+    // },
 
-    {
-      id: '13',
-      title: 'title13',
-      content: 'content13',
-      date: 'date13',
-      CntCmmt: 131,
-      fileURL: 'fileUR131',
-    },
-    {
-      id: '14',
-      title: 'title14',
-      content: 'content14',
-      date: 'date14',
-      CntCmmt: 141,
-      fileURL: 'fileUR141',
-    },
-    {
-      id: '15',
-      title: 'title15',
-      content: 'content15',
-      date: 'date15',
-      CntCmmt: 151,
-      fileURL: 'fileUR151',
-    },
-    {
-      id: '16',
-      title: 'title16',
-      content: 'content16',
-      date: 'date16',
-      CntCmmt: 161,
-      fileURL: 'fileUR161',
-    },
+    // {
+    //   id: '13',
+    //   title: 'title13',
+    //   content: 'content13',
+    //   date: 'date13',
+    //   CntCmmt: 131,
+    //   fileURL: 'fileUR131',
+    // },
+    // {
+    //   id: '14',
+    //   title: 'title14',
+    //   content: 'content14',
+    //   date: 'date14',
+    //   CntCmmt: 141,
+    //   fileURL: 'fileUR141',
+    // },
+    // {
+    //   id: '15',
+    //   title: 'title15',
+    //   content: 'content15',
+    //   date: 'date15',
+    //   CntCmmt: 151,
+    //   fileURL: 'fileUR151',
+    // },
+    // {
+    //   id: '16',
+    //   title: 'title16',
+    //   content: 'content16',
+    //   date: 'date16',
+    //   CntCmmt: 161,
+    //   fileURL: 'fileUR161',
+    // },
   ];
 
   return array;
@@ -258,13 +271,19 @@ const TrendingPostsPage: React.FC = () => {
   //   console.log('첫 렌더링 시에만 반응');
   //   console.log('inView', inView);
   //   console.log('data', data);
+  //   if (!loading) {
+
+  //   }
   // }, []);
 
   useEffect(() => {
+    console.log('loading useEffect 함수 안입니다. =================');
     console.log('inView', inView);
 
     console.log('data', data);
     console.log('loading', loading);
+    console.log('loading networkStatus : ', networkStatus);
+
     if (!loading) {
       setPosts(posts.concat(data.posts));
     }
@@ -277,7 +296,9 @@ const TrendingPostsPage: React.FC = () => {
   useEffect(() => {
     // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
     console.log(inView);
+    console.log(loading);
     if (inView) {
+      console.log('inview , loading useEffect 함수 안입니다. =================');
       console.log('refetch 구역 ');
       console.log('networkStatus : ', networkStatus);
 
@@ -291,22 +312,38 @@ const TrendingPostsPage: React.FC = () => {
       // });
       // console.log('res2', res2);
 
+      /**
       (async function fetchData() {
         const data = (await fetchMore({ variables: { take: 2 } })).data;
         console.log('함수 안networkStatus : ', networkStatus);
         console.log('함수 안loading : ', loading);
-        if (!loading) {
-          setPosts(posts.concat(data.posts));
-        }
+        // if (!loading) {
+        //   setPosts(posts.concat(data.posts));
+        // }
 
         // console.log((await fetchMore({ variables: { take: 2 } })).data);
       })();
 
+       */
+
+      // client.query({
+      //   query: gql`
+      //     {
+      //       users {
+      //         name
+      //         status
+      //       }
+      //     }
+      //   `,
+      // }).then((response) => console.log(response.data.users));
+
+      setPosts(posts.concat(data));
+      console.log('함수 밖loading : ', loading);
       console.log('NetworkStatus : ', NetworkStatus.fetchMore);
       console.log('NetworkStatus : ', NetworkStatus.ready);
       console.log(data);
     }
-  }, [inView, loading]);
+  }, [inView]);
 
   // useEffect(() => {
   //   console.log('loading : ', loading);
@@ -323,15 +360,15 @@ const TrendingPostsPage: React.FC = () => {
         /*테스트
       Element {inView.toString()}*/
         // console.log(data);
-        console.log(posts)
+        console.log(posts[0])
       }
 
       {!loading &&
         posts.length > 0 &&
         posts.map((value, idx) => {
-          console.log('posts.length  : ', posts.length);
-          console.log('posts.length  : ', posts.length);
-          console.log('idx  : ', idx);
+          // console.log('posts.length  : ', posts.length);
+          // console.log('posts.length  : ', posts.length);
+          // console.log('idx  : ', idx);
 
           return (
             <Fragment>
