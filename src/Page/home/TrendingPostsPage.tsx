@@ -153,7 +153,9 @@ const TrendingPostsPage: React.FC = () => {
 
   //게시물 리스트
   let [posts, setPosts] = useState([]);
-  const [ref, inView] = useInView();
+  const [ref, inView] = useInView({
+    threshold: 0.5, // 해당 부분이 50%이상 보일 때 0~1사이
+  });
 
   const GET_POST = gql`
     query {
@@ -304,7 +306,7 @@ const TrendingPostsPage: React.FC = () => {
       console.log('NetworkStatus : ', NetworkStatus.ready);
       console.log(data);
     }
-  }, [inView]);
+  }, [inView, loading]);
 
   // useEffect(() => {
   //   console.log('loading : ', loading);
@@ -343,7 +345,7 @@ const TrendingPostsPage: React.FC = () => {
             </Fragment>
           );
         })}
-      {loading && <h1>Loading 중입니다.</h1>}
+      {loading && posts.length == 0 && <h1>Loading 중입니다.</h1>}
     </Box>
   );
 };
