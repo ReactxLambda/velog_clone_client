@@ -37,8 +37,8 @@ const ContentsEditing: React.FC = () => {
   return (
     <div className="markdown-contents">
       <div className="contents-editor">
-        
         <TextareaAutosize className="header-editor" value={header} onChange={(e) => setHeader(e.target.value)} />
+
         <DropZoneTextArea contents={contents} setContents={setContents} />
       </div>
       <div className="contents-viewer">

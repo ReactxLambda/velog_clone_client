@@ -1,7 +1,5 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { Fragment, useCallback, useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
-
-import TextField from '@material-ui/core/TextField';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/lib/codemirror.css';
@@ -10,7 +8,6 @@ type DropZoneTextAreaType = {
   setContents: (contents: string) => void;
   contents: string;
 };
-
 const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, contents }) => {
   // DropZone set up start
   const onDrop = useCallback((acceptedFiles) => {
@@ -27,6 +24,12 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
       console.log(file);
     });
   }, []);
+  const [codeMirror, setCodeMirror] : [any, (any : any)=> void] = useState();
+  const makeBold = () =>{
+    const selectionString : string = codeMirror.getSelection();
+    codeMirror.replaceSelection(`**${selectionString}**`)
+  }
+  
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
   // DropZone set up end
   return (
@@ -38,9 +41,19 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
             line: true,
             lineWrapping: true,
           }}
-          onChange={(editor, data, value) => {
+          editorDidMount={(editor : any, value : string, cb : () => void )=>{
+
+            setCodeMirror(editor)
+          }}
+          onChange={(editor : any , data : any, value : string) : void => {
             setContents(value);
           }}
+          onCursor={(editor ,data : any)=>{
+            // doc.getSelection() → string
+            // doc.replaceSelection(replacement: string, ?collapse: string)
+            // console.log(replaceCursor)
+          }}
+          
         />
     </Fragment>
   );
