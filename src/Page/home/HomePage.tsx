@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Route } from 'react-router-dom';
 import TrendingPostsPage from './TrendingPostsPage';
+import RecentPostsPage from './RecentPostsPage';
 import { useMediaQuery } from 'react-responsive';
 import { makeStyles, Tab, Tabs } from '@material-ui/core';
 
@@ -102,7 +103,7 @@ const HomePage: React.FC = () => {
       >
         <Route path={['/', '/trending']} component={TrendingPostsPage} exact />
       </div>
-      {/* <Route path={['/recent']} component={RecentPostsPage} /> */}
+      <Route path={['/recent/:type(day|week|month|year)']} component={RecentPostsPage} />
     </div>
   );
 };

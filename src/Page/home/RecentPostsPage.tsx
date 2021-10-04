@@ -2,13 +2,18 @@ import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import PostCard from '../../Component/post/PostCard';
 import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
+import { RouteComponentProps } from 'react-router-dom';
 import Wrapper from '../../Component/post/Wrapper';
 import { gql  } from '@apollo/client';
 import client from '../../Common/apollo';
 import { useQuery, NetworkStatus } from '@apollo/react-hooks';
 //https://slog.website/post/8
-
-const TrendingPostsPage: React.FC = () => {
+type RecentPostsPage = {} & RouteComponentProps<{
+  type: 'day' | 'week' | 'month' | 'year';
+}>;
+const RecentPostsPage: React.FC<RecentPostsPage> = ({ match }) => {
+  const { type } = match.params;
+  console.log(type);
   // const [items, setItems] = useState([]);
   // const [page, setPage] = useState(1);
   // const [loading, setLoading] = useState(false);
@@ -25,11 +30,12 @@ const TrendingPostsPage: React.FC = () => {
   
   const GET_POST = gql`
     query {
-      posts(
+      posts_trend(
         take:12,
         orderBy : {
           created_at : desc
-        } 
+        } ,
+        interval : ${type}
       ) {
         id
         thumbnail
@@ -107,12 +113,13 @@ const TrendingPostsPage: React.FC = () => {
       client.query({
         query:gql`
         query {
-          posts (
+          posts_trend (
             orderBy : {
               created_at : desc
             } ,
             take : 4,
-            skip:${count}
+            skip:${count},
+            interval : ${type}
           ){
             id
             thumbnail
@@ -188,4 +195,4 @@ const TrendingPostsPage: React.FC = () => {
     </Box>
   );
 };
-export default TrendingPostsPage;
+export default RecentPostsPage;
