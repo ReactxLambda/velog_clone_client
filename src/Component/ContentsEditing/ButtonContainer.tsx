@@ -32,17 +32,27 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
     const selectionString: string = codeMirror.getSelection();
     codeMirror.replaceSelection(`\`\`\`\n${selectionString}\n\`\`\``);
   };
+
   const [linkModalVisible, setLinkModalVisible] = useState(false);
   const [link, setLink] = useState('');
-
+  const toMarkdown = () => {
+    codeMirror.replaceSelection(`[링크텍스트](${link})`);
+    setLinkModalVisible(false);
+  };
   useEffect(() => {
     console.log(`modal visible ${linkModalVisible}`);
   }, [linkModalVisible]);
+
   useEffect(() => {
     console.log(`link: ${link}`);
   }, [link]);
+
   const [line, setLine] = useState(1);
   const [ch, setCh] = useState(1);
+
+  const setLinkStr = (event: any) => {
+    setLink(event.target.value);
+  };
 
   const showLinkModal = () => {
     setLinkModalVisible(!linkModalVisible);
@@ -62,7 +72,14 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
       <IconButton icon={'FormatQuote'} onClick={makeParagraph} />
       <IconButton icon={'Code'} onClick={makeCode} />
       <IconButton icon={'Link'} onClick={showLinkModal} />
-      <LinkModal link={link} visible={linkModalVisible} line={line} ch={ch}></LinkModal>
+      <LinkModal
+        link={link}
+        visible={linkModalVisible}
+        line={line}
+        ch={ch}
+        setLink={setLinkStr}
+        toMarkdown={toMarkdown}
+      ></LinkModal>
     </div>
   );
 };

@@ -54,7 +54,7 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
         onChange={(editor: any, data: any, value: string): void => {
           setContents(value);
         }}
-        onCursor={(editor, data: any) => {
+        onCursor={(editor: any, data: any) => {
           // doc.getSelection() → string
           // doc.replaceSelection(replacement: string, ?collapse: string)
           // console.log(replaceCursor)

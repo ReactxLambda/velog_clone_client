@@ -8,8 +8,10 @@ type LinkType = {
   visible: boolean;
   line: number;
   ch: number;
+  setLink: (any: any) => void;
+  toMarkdown: () => void;
 };
-const LinkModal: React.FC<LinkType> = ({ link, visible, line, ch }) => {
+const LinkModal: React.FC<LinkType> = ({ link, visible, line, ch, setLink, toMarkdown }) => {
   return (
     <div
       className="link_modal"
@@ -25,8 +27,12 @@ const LinkModal: React.FC<LinkType> = ({ link, visible, line, ch }) => {
           display: 'flex',
         }}
       >
-        <TextField style={{ flex: 1, marginRight: '20px' }} placeholder={'링크를 입력해주세요'}></TextField>
-        <Button style={{ flex: 0.3 }} variant="contained" endIcon={<SendIcon />}>
+        <TextField
+          onChange={setLink}
+          style={{ flex: 1, marginRight: '20px' }}
+          placeholder={'링크를 입력해주세요'}
+        ></TextField>
+        <Button style={{ flex: 0.3 }} variant="contained" endIcon={<SendIcon />} onClick={(e) => toMarkdown()}>
           Send
         </Button>
       </div>
