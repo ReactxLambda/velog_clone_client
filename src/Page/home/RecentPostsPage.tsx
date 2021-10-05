@@ -2,18 +2,14 @@ import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import PostCard from '../../Component/post/PostCard';
 import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
-import { RouteComponentProps } from 'react-router-dom';
+
 import Wrapper from '../../Component/post/Wrapper';
-import { gql  } from '@apollo/client';
+import { gql } from '@apollo/client';
 import client from '../../Common/apollo';
 import { useQuery, NetworkStatus } from '@apollo/react-hooks';
 //https://slog.website/post/8
-type RecentPostsPage = {} & RouteComponentProps<{
-  type: 'day' | 'week' | 'month' | 'year';
-}>;
-const RecentPostsPage: React.FC<RecentPostsPage> = ({ match }) => {
-  const { type } = match.params;
-  console.log(type);
+
+const RecentPostsPage: React.FC = () => {
   // const [items, setItems] = useState([]);
   // const [page, setPage] = useState(1);
   // const [loading, setLoading] = useState(false);
@@ -26,24 +22,20 @@ const RecentPostsPage: React.FC<RecentPostsPage> = ({ match }) => {
 
   // let [count, setCount] = useState(12);
   // let count = 12;
-  const [count, setCount] : [number, (number : number) => void] = useState(8); 
-  
+  const [count, setCount]: [number, (number: number) => void] = useState(8);
+
   const GET_POST = gql`
     query {
-      posts_trend(
-        take:12,
-        orderBy : {
-          created_at : desc
-        } ,
-        interval : ${type}
-      ) {
+      posts(take: 8, orderBy: { created_at: desc }) {
         id
         thumbnail
-        title 
+        title
         url
         user_id
         content
         created_at
+        like_count
+        comment_count
         user {
           id
         }
@@ -92,7 +84,6 @@ const RecentPostsPage: React.FC<RecentPostsPage> = ({ match }) => {
 
     if (!loading) {
       setPosts(posts.concat(data.posts));
-      
     }
   }, [loading]);
 
@@ -100,51 +91,51 @@ const RecentPostsPage: React.FC<RecentPostsPage> = ({ match }) => {
   //   await fetchMore({ variables: { offset: 1 } });
   // };
 
-  useEffect( () => {
+  useEffect(() => {
     // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
     console.log(`inView: ${inView}`);
     console.log(loading);
     if (inView) {
-      setCount(count+4);
+      setCount(count + 4);
       console.log('inview , loading useEffect 함수 안입니다. =================');
       console.log('refetch 구역 ');
       console.log('networkStatus : ', networkStatus);
-      console.log("count: " , count);
-      client.query({
-        query:gql`
-        query {
-          posts_trend (
-            orderBy : {
-              created_at : desc
-            } ,
-            take : 4,
-            skip:${count},
-            interval : ${type}
-          ){
-            id
-            thumbnail
-            title
-            url
-            user_id
-            content
-            created_at
-            user {
-              id
+      console.log('count: ', count);
+      client
+        .query({
+          query: gql`
+            query {
+              posts (
+                orderBy : {
+                  created_at : desc
+                } ,
+                take : 4,
+                skip:${count}
+              ){
+                id
+                thumbnail
+                title
+                url
+                user_id
+                content
+                created_at
+                like_count
+                comment_count
+                user {
+                  id
+                }
+              }
             }
+          `,
+        })
+        .then((response) => {
+          console.log('count :', count);
+          console.log('response.data.posts.length  :', response.data.posts.length);
+          if (response.data.posts.length === 0) {
+          } else if (response.data.posts.length != 0) {
+            setPosts(posts.concat(response.data.posts));
           }
-        }
-      `,
-      }).then((response) => {
-
-        console.log("count :",count);
-        console.log("response.data.posts.length  :",response.data.posts.length );
-        if(response.data.posts.length === 0){
-
-        }
-        else if(response.data.posts.length != 0){
-          setPosts(posts.concat(response.data.posts));
-        }
-      });
+        });
 
       // setPosts(posts.concat(data));
       console.log('함수 밖loading : ', loading);

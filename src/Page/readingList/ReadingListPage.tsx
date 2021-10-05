@@ -222,13 +222,13 @@ const ReadingListPage: React.FC<ReadingListPageProps> = ({ match }) => {
 
             return (
               <Fragment>
-                {dataArray.length - 1 == idx ? (
+                {/* {dataArray.length - 1 == idx ? (
                   <Wrapper ref={ref}>
                     <PostCard post={value}></PostCard>
                   </Wrapper>
                 ) : (
                   <PostCard post={value}></PostCard>
-                )}
+                )} */}
               </Fragment>
             );
           })}

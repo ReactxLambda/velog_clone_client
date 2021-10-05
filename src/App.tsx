@@ -7,7 +7,6 @@ import ReadingListPage from './Page/readingList/ReadingListPage';
 import TestPage from './Page/Test/Responsive';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-
 function App() {
   const markdownTextArea = true;
   const [textContents, setTextContents] = useState('');

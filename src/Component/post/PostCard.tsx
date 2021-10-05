@@ -19,11 +19,22 @@ import ShareIcon from '@material-ui/icons/Share';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 
+const changeDateFormat = (date: any) => {
+  const today = new Date();
+
+  const year = today.getFullYear();
+  const month = ('0' + (today.getMonth() + 1)).slice(-2);
+  const day = ('0' + today.getDate()).slice(-2);
+
+  const dateString = `${year}년 ${month}월 ${day}일`;
+  return dateString;
+};
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: 320,
-      height: 366,
+      height: 376,
     },
     grid: {
       flexGrow: 1,
@@ -55,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
     },
     content: { height: '90%', width: '290px', wordBreak: 'break-all' },
-    info: { height: '10%' },
+    info: { height: '10%', fontSize: 11 },
     like: {
       marginTop: '-5px',
     },
@@ -72,9 +83,13 @@ type PostCardProps = {
     id: string;
     title: string;
     content: string;
-    date: string;
-    CntCmmt: number;
-    fileURL: string;
+    created_at: string;
+    comment_count: number;
+    thumbnail: string;
+    like_count: number;
+    user: {
+      id: String;
+    };
   };
 };
 
@@ -92,7 +107,8 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 {value.content}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p" className={classes.info}>
-                2021년 9월 7일 ● 10개의 댓글
+                {changeDateFormat(value.created_at) +
+                  `· ${value.comment_count == undefined ? 0 : value.comment_count}개의 댓글`}
               </Typography>
             </CardContent>
           </Box>
@@ -122,14 +138,14 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                     name="checkedH"
                   />
                 }
-                label="50"
+                label={value.like_count === undefined ? 0 : value.like_count}
                 onChange={changeFavorite}
                 value={value.id}
                 className={classes.like}
               />
               /*label = 좋아요 수 넣기*/
             }
-            title={value.title}
+            title={'by ' + value.user.id}
             className={classes.header}
           />
           {/* </Box> */}
