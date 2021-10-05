@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MarkdownViewer from '../../Component/MarkdownViewer';
-import DropZoneTextArea from '../../Component/DropZoneTextArea';
+import DropZoneTextArea from '../../Component/ContentsEditing/DropZoneTextArea';
 import highlighting from '../../Common/highlighting';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import './Style/ContentsEditing.scss';

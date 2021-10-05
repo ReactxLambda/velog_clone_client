@@ -1,15 +1,16 @@
-import React, {useEffect} from 'react'
-
+import React, { useEffect } from 'react';
+import Button from '@material-ui/core/Button';
 type IconButtonType = {
-    iconName : string,
-    onClick : () => void
-}
-const IconButton : React.FC<IconButtonType> = ({iconName, onClick})  => {
-    return (
-        <div>
-
-        </div>
-    )
-}
+  icon: string;
+  onClick: () => void | undefined;
+};
+const IconButton: React.FC<IconButtonType> = ({ icon, onClick }) => {
+  const FormatItalic = require('@material-ui/icons/' + icon).default;
+  return (
+    <Button onClick={onClick}>
+      <FormatItalic />
+    </Button>
+  );
+};
 
 export default IconButton;
