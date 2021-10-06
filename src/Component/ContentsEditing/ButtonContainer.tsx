@@ -3,28 +3,11 @@ import HeaderButton from './HeaderButton';
 import IconButton from './IconButton';
 import UploadImageButton from './UploadImageButton';
 import './Style/ButtonContainer.scss';
-import { Button } from '@material-ui/core';
+import ButtonSeperator from './ButtonSeperator';
 import LinkModal from './LinkInputModal';
 type ButtonContainerType = {
   codeMirror: any;
 };
-
-function getTextLengthInPixel(txt: string, optFont: string | null | undefined): number {
-  var myId = 'my_span_ruler';
-  var ruler = document.getElementById(myId);
-  if (!ruler) {
-    ruler = document.createElement('span');
-    ruler.id = myId; // 안보이게
-    ruler.setAttribute(
-      'style',
-      'visibility:hidden; white-space:nowrap; position:absolute; left:-9999px; top: -9999px;',
-    );
-    document.body.appendChild(ruler);
-  } // 폰트 스타일
-  ruler.style.font = !optFont ? document.body.style.font : optFont;
-  ruler.innerText = txt;
-  return ruler.offsetWidth;
-}
 
 const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
   const [lineWidth, setLineWidth] = useState(0);
@@ -65,14 +48,6 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
     codeMirror.focus();
   };
 
-  useEffect(() => {
-    console.log(`modal visible ${linkModalVisible}`);
-  }, [linkModalVisible]);
-
-  useEffect(() => {
-    console.log(`link: ${link}`);
-  }, [link]);
-
   const showLinkModal = () => {
     const cursor = codeMirror.getCursor();
     const cursorLocation = codeMirror.cursorCoords({ line: cursor.line, ch: cursor.ch });
@@ -85,8 +60,7 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
   const toMarkdown = () => {
     codeMirror.replaceSelection(`[링크텍스트](${link})`);
     setLinkModalVisible(false);
-    console.log('ch: ' + ch);
-    console.log('line: ' + line);
+
     codeMirror.setSelection({ line: line, ch: ch + 1 }, { line: line, ch: ch + 6 });
     codeMirror.focus();
   };
@@ -99,13 +73,15 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
       <HeaderButton number={'2'} onClick={() => makeHead(2)} />
       <HeaderButton number={'3'} onClick={() => makeHead(3)} />
       <HeaderButton number={'4'} onClick={() => makeHead(4)} />
+      <ButtonSeperator />
       <IconButton icon={'FormatBold'} onClick={makeBold} />
-      <IconButton icon={'FormatStrikethrough'} onClick={makeLine} />
       <IconButton icon={'FormatItalic'} onClick={makeItalic} />
+      <IconButton icon={'FormatStrikethrough'} onClick={makeLine} />
+      <ButtonSeperator />
       <IconButton icon={'FormatQuote'} onClick={makeParagraph} />
-      <IconButton icon={'Code'} onClick={makeCode} />
       <IconButton icon={'Link'} onClick={showLinkModal} />
       <UploadImageButton />
+      <IconButton icon={'Code'} onClick={makeCode} />
       <LinkModal
         visible={linkModalVisible}
         lineHeight={lineHeight}

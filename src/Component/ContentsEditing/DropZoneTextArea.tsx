@@ -1,11 +1,7 @@
-import React, { Fragment, useCallback, useState, useEffect } from 'react';
-import { useDropzone } from 'react-dropzone';
+import React, { Fragment, useState } from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/lib/codemirror.css';
-import Button from '@material-ui/core/Button';
-import HeaderButton from './HeaderButton';
-import IconButton from './IconButton';
 import ButtonContainer from './ButtonContainer';
 
 type DropZoneTextAreaType = {
@@ -15,23 +11,8 @@ type DropZoneTextAreaType = {
 
 const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, contents }) => {
   // DropZone set up start
-  const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.forEach((file: File) => {
-      const reader = new FileReader();
-      reader.onabort = () => console.log('file reading was aborted');
-      reader.onerror = () => console.log('file reading has failed');
-      reader.onload = () => {
-        // Do whatever you want with the file contents
-        const binaryStr = reader.result;
-        console.log(reader);
-      };
-      reader.readAsArrayBuffer(file);
-      console.log(file);
-    });
-  }, []);
   const [codeMirror, setCodeMirror]: [any, (any: any) => void] = useState();
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
   // DropZone set up end
   return (
     <Fragment>
@@ -53,6 +34,7 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
         }}
         editorDidMount={(editor: any, value: string, cb: () => void) => {
           setCodeMirror(editor);
+          editor.setValue('여기에 입력하세요..');
         }}
         onChange={(editor: any, data: any, value: string): void => {
           setContents(value);

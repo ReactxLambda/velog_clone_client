@@ -3,6 +3,9 @@
 .button_container {
   overflow-x: scroll !important;
   white-space: nowrap;
+  display: flex !important;
+
+  align-items: center;
 }
 .button_container::-webkit-scrollbar {
   width: 6px;
