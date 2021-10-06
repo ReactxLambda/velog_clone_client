@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import HeaderButton from './HeaderButton';
 import IconButton from './IconButton';
 import ButtonContainer from './ButtonContainer';
+
 type DropZoneTextAreaType = {
   setContents: (contents: string) => void;
   contents: string;
@@ -47,6 +48,8 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
           styleActiveLine: true,
           line: true,
           lineWrapping: true,
+          dragDrop: true,
+          allowDropFileTypes: ['png'],
         }}
         editorDidMount={(editor: any, value: string, cb: () => void) => {
           setCodeMirror(editor);
@@ -54,10 +57,16 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
         onChange={(editor: any, data: any, value: string): void => {
           setContents(value);
         }}
-        onCursor={(editor: any, data: any) => {
-          // doc.getSelection() → string
-          // doc.replaceSelection(replacement: string, ?collapse: string)
-          // console.log(replaceCursor)
+        onDrop={(editor, event) => {
+          // Check if files were dropped
+          const files = event.dataTransfer.files;
+          if (files.length > 0) {
+            event.preventDefault();
+            event.stopPropagation();
+            const file = files[0];
+            console.log(file);
+            return false;
+          }
         }}
       />
     </Fragment>

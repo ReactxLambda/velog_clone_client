@@ -1,11 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import HeaderButton from './HeaderButton';
 import IconButton from './IconButton';
+import UploadImageButton from './UploadImageButton';
 import './Style/ButtonContainer.scss';
+import { Button } from '@material-ui/core';
 import LinkModal from './LinkInputModal';
 type ButtonContainerType = {
   codeMirror: any;
 };
+
 function getTextLengthInPixel(txt: string, optFont: string | null | undefined): number {
   var myId = 'my_span_ruler';
   var ruler = document.getElementById(myId);
@@ -102,6 +105,7 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
       <IconButton icon={'FormatQuote'} onClick={makeParagraph} />
       <IconButton icon={'Code'} onClick={makeCode} />
       <IconButton icon={'Link'} onClick={showLinkModal} />
+      <UploadImageButton />
       <LinkModal
         visible={linkModalVisible}
         lineHeight={lineHeight}
