@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Style/LinkModal.scss';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 type LinkType = {
-  link: string;
   visible: boolean;
-  line: number;
-  ch: number;
+  lineHeight: number;
+  lineWidth: number;
   setLink: (any: any) => void;
   toMarkdown: () => void;
 };
-const LinkModal: React.FC<LinkType> = ({ link, visible, line, ch, setLink, toMarkdown }) => {
+
+const LinkModal: React.FC<LinkType> = ({ visible, lineHeight, setLink, toMarkdown, lineWidth }) => {
   return (
     <div
       className="link_modal"
       style={{
         display: visible ? 'inline-block' : 'none',
-        top: `${150 + 10 + line * 24}px`,
-        left: `${25 + 10 + ch * 7}px`,
+        top: `${lineHeight + 5}px`,
+        left: `${lineWidth}px`,
       }}
     >
       <label> 링크 등록 </label>
