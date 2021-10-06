@@ -20,18 +20,15 @@ const ContentsEditing: React.FC = () => {
   });
 
   useEffect(() => {
-    console.log(contents);
     setViewerContents(markdown.render(contents));
   }, [contents]);
 
   useEffect(() => {
-    console.log(viewerContents);
     const markdown_viewer: HTMLElement = document.getElementById('markdown-viewer') as HTMLElement;
     markdown_viewer.innerHTML = viewerContents;
   }, [viewerContents]);
 
   useEffect(() => {
-    console.log(header);
     const markdown_header: HTMLElement = document.getElementById('markdown-header') as HTMLElement;
     markdown_header.innerText = header;
   }, [header]);
@@ -44,6 +41,7 @@ const ContentsEditing: React.FC = () => {
           className="header-editor"
           value={header}
           onChange={(e) => setHeader(e.target.value)}
+          placeholder="제목을 입력하세요."
         />
         <DropZoneTextArea contents={contents} setContents={setContents} />
       </div>
