@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import MarkdownViewer from '../../Component/MarkdownViewer';
+import MarkdownViewer from '../../Component/ContentsEditing/MarkdownViewer';
 import DropZoneTextArea from '../../Component/ContentsEditing/DropZoneTextArea';
 import highlighting from '../../Common/highlighting';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import './Style/ContentsEditing.scss';
 import { classicNameResolver } from 'typescript';
+import { useMediaQuery } from 'react-responsive';
+
 const ContentsEditing: React.FC = () => {
   const [contents, setContents] = useState(''); // Text contents
   const [viewerContents, setViewerContents] = useState(''); // view contents
@@ -38,7 +40,6 @@ const ContentsEditing: React.FC = () => {
     <div className="markdown-contents">
       <div className="contents-editor">
         <TextareaAutosize className="header-editor" value={header} onChange={(e) => setHeader(e.target.value)} />
-
         <DropZoneTextArea contents={contents} setContents={setContents} />
       </div>
       <div className="contents-viewer">

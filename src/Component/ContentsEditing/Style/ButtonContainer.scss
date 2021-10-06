@@ -1,0 +1,20 @@
+@media (max-width: 768px) {
+}
+.button_container {
+  overflow-x: scroll !important;
+  white-space: nowrap;
+}
+.button_container::-webkit-scrollbar {
+  width: 6px;
+}
+.button_container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.button_container::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+.sbutton_container::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
