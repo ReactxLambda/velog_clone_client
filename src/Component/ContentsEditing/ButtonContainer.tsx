@@ -24,33 +24,43 @@ function getTextLengthInPixel(txt: string, optFont: string | null | undefined): 
 }
 
 const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
+  const [lineWidth, setLineWidth] = useState(0);
+  const [lineHeight, setLineHeight] = useState(0);
+  const [line, setLine] = useState(0);
+  const [ch, setCh] = useState(0);
+  const [linkModalVisible, setLinkModalVisible] = useState(false);
+  const [link, setLink] = useState('');
+
   const makeBold = () => {
     const selectionString: string = codeMirror.getSelection();
     codeMirror.replaceSelection(`**${selectionString}**`);
+    codeMirror.focus();
   };
   const makeItalic = () => {
     const selectionString: string = codeMirror.getSelection();
     codeMirror.replaceSelection(`*${selectionString}*`);
+    codeMirror.focus();
   };
   const makeLine = () => {
     const selectionString: string = codeMirror.getSelection();
     codeMirror.replaceSelection(`~~${selectionString}~~`);
+    codeMirror.focus();
   };
   const makeParagraph = () => {
     const selectionString: string = codeMirror.getSelection();
     codeMirror.replaceSelection(`> ${selectionString}`);
+    codeMirror.focus();
   };
   const makeHead = (headNumber: number) => {
     const selectionString: string = codeMirror.getSelection();
     codeMirror.replaceSelection(`${'#'.repeat(headNumber)} ${selectionString}`);
+    codeMirror.focus();
   };
   const makeCode = () => {
     const selectionString: string = codeMirror.getSelection();
     codeMirror.replaceSelection(`\`\`\`\n${selectionString}\n\`\`\``);
+    codeMirror.focus();
   };
-
-  const [linkModalVisible, setLinkModalVisible] = useState(false);
-  const [link, setLink] = useState('');
 
   useEffect(() => {
     console.log(`modal visible ${linkModalVisible}`);
@@ -60,18 +70,14 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
     console.log(`link: ${link}`);
   }, [link]);
 
-  const [lineWidth, setLineWidth] = useState(0);
-  const [lineHeight, setLineHeight] = useState(0);
-  const [line, setLine] = useState(0);
-  const [ch, setCh] = useState(0);
   const showLinkModal = () => {
-    setLinkModalVisible(!linkModalVisible);
     const cursor = codeMirror.getCursor();
+    const cursorLocation = codeMirror.cursorCoords({ line: cursor.line, ch: cursor.ch });
     setLine(cursor.line);
     setCh(cursor.ch);
-    const cursorLocation = codeMirror.cursorCoords({ line: cursor.line, ch: cursor.ch });
     setLineWidth(cursorLocation.left);
     setLineHeight(cursorLocation.top);
+    setLinkModalVisible(!linkModalVisible);
   };
   const toMarkdown = () => {
     codeMirror.replaceSelection(`[링크텍스트](${link})`);
