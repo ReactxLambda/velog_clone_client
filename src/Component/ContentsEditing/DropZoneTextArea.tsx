@@ -5,6 +5,7 @@ import 'codemirror/addon/display/placeholder';
 import 'codemirror/lib/codemirror.css';
 import ButtonContainer from './ButtonContainer';
 import BottomBar from './BottomBar';
+import TagBar from './TagBar';
 
 type DropZoneTextAreaType = {
   setContents: (contents: string) => void;
@@ -24,7 +25,9 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
           width: '100%',
         }}
       ></div>
+      <TagBar></TagBar>
       <ButtonContainer codeMirror={codeMirror} />
+
       <CodeMirror
         options={{
           mode: 'markdown',
