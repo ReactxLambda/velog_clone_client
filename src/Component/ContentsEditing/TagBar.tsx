@@ -18,7 +18,7 @@ const TagBar: React.FC = () => {
     }
   };
   return (
-    <div>
+    <div className="tag_bar">
       {tags.map((input: string) => {
         return <Tag input={input} changeTags={setTags} origTags={tags} />;
       })}
