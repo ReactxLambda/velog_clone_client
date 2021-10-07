@@ -20,7 +20,7 @@ const TagBar: React.FC = () => {
   return (
     <div>
       {tags.map((input: string) => {
-        return <Tag input={input} />;
+        return <Tag input={input} changeTags={setTags} origTags={tags} />;
       })}
 
       <input
