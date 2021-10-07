@@ -16,7 +16,7 @@ type DropZoneTextAreaType = {
 const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, contents }) => {
   // DropZone set up start
   const [codeMirror, setCodeMirror]: [any, (any: any) => void] = useState();
-
+  const [isFocus, setIsFocus] = useState(false);
   // DropZone set up end
   return (
     <Fragment>
@@ -27,9 +27,9 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
           width: '100%',
         }}
       ></div>
-      <TagBar></TagBar>
+      <TagBar />
 
-      <ButtonContainer codeMirror={codeMirror} />
+      <ButtonContainer codeMirror={codeMirror} codeMirrorFocus={isFocus} />
 
       <CodeMirror
         options={{
@@ -58,8 +58,14 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
             return false;
           }
         }}
+        onFocus={(editor: any, event: any) => {
+          setIsFocus(true);
+        }}
+        onBlur={(editor: any, event: any) => {
+          setIsFocus(false);
+        }}
       />
-      <BottomBar></BottomBar>
+      <BottomBar />
     </Fragment>
   );
 };

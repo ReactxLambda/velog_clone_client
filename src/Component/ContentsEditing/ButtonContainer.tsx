@@ -7,9 +7,10 @@ import ButtonSeperator from './ButtonSeperator';
 import LinkModal from './LinkInputModal';
 type ButtonContainerType = {
   codeMirror: any;
+  codeMirrorFocus: boolean;
 };
 
-const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
+const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror, codeMirrorFocus }) => {
   const [lineWidth, setLineWidth] = useState(0);
   const [lineHeight, setLineHeight] = useState(0);
   const [line, setLine] = useState(0);
@@ -44,7 +45,7 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
   };
   const makeCode = () => {
     const selectionString: string = codeMirror.getSelection();
-    codeMirror.replaceSelection(`\`\`\`\n${selectionString}\n\`\`\``);
+    codeMirror.replaceSelection(`\`\`\`\n${selectionString === '' ? '코드를 입력해주세요' : selectionString}\n\`\`\``);
     codeMirror.focus();
   };
 
@@ -55,14 +56,13 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
     setCh(cursor.ch);
     setLineWidth(cursorLocation.left);
     setLineHeight(cursorLocation.top);
-    setLinkModalVisible(!linkModalVisible);
+    setLinkModalVisible(true);
   };
   const toMarkdown = () => {
-    codeMirror.replaceSelection(`[링크텍스트](${link})`);
-    setLinkModalVisible(false);
-
+    codeMirror.replaceSelection(`[링크텍스트](${link.replaceAll('\n', '')})`);
     codeMirror.setSelection({ line: line, ch: ch + 1 }, { line: line, ch: ch + 6 });
-    codeMirror.focus();
+    setLinkModalVisible(false);
+    setLink('');
   };
   const setLinkStr = (event: any) => {
     setLink(event.target.value);
@@ -77,10 +77,14 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
     }
     return arr;
   };
+  useEffect(() => {
+    console.log('focus 변경 감지');
+    setLinkModalVisible(false);
+  }, [codeMirrorFocus]);
   return (
     <div className={'button_container'} id="__button__container__id">
       {range(1, 4).map((index) => {
-        return <HeaderButton number={String(index)} onClick={() => makeHead(index)} />;
+        return <HeaderButton number={String(index)} onClick={() => makeHead(index)} key={index} />;
       })}
       <ButtonSeperator />
       <IconButton icon={'FormatBold'} onClick={makeBold} />
@@ -96,8 +100,10 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
         lineHeight={lineHeight}
         lineWidth={lineWidth}
         setLink={setLinkStr}
+        link={link}
         toMarkdown={toMarkdown}
-      ></LinkModal>
+        codeMirror={codeMirror}
+      />
     </div>
   );
 };
