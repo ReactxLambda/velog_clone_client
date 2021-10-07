@@ -1,13 +1,71 @@
-$blockquoteColor: rgb(32, 201, 151);
-blockquote {
-  margin: 2rem 0px;
-  border-left: 4px solid $blockquoteColor;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  background: rgb(248, 249, 250);
-  padding: 1rem 1rem 1rem 2rem;
-  color: rgb(33, 37, 41);
+html,
+body,
+#root,
+.App {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+.header-editor {
+  height: 7% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  resize: none !important;
+  width: 100% !important;
+  border: none !important;
+  outline: none !important;
+  font-weight: bold !important;
+  color: rgb(33, 37, 41) !important;
+  line-height: 1.5 !important;
+  font-size: 2.75rem;
+}
+.react-codemirror2 {
+  height: 75%;
+}
+.CodeMirror {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: rgb(52, 58, 64);
+  font-family: 'Fira Mono', monospace;
+  height: 100%;
+}
+
+.contents-editor {
+  flex: 1;
+
+  min-width: 0rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#markdown-header {
+  margin-bottom: 4rem;
+}
+.markdown-contents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: inherit;
+  margin: 10px;
+  height: 100%;
+}
+
+.contents-viewer {
+  flex: 1;
+  background: rgb(251, 253, 252);
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: 5px;
+  word-break: break-word;
+  padding: 3rem;
+}
+
+.CodeMirror-placeholder {
+  color: rgb(173, 181, 189) !important;
+  font-style: italic;
+}
+
+$blockquoteColor: rgb(32, 201, 151);
 
 .hljs {
   overflow-x: auto;
@@ -19,75 +77,17 @@ pre {
   padding: 10px;
   margin-right: 5px;
 }
-h1 {
-  font-size: 2.5em;
-}
-div.CodeMirror {
-  height: 80vh;
-  overflow-x: hidden;
-}
 
-/* Make editor resize to fit its content
- * see also https://codemirror.net/doc/manual.html#styling
- */
-
-#markdown-header {
-  margin-bottom: 4rem;
-}
-.markdown-contents {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: inherit;
-  margin: 10px;
-  height: 90%;
-}
-// .full_height {
-//   height: 100%;
-// }
-.contents-editor {
-  flex: 1;
-  margin-left: 10px;
-  margin-right: 10px;
-  min-width: 0rem;
-  display: flex;
-  flex-direction: column;
-}
-.contents-viewer {
-  flex: 1;
-  background: rgb(251, 253, 252);
-  overflow-y: auto;
-  overflow-x: hidden;
-  margin-left: 10px;
-  word-break: break-word;
-  padding: 3rem;
-  //height: 100vh;\
-  max-height: 85vh;
-}
-.header-editor {
-  max-height: 540px;
-  display: block;
-  padding: 0px;
-  font-size: 2.75rem;
-  width: 100%;
-  resize: none;
-  line-height: 1.5;
-  outline: none;
-  border: none;
-  font-weight: bold;
+blockquote {
+  margin: 2rem 0px;
+  border-left: 4px solid $blockquoteColor;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background: rgb(248, 249, 250);
+  padding: 1rem 1rem 1rem 2rem;
   color: rgb(33, 37, 41);
-  margin-left: 10px;
 }
-.markdown-textarea {
-  resize: none;
-  width: 100%;
-  height: 90%;
-}
-.react-codemirror2 {
-  margin-top: 15px;
-}
-.CodeMirror-line > span {
-  font-size: 16px;
-}
+
 .cm-header-1 {
   color: black !important;
   font-size: 32px;

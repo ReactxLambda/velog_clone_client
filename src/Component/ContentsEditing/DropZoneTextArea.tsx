@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
-import { UnControlled as CodeMirror } from 'react-codemirror2';
+import { IUnControlledCodeMirror, UnControlled as CodeMirror, UnControlled } from 'react-codemirror2';
 import 'codemirror/mode/markdown/markdown';
+import 'codemirror/addon/display/placeholder';
 import 'codemirror/lib/codemirror.css';
 import ButtonContainer from './ButtonContainer';
+import BottomBar from './BottomBar';
 
 type DropZoneTextAreaType = {
   setContents: (contents: string) => void;
@@ -31,10 +33,10 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
           lineWrapping: true,
           dragDrop: true,
           allowDropFileTypes: ['png'],
+          placeholder: '당신의 이야기를 적어보세요...',
         }}
         editorDidMount={(editor: any, value: string, cb: () => void) => {
           setCodeMirror(editor);
-          editor.setValue('여기에 입력하세요..');
         }}
         onChange={(editor: any, data: any, value: string): void => {
           setContents(value);
@@ -51,6 +53,7 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
           }
         }}
       />
+      <BottomBar></BottomBar>
     </Fragment>
   );
 };
