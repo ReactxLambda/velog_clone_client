@@ -4,8 +4,6 @@ import TextInputContainer from '../../Component/ContentsEditing/TextInputContain
 import highlighting from '../../Common/highlighting';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import './Style/ContentsEditing.scss';
-import { classicNameResolver } from 'typescript';
-import { useMediaQuery } from 'react-responsive';
 
 const ContentsEditing: React.FC = () => {
   const [contents, setContents] = useState(''); // Text contents
