@@ -43,6 +43,21 @@ const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKe
     });
   };
 
+  const autoSave = () => {
+    setInterval(() => {
+      if (contents !== '' || header !== '') snackBar('success', '포스트가 임시저장되었습니다.');
+    }, 10000);
+  };
+
+  autoSave();
+
+  const setIsShowSavingComponentWrapper = () => {
+    if (contents === '' || header === '') {
+      snackBar('error', `제목 또는 내용이 비어있습니다.`);
+      return;
+    }
+    setIsShowSavingComponent(true);
+  };
   const showSnackBar = () => {
     if (contents === '' || header === '') snackBar('error', `제목 또는 내용이 비어있습니다.`);
     else snackBar('success', '포스트가 임시저장되었습니다.');
@@ -57,7 +72,7 @@ const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKe
         <button className="button2" onClick={showSnackBar}>
           임시 저장
         </button>
-        <button className="button3" onClick={() => setIsShowSavingComponent(true)}>
+        <button className="button3" onClick={() => setIsShowSavingComponentWrapper()}>
           출간하기
         </button>
       </div>
