@@ -67,12 +67,21 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror }) => {
   const setLinkStr = (event: any) => {
     setLink(event.target.value);
   };
+
+  const range = (start: number, end: number): number[] => {
+    const arr = [];
+    const length = end - start;
+    for (let i = 0; i <= length; i++) {
+      arr[i] = start;
+      start++;
+    }
+    return arr;
+  };
   return (
     <div className={'button_container'} id="__button__container__id">
-      <HeaderButton number={'1'} onClick={() => makeHead(1)} />
-      <HeaderButton number={'2'} onClick={() => makeHead(2)} />
-      <HeaderButton number={'3'} onClick={() => makeHead(3)} />
-      <HeaderButton number={'4'} onClick={() => makeHead(4)} />
+      {range(1, 4).map((index) => {
+        return <HeaderButton number={String(index)} onClick={() => makeHead(index)} />;
+      })}
       <ButtonSeperator />
       <IconButton icon={'FormatBold'} onClick={makeBold} />
       <IconButton icon={'FormatItalic'} onClick={makeItalic} />
