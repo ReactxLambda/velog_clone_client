@@ -16,6 +16,10 @@ const TagBar: React.FC = () => {
       }
       setTagInputValue('');
     }
+    if (event.keyCode == 8) {
+      const temp = tags;
+      setTags(temp.filter((tag: string, index: number) => index != temp.length - 1));
+    }
   };
   return (
     <div className="tag_bar">

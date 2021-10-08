@@ -6,6 +6,7 @@ import 'codemirror/lib/codemirror.css';
 import ButtonContainer from './ButtonContainer';
 import BottomBar from './BottomBar';
 import TagBar from './TagBar';
+import Seperator from './Separator';
 
 type DropZoneTextAreaType = {
   setContents: (contents: string) => void;
@@ -19,6 +20,7 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
   // DropZone set up end
   return (
     <Fragment>
+      <Seperator />
       <div
         style={{
           display: 'flex',
@@ -26,6 +28,7 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
         }}
       ></div>
       <TagBar></TagBar>
+
       <ButtonContainer codeMirror={codeMirror} />
 
       <CodeMirror
