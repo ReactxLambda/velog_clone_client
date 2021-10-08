@@ -13,8 +13,15 @@ const ContentsEditing: React.FC = () => {
   const [header, setHeader] = useState(''); // set view header
   const [tags, setTags]: [string[], (any: any) => void] = useState([]);
   const [isShowSavingComponent, setIsShowSavingComponent] = useState(false);
+  const [isPubilc, setIsPublic] = useState(true);
+  const [introduce, setIntroduce] = useState('');
+  const [URL, setURL] = useState('');
+  const [thumbnail, setThumbnail] = useState();
   const hljs = require('highlight.js');
-
+  const userName = `Test`;
+  const setThumbnailWrapper = (event: any) => {
+    setThumbnail(event.target.files[0]);
+  };
   const markdown = require('markdown-it')({
     highlight: function (str: string, lang: string) {
       return highlighting(str, lang, hljs, markdown);
@@ -34,6 +41,19 @@ const ContentsEditing: React.FC = () => {
     const markdown_header: HTMLElement = document.getElementById('markdown-header') as HTMLElement;
     markdown_header.innerText = header;
   }, [header]);
+
+  const exportContents = (): void => {
+    const mergedContents = {
+      contents: contents,
+      header: header,
+      tags: tags,
+      isPubilc: isPubilc,
+      introduce: introduce,
+      URL: `/@${userName}/${URL}`,
+      thumbnail: thumbnail,
+    };
+    console.log(mergedContents);
+  };
   const snackbarKey: any = React.createRef();
   return (
     <SnackbarProvider maxSnack={1} ref={snackbarKey} preventDuplicate={true}>
@@ -67,6 +87,16 @@ const ContentsEditing: React.FC = () => {
       <SavingComponent
         setIsShowSavingComponent={setIsShowSavingComponent}
         isShowSavingComponent={isShowSavingComponent}
+        exportContents={exportContents}
+        isPubilc={isPubilc}
+        setIsPublic={setIsPublic}
+        introduce={introduce}
+        setIntroduce={setIntroduce}
+        URL={URL}
+        setURL={setURL}
+        userName={userName}
+        thumbnail={thumbnail}
+        setThumbnail={setThumbnailWrapper}
       />
     </SnackbarProvider>
   );

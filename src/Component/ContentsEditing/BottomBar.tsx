@@ -7,7 +7,13 @@ import { useSnackbar, VariantType } from 'notistack';
 import { Clear } from '@material-ui/icons';
 import { IconButton } from '@material-ui/core';
 
-type BottomBarType = { contents: string; header: string; tags: string[]; snackbarKey: any, setIsShowSavingComponent : (p1 : boolean) => void };
+type BottomBarType = {
+  contents: string;
+  header: string;
+  tags: string[];
+  snackbarKey: any;
+  setIsShowSavingComponent: (p1: boolean) => void;
+};
 const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKey, setIsShowSavingComponent }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
@@ -36,15 +42,7 @@ const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKe
       },
     });
   };
-  const exportContents = (): void => {
-    const mergedContents = {
-      contents: contents,
-      header: header,
-      tags: tags,
-    };
-    console.log(mergedContents);
-    setIsShowSavingComponent(true);
-  };
+
   const showSnackBar = () => {
     if (contents === '' || header === '') snackBar('error', `제목 또는 내용이 비어있습니다.`);
     else snackBar('success', '포스트가 임시저장되었습니다.');
@@ -59,7 +57,7 @@ const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKe
         <button className="button2" onClick={showSnackBar}>
           임시 저장
         </button>
-        <button className="button3" onClick={() => exportContents()}>
+        <button className="button3" onClick={() => setIsShowSavingComponent(true)}>
           출간하기
         </button>
       </div>
