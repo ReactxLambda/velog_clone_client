@@ -32,33 +32,32 @@ const ContentsEditing: React.FC = () => {
     const markdown_header: HTMLElement = document.getElementById('markdown-header') as HTMLElement;
     markdown_header.innerText = header;
   }, [header]);
-
+  const snackbarKey: any = React.createRef();
   return (
-    <React.StrictMode>
-      <SnackbarProvider maxSnack={3}>
-        <div className="markdown-contents" id="__markdown__contents__id">
-          <div className="contents-editor">
-            <TextareaAutosize
-              id="__header__editor_id"
-              className="header-editor"
-              value={header}
-              onChange={(e) => setHeader(e.target.value)}
-              placeholder="제목을 입력하세요."
-            />
-            <TextInputContainer
-              contents={contents}
-              setContents={setContents}
-              header={header}
-              tags={tags}
-              setTags={setTags}
-            />
-          </div>
-          <div className="contents-viewer">
-            <MarkdownViewer />
-          </div>
+    <SnackbarProvider maxSnack={1} ref={snackbarKey} preventDuplicate={true}>
+      <div className="markdown-contents" id="__markdown__contents__id">
+        <div className="contents-editor">
+          <TextareaAutosize
+            id="__header__editor_id"
+            className="header-editor"
+            value={header}
+            onChange={(e) => setHeader(e.target.value)}
+            placeholder="제목을 입력하세요."
+          />
+          <TextInputContainer
+            contents={contents}
+            setContents={setContents}
+            header={header}
+            tags={tags}
+            setTags={setTags}
+            snackbarKey={snackbarKey}
+          />
         </div>
-      </SnackbarProvider>
-    </React.StrictMode>
+        <div className="contents-viewer">
+          <MarkdownViewer />
+        </div>
+      </div>
+    </SnackbarProvider>
   );
 };
 

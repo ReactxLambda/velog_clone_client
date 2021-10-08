@@ -14,9 +14,17 @@ type TextInputContainerType = {
   header: string;
   tags: string[];
   setTags: (p1: string) => void;
+  snackbarKey: any;
 };
 
-const TextInputContainer: React.FC<TextInputContainerType> = ({ setContents, contents, header, tags, setTags }) => {
+const TextInputContainer: React.FC<TextInputContainerType> = ({
+  setContents,
+  contents,
+  header,
+  tags,
+  setTags,
+  snackbarKey,
+}) => {
   // DropZone set up start
   const [codeMirror, setCodeMirror]: [any, (any: any) => void] = useState();
   const [isFocus, setIsFocus] = useState(false);
@@ -68,7 +76,7 @@ const TextInputContainer: React.FC<TextInputContainerType> = ({ setContents, con
           setIsFocus(false);
         }}
       />
-      <BottomBar contents={contents} header={header} tags={tags} />
+      <BottomBar contents={contents} header={header} tags={tags} snackbarKey={snackbarKey} />
     </Fragment>
   );
 };
