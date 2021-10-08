@@ -20,7 +20,7 @@ const LinkModal: React.FC<LinkType> = ({ visible, lineHeight, link, setLink, toM
       new Promise((resolve, reject) => {
         setTimeout(() => {
           codeMirror.focus();
-        }, 300);
+        }, 10);
         resolve(1);
       }).then(() => {
         toMarkdown();
