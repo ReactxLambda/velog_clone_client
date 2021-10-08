@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { IUnControlledCodeMirror, UnControlled as CodeMirror, UnControlled } from 'react-codemirror2';
+import { UnControlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/addon/display/placeholder';
 import 'codemirror/lib/codemirror.css';
