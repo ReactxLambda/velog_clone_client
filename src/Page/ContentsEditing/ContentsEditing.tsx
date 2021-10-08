@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MarkdownViewer from '../../Component/ContentsEditing/MarkdownViewer';
-import DropZoneTextArea from '../../Component/ContentsEditing/DropZoneTextArea';
+import TextInputContainer from '../../Component/ContentsEditing/TextInputContainer';
 import highlighting from '../../Common/highlighting';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import './Style/ContentsEditing.scss';
@@ -11,6 +11,7 @@ const ContentsEditing: React.FC = () => {
   const [contents, setContents] = useState(''); // Text contents
   const [viewerContents, setViewerContents] = useState(''); // view contents
   const [header, setHeader] = useState(''); // set view header
+  const [tags, setTags]: [string[], (any: any) => void] = useState([]);
   const hljs = require('highlight.js');
 
   const markdown = require('markdown-it')({
@@ -43,7 +44,13 @@ const ContentsEditing: React.FC = () => {
           onChange={(e) => setHeader(e.target.value)}
           placeholder="제목을 입력하세요."
         />
-        <DropZoneTextArea contents={contents} setContents={setContents} />
+        <TextInputContainer
+          contents={contents}
+          setContents={setContents}
+          header={header}
+          tags={tags}
+          setTags={setTags}
+        />
       </div>
       <div className="contents-viewer">
         <MarkdownViewer />

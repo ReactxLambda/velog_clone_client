@@ -8,15 +8,19 @@ import BottomBar from './BottomBar';
 import TagBar from './TagBar';
 import Seperator from './Separator';
 
-type DropZoneTextAreaType = {
+type TextInputContainerType = {
   setContents: (contents: string) => void;
   contents: string;
+  header: string;
+  tags: string[];
+  setTags: (p1: string) => void;
 };
 
-const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, contents }) => {
+const TextInputContainer: React.FC<TextInputContainerType> = ({ setContents, contents, header, tags, setTags }) => {
   // DropZone set up start
   const [codeMirror, setCodeMirror]: [any, (any: any) => void] = useState();
   const [isFocus, setIsFocus] = useState(false);
+
   // DropZone set up end
   return (
     <Fragment>
@@ -27,8 +31,7 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
           width: '100%',
         }}
       ></div>
-      <TagBar />
-
+      <TagBar tags={tags} setTags={setTags} />
       <ButtonContainer codeMirror={codeMirror} codeMirrorFocus={isFocus} />
 
       <CodeMirror
@@ -65,9 +68,9 @@ const DropZoneTextArea: React.FC<DropZoneTextAreaType> = ({ setContents, content
           setIsFocus(false);
         }}
       />
-      <BottomBar />
+      <BottomBar contents={contents} header={header} tags={tags} />
     </Fragment>
   );
 };
 
-export default DropZoneTextArea;
+export default TextInputContainer;

@@ -46,6 +46,7 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror, codeMirror
   const makeCode = () => {
     const selectionString: string = codeMirror.getSelection();
     codeMirror.replaceSelection(`\`\`\`\n${selectionString === '' ? '코드를 입력해주세요' : selectionString}\n\`\`\``);
+    codeMirror.setSelection({ line: line + 1, ch: 0 }, { line: line + 1, ch: 10 });
     codeMirror.focus();
   };
 

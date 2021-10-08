@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import './Style/TagBar.scss';
 import Tag from './Tag';
-
-const TagBar: React.FC = () => {
+type TagBarType = {
+  tags: string[];
+  setTags: (p1: any) => void;
+};
+const TagBar: React.FC<TagBarType> = ({ tags, setTags }) => {
   const [tagInputValue, setTagInputValue] = useState('');
-  const [tags, setTags]: [string[], (any: any) => void] = useState([]);
+
   const Enter_Check = (event: any) => {
     // 엔터키의 코드는 13입니다.
     if (event.keyCode == 13) {
