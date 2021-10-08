@@ -28,7 +28,7 @@ const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKe
             onClick={() => onClickDismiss(key)}
             aria-label="delete"
             size="small"
-            style={{ marginRight: '10px' }}
+            style={{ marginRight: '10px', color: 'white' }}
           >
             <Clear fontSize="inherit" />
           </IconButton>
