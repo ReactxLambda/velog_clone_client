@@ -4,6 +4,7 @@ import ContentsEditing from './Page/ContentsEditing/ContentsEditing';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import HomePage from './Page/home/HomePage';
 import ReadingListPage from './Page/readingList/ReadingListPage';
+import SaveWritePage from './Page/SaveWritePage';
 import TestPage from './Page/Test/Responsive';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -18,13 +19,22 @@ function App() {
       <Route path="/@:username" component={VelogPage} />
       <Route path="/setting" component={SettingPage} /> 
       
-     
+     1. 포스트 상세보기
+     2. 포스트 수정 / 등록---70%
+     3. 내벨로그
+     4. 설정
+
+     1. 포스트 저장
+     2. 활동기록 (카드) 
+     3. 메인페이지 (카드)
       */}
         <Switch>
           <CssBaseline>
             <Route path="/" component={HomePage} exact />
             <Route path="/:mode(trending|recent|following)" component={HomePage} />
-            <Route path="/write" component={ContentsEditing} />
+            <Route path="/write" component={ContentsEditing} exact />
+            {/* 임시 path*/}
+            <Route path="/write/save" component={SaveWritePage} />
             <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
             <Route path="/test" component={TestPage} />
           </CssBaseline>
