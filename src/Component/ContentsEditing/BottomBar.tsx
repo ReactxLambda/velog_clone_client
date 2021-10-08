@@ -7,8 +7,8 @@ import { useSnackbar, VariantType } from 'notistack';
 import { Clear } from '@material-ui/icons';
 import { IconButton } from '@material-ui/core';
 
-type BottomBarType = { contents: string; header: string; tags: string[]; snackbarKey: any };
-const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKey }) => {
+type BottomBarType = { contents: string; header: string; tags: string[]; snackbarKey: any, setIsShowSavingComponent : (p1 : boolean) => void };
+const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKey, setIsShowSavingComponent }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const onClickDismiss = (key: any) => {
@@ -43,6 +43,7 @@ const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKe
       tags: tags,
     };
     console.log(mergedContents);
+    setIsShowSavingComponent(true);
   };
   const showSnackBar = () => {
     if (contents === '' || header === '') snackBar('error', `제목 또는 내용이 비어있습니다.`);

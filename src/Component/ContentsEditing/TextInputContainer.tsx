@@ -15,6 +15,7 @@ type TextInputContainerType = {
   tags: string[];
   setTags: (p1: string) => void;
   snackbarKey: any;
+  setIsShowSavingComponent : (p1 : boolean) =>void
 };
 
 const TextInputContainer: React.FC<TextInputContainerType> = ({
@@ -24,6 +25,7 @@ const TextInputContainer: React.FC<TextInputContainerType> = ({
   tags,
   setTags,
   snackbarKey,
+  setIsShowSavingComponent
 }) => {
   // DropZone set up start
   const [codeMirror, setCodeMirror]: [any, (any: any) => void] = useState();
@@ -76,7 +78,7 @@ const TextInputContainer: React.FC<TextInputContainerType> = ({
           setIsFocus(false);
         }}
       />
-      <BottomBar contents={contents} header={header} tags={tags} snackbarKey={snackbarKey} />
+      <BottomBar contents={contents} header={header} tags={tags} snackbarKey={snackbarKey} setIsShowSavingComponent={setIsShowSavingComponent}/>
     </Fragment>
   );
 };

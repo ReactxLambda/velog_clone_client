@@ -5,12 +5,14 @@ import highlighting from '../../Common/highlighting';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import './Style/ContentsEditing.scss';
 import { SnackbarProvider } from 'notistack';
+import SavingComponent from '../../Component/ContentsEditing/SavingComponent/SavingComponent';
 
 const ContentsEditing: React.FC = () => {
   const [contents, setContents] = useState(''); // Text contents
   const [viewerContents, setViewerContents] = useState(''); // view contents
   const [header, setHeader] = useState(''); // set view header
   const [tags, setTags]: [string[], (any: any) => void] = useState([]);
+  const [isShowSavingComponent, setIsShowSavingComponent] = useState(false);
   const hljs = require('highlight.js');
 
   const markdown = require('markdown-it')({
@@ -35,7 +37,11 @@ const ContentsEditing: React.FC = () => {
   const snackbarKey: any = React.createRef();
   return (
     <SnackbarProvider maxSnack={1} ref={snackbarKey} preventDuplicate={true}>
-      <div className="markdown-contents" id="__markdown__contents__id">
+      <div
+        className="markdown-contents"
+        id="__markdown__contents__id"
+        style={{ display: isShowSavingComponent ? 'none' : '' }}
+      >
         <div className="contents-editor">
           <TextareaAutosize
             id="__header__editor_id"
@@ -51,12 +57,17 @@ const ContentsEditing: React.FC = () => {
             tags={tags}
             setTags={setTags}
             snackbarKey={snackbarKey}
+            setIsShowSavingComponent={setIsShowSavingComponent}
           />
         </div>
         <div className="contents-viewer">
           <MarkdownViewer />
         </div>
       </div>
+      <SavingComponent
+        setIsShowSavingComponent={setIsShowSavingComponent}
+        isShowSavingComponent={isShowSavingComponent}
+      />
     </SnackbarProvider>
   );
 };
