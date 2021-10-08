@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Button from '@material-ui/core/Button';
 import './Style/BottomBar.scss';
@@ -30,14 +30,20 @@ const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKe
       },
       action: (key) => {
         return (
-          <IconButton
-            onClick={() => onClickDismiss(key)}
-            aria-label="delete"
-            size="small"
-            style={{ marginRight: '10px', color: 'white' }}
-          >
-            <Clear fontSize="inherit" />
-          </IconButton>
+          <Fragment>
+            {snackbarKey.current === null ? (
+              <Fragment></Fragment>
+            ) : (
+              <IconButton
+                onClick={() => onClickDismiss(key)}
+                aria-label="delete"
+                size="small"
+                style={{ marginRight: '10px', color: 'white' }}
+              >
+                <Clear fontSize="inherit" />
+              </IconButton>
+            )}
+          </Fragment>
         );
       },
     });
@@ -46,7 +52,7 @@ const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKe
   const autoSave = () => {
     setInterval(() => {
       if (contents !== '' || header !== '') snackBar('success', '포스트가 임시저장되었습니다.');
-    }, 10000);
+    }, 30000);
   };
 
   autoSave();
