@@ -22,6 +22,12 @@ const ContentsEditing: React.FC = () => {
   const setThumbnailWrapper = (event: any) => {
     setThumbnail(event.target.files[0]);
   };
+  const setIntroduceWrapper = (p1: string) => {
+    if (introduce.length <= 150) setIntroduce(p1);
+    else {
+      setIntroduce(introduce.substring(0, 149));
+    }
+  };
   const markdown = require('markdown-it')({
     highlight: function (str: string, lang: string) {
       return highlighting(str, lang, hljs, markdown);
@@ -91,7 +97,7 @@ const ContentsEditing: React.FC = () => {
         isPubilc={isPubilc}
         setIsPublic={setIsPublic}
         introduce={introduce}
-        setIntroduce={setIntroduce}
+        setIntroduce={setIntroduceWrapper}
         URL={URL}
         setURL={setURL}
         userName={userName}

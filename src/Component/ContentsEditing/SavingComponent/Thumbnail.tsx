@@ -27,6 +27,7 @@ const Thumbnail: React.FC<ThumnailType> = ({ introduce, setIntroduce, thumbnail,
         value={introduce}
         onChange={(event) => setIntroduce(event.target.value)}
       ></textarea>
+      <div className="Thumbnail_introducing_text_count">{introduce.length}/150</div>
     </div>
   );
 };
