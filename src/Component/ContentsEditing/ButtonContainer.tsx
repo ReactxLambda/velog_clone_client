@@ -17,20 +17,29 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror, codeMirror
   const [ch, setCh] = useState(0);
   const [linkModalVisible, setLinkModalVisible] = useState(false);
   const [link, setLink] = useState('');
+  const isEmptyString = (p1: string) => {
+    return p1 === '' ? '텍스트' : p1;
+  };
 
   const makeBold = () => {
+    const cursor = codeMirror.getCursor();
     const selectionString: string = codeMirror.getSelection();
-    codeMirror.replaceSelection(`**${selectionString}**`);
+    codeMirror.replaceSelection(`**${isEmptyString(selectionString)}**`);
+    codeMirror.setSelection({ line: cursor.line, ch: cursor.ch + 2 }, { line: cursor.line, ch: cursor.ch + 5 });
     codeMirror.focus();
   };
   const makeItalic = () => {
+    const cursor = codeMirror.getCursor();
     const selectionString: string = codeMirror.getSelection();
-    codeMirror.replaceSelection(`*${selectionString}*`);
+    codeMirror.replaceSelection(`*${isEmptyString(selectionString)}*`);
+    codeMirror.setSelection({ line: cursor.line, ch: cursor.ch + 1 }, { line: cursor.line, ch: cursor.ch + 4 });
     codeMirror.focus();
   };
   const makeLine = () => {
+    const cursor = codeMirror.getCursor();
     const selectionString: string = codeMirror.getSelection();
-    codeMirror.replaceSelection(`~~${selectionString}~~`);
+    codeMirror.replaceSelection(`~~${isEmptyString(selectionString)}~~`);
+    codeMirror.setSelection({ line: cursor.line, ch: cursor.ch + 2 }, { line: cursor.line, ch: cursor.ch + 5 });
     codeMirror.focus();
   };
   const makeParagraph = () => {

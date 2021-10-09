@@ -59,36 +59,31 @@ body,
   margin-left: 5px;
   word-break: break-word;
   padding: 3rem;
+  img {
+    display: block;
+    margin: 3rem auto;
+    max-width: 100%;
+  }
+  li {
+    margin-top: 5px;
+  }
+  pre {
+    padding: 10px;
+    margin-right: 5px;
+  }
+  blockquote {
+    margin: 2rem 0px;
+    border-left: 4px solid rgb(32, 201, 151);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background: rgb(248, 249, 250);
+    padding: 1rem 1rem 1rem 2rem;
+    color: rgb(33, 37, 41);
+  }
+  .hljs {
+    overflow-x: auto;
+  }
 }
-
-.CodeMirror-placeholder {
-  color: rgb(173, 181, 189) !important;
-  font-style: italic;
-}
-
-$blockquoteColor: rgb(32, 201, 151);
-
-.hljs {
-  overflow-x: auto;
-}
-li {
-  margin-top: 5px;
-}
-pre {
-  padding: 10px;
-  margin-right: 5px;
-}
-
-blockquote {
-  margin: 2rem 0px;
-  border-left: 4px solid $blockquoteColor;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  background: rgb(248, 249, 250);
-  padding: 1rem 1rem 1rem 2rem;
-  color: rgb(33, 37, 41);
-}
-
 .cm-header-1 {
   color: black !important;
   font-size: 32px;
@@ -112,6 +107,10 @@ blockquote {
 .cm-header-6 {
   color: black !important;
   font-size: 10.72px;
+}
+.CodeMirror-placeholder {
+  color: rgb(173, 181, 189) !important;
+  font-style: italic;
 }
 
 .MuiInput-root {
