@@ -1,0 +1,56 @@
+.ViewerPage_warpper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 768px;
+  .contents-viewer {
+    background: #ffffff;
+  }
+  h1 {
+    font-size: 3rem;
+    line-height: 1.5;
+    letter-spacing: -0.004em;
+    margin-top: 0px;
+    font-weight: 800;
+    color: rgb(52, 58, 64);
+    margin-bottom: 2rem;
+    word-break: keep-all;
+  }
+}
+
+.ViewerPage_warpper_editor_container {
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: 1rem;
+  color: rgb(73, 80, 87);
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.ViewerPage_warpper_editor_container_button {
+  padding: 0px;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: inherit;
+  cursor: pointer;
+  color: rgb(134, 142, 150);
+  margin-left: 10px;
+}
+.ViewerPage_warpper_editor_like_container {
+  width: 4rem;
+  background: rgb(248, 249, 250);
+  border: 1px solid rgb(241, 243, 245);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  position: fixed;
+  top: 112px;
+  left: 10px;
+}
