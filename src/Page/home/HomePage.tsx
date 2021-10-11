@@ -7,6 +7,7 @@ import { FormControl, InputLabel, MenuItem, Select, Tab, Tabs } from '@material-
 import { createStyles, makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
+import Menus from './Menus';
 
 // const home1 = {
 //   width: '1728px',
@@ -164,7 +165,7 @@ const HomePage: React.FC = ({ history, match }: any) => {
         height: '100%',
       }}
     >
-      <h3>메인화면</h3>
+      {/* <h3>메인화면</h3>
       <Tabs
         value={valueTab}
         onChange={handleChangeTab}
@@ -178,7 +179,7 @@ const HomePage: React.FC = ({ history, match }: any) => {
         <Tab label="최신" />
         {match.url !== '/recent' && (
           <FormControl className={classes.margin}>
-            {/* <InputLabel id="demo-customized-select-label">Age</InputLabel> */}
+           
             <Select
               labelId="demo-customized-select-label"
               id="demo-customized-select"
@@ -193,7 +194,9 @@ const HomePage: React.FC = ({ history, match }: any) => {
             </Select>
           </FormControl>
         )}
-      </Tabs>
+      </Tabs> */}
+
+      <Menus type={'trend'}></Menus>
 
       <div
         style={{
