@@ -7,6 +7,7 @@ import { FormControl, InputLabel, MenuItem, Select, Tab, Tabs } from '@material-
 import { createStyles, makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
+import { Header } from '../Global/Header/Header';
 
 // const home1 = {
 //   width: '1728px',
@@ -164,6 +165,7 @@ const HomePage: React.FC = ({ history, match }: any) => {
         height: '100%',
       }}
     >
+      <Header></Header>
       <h3>메인화면</h3>
       <Tabs
         value={valueTab}

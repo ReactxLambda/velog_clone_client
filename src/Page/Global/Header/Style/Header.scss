@@ -1,0 +1,88 @@
+.velog_header_wrapper {
+  height: 4rem;
+  width: 1728px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.velog_header {
+  height: 100%;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.velog_header_logo_username_container {
+  display: flex;
+  flex-direction: row;
+
+  .logo {
+    flex: 1;
+  }
+  .username {
+    flex: 1;
+    margin-left: 10px;
+  }
+}
+.velog_header_button_container {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+  .velog_header_button_container_new_post {
+    margin-left: 10px;
+    height: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    outline: none;
+    font-weight: bold;
+    word-break: keep-all;
+    background: white;
+    border: 1px solid rgb(52, 58, 64);
+    color: rgb(52, 58, 64);
+    transition: all 0.125s ease-in 0s;
+    cursor: pointer;
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+  .velog_header_button_container_user_menu {
+    display: flex;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-left: 15px;
+    img {
+      display: block;
+      height: 2.5rem;
+      width: 2.5rem;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
+      border-radius: 50%;
+      object-fit: cover;
+      transition: all 0.125s ease-in 0s;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .velog_header_wrapper {
+    width: 1024px;
+  }
+}
+@media (max-width: 1919px) {
+  .velog_header_wrapper {
+    width: 1376px;
+  }
+}
+
+@media (max-width: 1056px) {
+  .velog_header_wrapper {
+    width: calc(100% - 2rem);
+  }
+}
