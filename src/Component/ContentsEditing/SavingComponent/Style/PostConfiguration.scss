@@ -1,0 +1,127 @@
+.PostConfiguration_wraper {
+  flex: 1 1 0%;
+  min-width: 0px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+.PostConfiguration_button_container {
+  display: flex;
+}
+.PostConfiguration_selected_button {
+  outline: none;
+  flex: 1 1 0%;
+  height: 3rem;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  font-weight: bold;
+  background: white;
+  font-size: 1.125rem;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  padding: 0px 0px 0px 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid rgb(32, 201, 151);
+  color: rgb(32, 201, 151);
+}
+.PostConfiguration_unselected_button {
+  outline: none;
+  flex: 1 1 0%;
+  height: 3rem;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  font-weight: bold;
+  background: white;
+  font-size: 1.125rem;
+  color: rgb(134, 142, 150);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  padding: 0px 0px 0px 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.PostConfiguration_URL {
+  display: flex;
+  background: white;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 0.875rem;
+  line-height: 1.5;
+  color: rgb(134, 142, 150);
+}
+.PostConfiguration_input {
+  font-size: 1rem;
+  background: none;
+  outline: none;
+  flex: 1 1 0%;
+  border: none;
+  padding: 0px;
+  line-height: 1.5;
+  color: rgb(52, 58, 64);
+}
+
+.PostConfiguration_series_button {
+  background: white;
+  height: 3rem;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  border: none;
+  outline: none;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: rgb(32, 201, 151);
+  font-size: 1.125rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.PostConfiguration_button_container_cancle {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: rgb(134, 142, 150);
+  color: white;
+  border-radius: 4px;
+  padding: 0px 1.125rem;
+  height: 2.5rem;
+  font-size: 1.125rem;
+  margin-right: 10px;
+}
+.PostConfiguration_button_container_submit {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: rgb(18, 184, 134);
+  color: white;
+  border-radius: 4px;
+  padding: 0px 1.125rem;
+  height: 2.5rem;
+  font-size: 1.125rem;
+}
+
+.PostConfiguration_button_container {
+  justify-content: flex-end;
+}
