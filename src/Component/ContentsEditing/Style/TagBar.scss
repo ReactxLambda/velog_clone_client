@@ -1,0 +1,14 @@
+.TagInput {
+  display: inline-flex;
+  outline: none;
+  cursor: text;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  margin-bottom: 0.75rem;
+  min-width: 8rem;
+  border: none;
+}
+.tag_bar {
+  height: 50px;
+  overflow-y: auto;
+}

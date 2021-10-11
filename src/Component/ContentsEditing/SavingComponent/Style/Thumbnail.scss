@@ -1,0 +1,52 @@
+.Thumbnail {
+  flex: 1 1;
+  display: flex;
+  min-width: 0px;
+  flex-direction: column;
+}
+.Thumbnail_upload_container {
+  background: rgb(233, 236, 239);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+.Thumbnail_introducing {
+  resize: none;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+  line-height: 1.5;
+  font-size: 0.875rem;
+  height: 7.375rem;
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
+}
+.Thumbnail_upload_container_icon {
+  font-size: 10rem !important;
+}
+.Thumbnail_upload_container_button {
+  margin-top: 1rem !important;
+  padding: 0.25rem 2rem !important;
+  background: white !important;
+  border-radius: 4px !important;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2) !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  color: rgb(32, 201, 151) !important;
+  outline: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.125s ease-in 0s !important;
+  font-weight: bold !important;
+}
+.Thumbnail_introducing_text_count {
+  text-align: right;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: rgb(134, 142, 150);
+}

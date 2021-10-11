@@ -1,0 +1,16 @@
+.link_modal {
+  position: absolute;
+  z-index: 9999;
+  bottom: initial;
+  right: initial;
+  margin-top: 1rem;
+  width: 20rem;
+  background: white;
+  box-shadow: 0px 0px 10px 1px gray;
+  border-radius: 4px;
+  padding: 1.5rem 1rem;
+  label {
+    font-weight: bold;
+    color: rgb(52, 58, 64);
+  }
+}

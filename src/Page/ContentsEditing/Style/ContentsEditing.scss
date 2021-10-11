@@ -1,0 +1,124 @@
+html,
+body,
+#root,
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+.header-editor {
+  height: 8% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  resize: none !important;
+  margin-top: 10px;
+  border: none !important;
+  outline: none !important;
+  font-weight: bold !important;
+  color: rgb(33, 37, 41) !important;
+  line-height: 1.5 !important;
+  font-size: 2.75rem;
+}
+.react-codemirror2 {
+  height: 68%;
+  margin-bottom: 10px;
+}
+.CodeMirror {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: rgb(52, 58, 64);
+  font-family: 'Fira Mono', monospace;
+  height: 100%;
+}
+
+.contents-editor {
+  flex: 1;
+
+  min-width: 0rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#markdown-header {
+  margin-bottom: 4rem;
+}
+.markdown-contents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: inherit;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 100%;
+}
+
+.contents-viewer {
+  flex: 1;
+  background: rgb(251, 253, 252);
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: 5px;
+  word-break: break-word;
+  padding: 3rem;
+  img {
+    display: block;
+    margin: 3rem auto;
+    max-width: 100%;
+  }
+  li {
+    margin-top: 5px;
+  }
+  pre {
+    padding: 10px;
+    margin-right: 5px;
+  }
+  blockquote {
+    margin: 2rem 0px;
+    border-left: 4px solid rgb(32, 201, 151);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background: rgb(248, 249, 250);
+    padding: 1rem 1rem 1rem 2rem;
+    color: rgb(33, 37, 41);
+  }
+  .hljs {
+    overflow-x: auto;
+  }
+}
+.cm-header-1 {
+  color: black !important;
+  font-size: 32px;
+}
+.cm-header-2 {
+  color: black !important;
+  font-size: 24px;
+}
+.cm-header-3 {
+  color: black !important;
+  font-size: 18.72px;
+}
+.cm-header-4 {
+  color: black !important;
+  font-size: 16px;
+}
+.cm-header-5 {
+  color: black !important;
+  font-size: 13.28px;
+}
+.cm-header-6 {
+  color: black !important;
+  font-size: 10.72px;
+}
+.CodeMirror-placeholder {
+  color: rgb(173, 181, 189) !important;
+  font-style: italic;
+}
+
+.MuiInput-root {
+  font-size: 100px;
+}
+
+@media (max-width: 767px) {
+  .contents-viewer {
+    display: none;
+  }
+}
