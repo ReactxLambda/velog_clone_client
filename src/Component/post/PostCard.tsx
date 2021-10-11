@@ -18,6 +18,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ShareIcon from '@material-ui/icons/Share';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
+import './PostCard.scss';
 
 const changeDateFormat = (date: any) => {
   const today = new Date();
@@ -33,7 +34,6 @@ const changeDateFormat = (date: any) => {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: 320,
       height: 376,
     },
     grid: {
@@ -97,8 +97,8 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const classes = useStyles();
   const value = post;
   return (
-    <div>
-      <Box m={2}>
+    <div className="postCard_Wrapper">
+      <Box m={1}>
         <Card key={value.id} className={classes.root}>
           <Box className={classes.contents}>
             <CardMedia image="/images/sunflower.jpg" title="Paella dish" className={classes.media} />

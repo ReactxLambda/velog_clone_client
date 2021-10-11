@@ -9,6 +9,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 import { Header } from '../Global/Header/Header';
 import Menus from './Menus';
+import '../Global/Header/Style/Header.scss';
 
 // const home1 = {
 //   width: '1728px',
@@ -160,12 +161,7 @@ const HomePage: React.FC = ({ history, match }: any) => {
     history.push(`/trending/${event.target.value}`);
   };
   return (
-    <div
-      style={{
-        overflowY: 'auto',
-        height: '100%',
-      }}
-    >
+    <div>
       <Header></Header>
       {/*<Tabs
         value={valueTab}
@@ -196,16 +192,16 @@ const HomePage: React.FC = ({ history, match }: any) => {
           </FormControl>
         )}
       </Tabs> */}
-
-      <Menus type={'trend'}></Menus>
-
-      <div
-        style={{
-          height: '600px',
-        }}
-      >
-        <Route path={['/', '/trending', '/trending/:type(day|week|month|year)']} component={TrendingPostsPage} exact />
-        <Route path={['/recent']} component={RecentPostsPage} />
+      <div className="homepage_container">
+        <Menus type={'trend'} />
+        <div className="homepage_contents">
+          <Route
+            path={['/', '/trending', '/trending/:type(day|week|month|year)']}
+            component={TrendingPostsPage}
+            exact
+          />
+          <Route path={['/recent']} component={RecentPostsPage} />
+        </div>
       </div>
     </div>
   );

@@ -8,6 +8,8 @@ import { gql } from '@apollo/client';
 import client from '../../Common/apollo';
 import { useQuery, NetworkStatus } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router-dom';
+import './TrendingPostsPage.scss';
+
 //https://slog.website/post/8
 type TrendingPostsPage = {} & RouteComponentProps<{
   type: 'day' | 'week' | 'month' | 'year';
@@ -166,7 +168,7 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ match }) => {
   // }, [data]);
 
   return (
-    <Box display="flex" flexWrap="wrap" mx={20} mt={3}>
+    <div className="posts_wrapper">
       {
         /*테스트
       Element {inView.toString()}*/
@@ -195,7 +197,7 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ match }) => {
         })}
       {loading && posts.length == 0 && <h1>Loading 중입니다.</h1>}
       {!loading && posts.length == 0 && <h1>데이터가 존재하지 않습니다.</h1>}
-    </Box>
+    </div>
   );
 };
 export default TrendingPostsPage;
