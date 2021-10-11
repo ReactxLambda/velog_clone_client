@@ -4,7 +4,6 @@ import ContentsEditing from './Page/ContentsEditing/ContentsEditing';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import HomePage from './Page/home/HomePage';
 import ReadingListPage from './Page/readingList/ReadingListPage';
-import SaveWritePage from './Page/SaveWritePage';
 import TestPage from './Page/Test/Responsive';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -34,7 +33,6 @@ function App() {
             <Route path="/:mode(trending|recent|following)" component={HomePage} />
             <Route path="/write" component={ContentsEditing} exact />
             {/* 임시 path*/}
-            <Route path="/write/save" component={SaveWritePage} />
             <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
             <Route path="/test" component={TestPage} />
           </CssBaseline>
