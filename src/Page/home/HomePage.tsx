@@ -167,7 +167,7 @@ const HomePage: React.FC = ({ history, match }: any) => {
       }}
     >
       <Header></Header>
-      <Tabs
+      {/*<Tabs
         value={valueTab}
         onChange={handleChangeTab}
         variant="fullWidth"
