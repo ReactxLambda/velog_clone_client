@@ -6,6 +6,7 @@ import HomePage from './Page/home/HomePage';
 import ReadingListPage from './Page/readingList/ReadingListPage';
 import TestPage from './Page/Test/Responsive';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { ContentsViewerPage } from './Page/ContentsViewerPage/ContentsViewerPage';
 
 function App() {
   const markdownTextArea = true;
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" component={HomePage} exact />
             <Route path="/:mode(trending|recent|following)" component={HomePage} />
             <Route path="/write" component={ContentsEditing} exact />
+            <Route path="/viewer" component={ContentsViewerPage} />
             {/* 임시 path*/}
             <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
             <Route path="/test" component={TestPage} />
