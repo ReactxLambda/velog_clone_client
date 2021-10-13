@@ -4,7 +4,6 @@ import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
 import Wrapper from '../../Component/post/Wrapper';
 //https://slog.website/post/8
-import GoogleOAuthButton from "../../Common/GoogleOAuthButton"
 
 const data = () => {
   //받아서 넘길꺼니가아?
@@ -191,7 +190,6 @@ const TrendingPostsPage: React.FC = () => {
 
   return (
     <Box display="flex" flexWrap="wrap" m={3} mx={20}>
-      <GoogleOAuthButton/>
       {/*테스트
       Element {inView.toString()}*/}
       {dataArray.map((value, idx) => {
