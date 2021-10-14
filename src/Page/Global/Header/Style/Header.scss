@@ -70,6 +70,21 @@
   }
 }
 
+.velog_header_button_container_login {
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  word-break: keep-all;
+  background: rgb(52, 58, 64);
+  color: white;
+  transition: all 0.125s ease-in 0s;
+  cursor: pointer;
+}
 @media (max-width: 1440px) {
   .velog_header_wrapper {
     width: 1024px;

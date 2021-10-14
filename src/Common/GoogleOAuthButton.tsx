@@ -1,21 +1,27 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 import GoogleLogin from 'react-google-login';
 
-const responseGoogle = (response : any) => {
-    console.log(response);
-}
+const responseGoogle = (response: any) => {
+  console.log(response);
+};
 
-function GoogleOAuthButton() {
-    const clientId = "330104992592-3bc3qepc1hujfo2anfmslit49klo0v42.apps.googleusercontent.com"
-    return (
-        <GoogleLogin
-        clientId={clientId}
-        buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
+type GoogleOAuthButtonType = {};
+const GoogleOAuthButton: React.FC<GoogleOAuthButtonType> = (buttonStyle: any) => {
+  console.log(process.env.REACT_APP_CLIENT_ID as string);
+  return (
+    <GoogleLogin
+      clientId={process.env.REACT_APP_CLIENT_ID as string}
+      render={(renderProps) => (
+        <button className="velog_header_button_container_login" onClick={renderProps.onClick}>
+          로그인
+        </button>
+      )}
+      buttonText="Login"
+      onSuccess={responseGoogle}
+      onFailure={responseGoogle}
+      cookiePolicy={'single_host_origin'}
     />
-    )
-}
+  );
+};
 
-export default GoogleOAuthButton
+export default GoogleOAuthButton;
