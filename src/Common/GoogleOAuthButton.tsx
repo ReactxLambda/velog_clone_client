@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import GoogleLogin from 'react-google-login';
+import { setUserImage } from '../Store/user';
 
 const responseGoogle = (response: any) => {
+  setUserImage(response.it.lK);
   console.log(response);
 };
 

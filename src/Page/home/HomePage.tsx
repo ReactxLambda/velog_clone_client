@@ -8,6 +8,8 @@ import { createStyles, makeStyles, Theme, withStyles } from '@material-ui/core/s
 import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 import { Header } from '../Global/Header/Header';
+import Menus from './Menus';
+import '../Global/Header/Style/Header.scss';
 
 // const home1 = {
 //   width: '1728px',
@@ -159,15 +161,9 @@ const HomePage: React.FC = ({ history, match }: any) => {
     history.push(`/trending/${event.target.value}`);
   };
   return (
-    <div
-      style={{
-        overflowY: 'auto',
-        height: '100%',
-      }}
-    >
+    <div>
       <Header></Header>
-      <h3>메인화면</h3>
-      <Tabs
+      {/*<Tabs
         value={valueTab}
         onChange={handleChangeTab}
         variant="fullWidth"
@@ -180,7 +176,7 @@ const HomePage: React.FC = ({ history, match }: any) => {
         <Tab label="최신" />
         {match.url !== '/recent' && (
           <FormControl className={classes.margin}>
-            {/* <InputLabel id="demo-customized-select-label">Age</InputLabel> */}
+           
             <Select
               labelId="demo-customized-select-label"
               id="demo-customized-select"
@@ -195,15 +191,17 @@ const HomePage: React.FC = ({ history, match }: any) => {
             </Select>
           </FormControl>
         )}
-      </Tabs>
-
-      <div
-        style={{
-          height: '600px',
-        }}
-      >
-        <Route path={['/', '/trending', '/trending/:type(day|week|month|year)']} component={TrendingPostsPage} exact />
-        <Route path={['/recent']} component={RecentPostsPage} />
+      </Tabs> */}
+      <div className="homepage_container">
+        <Menus type={'trend'} />
+        <div className="homepage_contents">
+          <Route
+            path={['/', '/trending', '/trending/:type(day|week|month|year)']}
+            component={TrendingPostsPage}
+            exact
+          />
+          <Route path={['/recent']} component={RecentPostsPage} />
+        </div>
       </div>
     </div>
   );

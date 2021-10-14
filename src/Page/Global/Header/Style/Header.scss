@@ -85,13 +85,24 @@
   transition: all 0.125s ease-in 0s;
   cursor: pointer;
 }
+.homepage_container {
+  width: 1728px;
+  margin-left: auto;
+  margin-right: auto;
+}
 @media (max-width: 1440px) {
   .velog_header_wrapper {
+    width: 1024px;
+  }
+  .homepage_container {
     width: 1024px;
   }
 }
 @media (max-width: 1919px) {
   .velog_header_wrapper {
+    width: 1376px;
+  }
+  .homepage_container {
     width: 1376px;
   }
 }
@@ -100,4 +111,12 @@
   .velog_header_wrapper {
     width: calc(100% - 2rem);
   }
+  .homepage_container {
+    width: calc(100% - 2rem);
+  }
+}
+
+.homepage_contents {
+  display: flex;
+  margin-top: 2rem;
 }
