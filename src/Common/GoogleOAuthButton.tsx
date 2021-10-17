@@ -1,10 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import GoogleLogin from 'react-google-login';
-import { setUserImage } from '../Store/user';
+import { getUserInfo, insertUser, isUserExist } from '../Query/UserQuery';
 
-const responseGoogle = (response: any) => {
-  setUserImage(response.it.lK);
-  console.log(response);
+const responseGoogle = async (response: any): Promise<void> => {
+  const googleId: string = response.googleId;
+  const googleNickName: string = response.it.Re;
+  const googleEmail: string = response.it.Tt;
+  const googleIdImage: string = response.it.lK;
+  if (!(await isUserExist(googleId))) {
+    insertUser(googleId, googleEmail, googleIdImage);
+    console.log('User is not exist');
+  } else {
+    console.log('User is exist');
+  }
 };
 
 type GoogleOAuthButtonType = {};
