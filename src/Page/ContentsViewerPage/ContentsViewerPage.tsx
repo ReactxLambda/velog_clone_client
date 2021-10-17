@@ -41,8 +41,10 @@ export const ContentsViewerPage: React.FC = () => {
         </div>
 
         <div>
-          {ViewerMockData.tags.map((tag) => (
-            <div className="tag">{tag}</div>
+          {ViewerMockData.tags.map((tag, index) => (
+            <div className="tag" key={index}>
+              {tag}
+            </div>
           ))}
         </div>
         <div id="markdown-viewer" className={'contents-viewer'}>
