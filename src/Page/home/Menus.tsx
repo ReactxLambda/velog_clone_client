@@ -5,10 +5,10 @@ import InputBase from '@material-ui/core/InputBase';
 import './Menus.scss';
 import { RouteComponentProps } from 'react-router-dom';
 import { AccessTime, GraphicEq, TrendingUp } from '@material-ui/icons';
+import client from '../../Common/apollo';
+import { gql } from '@apollo/client';
 
-type MenusProps = {
-  type: 'trend' | 'new';
-};
+type MenusProps = { type: boolean; history: any; term: string; setTerm: (p1: string) => void };
 
 const BootstrapInput = withStyles((theme: Theme) =>
   createStyles({
@@ -60,28 +60,46 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Menus: React.FC<MenusProps> = ({ type }) => {
+const Menus: React.FC<MenusProps> = ({ type, history, term, setTerm }) => {
+  // const Menus: React.FC = () => {
   const classes = useStyles();
-
-  const [term, setTerm] = useState('week');
+  console.log(`temr : ${term}`);
+  const [active, setActive] = useState(type);
 
   const handleChangeSelect = (event: React.ChangeEvent<{ value: unknown }>) => {
     setTerm(event.target.value as string);
     // history.push(`/trending/${event.target.value}`);
+  };
+
+  const handleClickTab = () => {
+    //trending
+    if (active) {
+      setActive(false);
+      history.push('/');
+    } else {
+      //recent
+      setActive(true);
+      history.push('/recent');
+    }
   };
   return (
     <div className="menus">
       <div className="search">
         <div className="tabs">
           <div className="tab">
-            <TrendingUp /> 트렌딩
+            <a className={!active ? 'active' : ''} onClick={handleClickTab}>
+              <TrendingUp /> 트렌딩
+            </a>
           </div>
           <div className="tab">
-            <AccessTime />
-            최신
+            <a className={active ? 'active' : ''} onClick={handleClickTab}>
+              <AccessTime />
+              최신
+            </a>
           </div>
+          <div style={active ? { left: '50%' } : { left: '0%' }} className="underline"></div>
         </div>
-        <div className="term">
+        <div style={active ? { visibility: 'hidden' } : { visibility: 'visible' }} className="term">
           <FormControl className={classes.margin}>
             {/* <InputLabel id="demo-customized-select-label">Age</InputLabel> */}
             <Select

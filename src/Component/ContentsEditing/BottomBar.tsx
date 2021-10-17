@@ -6,6 +6,7 @@ import Zoom from '@material-ui/core/Zoom';
 import { useSnackbar, VariantType } from 'notistack';
 import { Clear } from '@material-ui/icons';
 import { IconButton } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 type BottomBarType = {
   contents: string;
@@ -70,10 +71,11 @@ const BottomBar: React.FC<BottomBarType> = ({ contents, header, tags, snackbarKe
   };
   return (
     <div className="__bottom__bar">
-      <Button variant="outlined" className="button4" startIcon={<ArrowBackIcon />}>
-        나가기
-      </Button>
-
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <Button variant="outlined" className="button4" startIcon={<ArrowBackIcon />}>
+          나가기
+        </Button>
+      </Link>
       <div className="bottom_solt">
         <button className="button2" onClick={showSnackBar}>
           임시 저장
