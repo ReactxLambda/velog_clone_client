@@ -14,7 +14,7 @@ const UserNameLogContainer: React.FC<UserNameLogContainerType> = ({ userName }) 
       <div className={'logo'}>
         <Telegram />
       </div>
-      <div className={'username'}>{userName}</div>
+      <div className={'username'}>{userName === '' ? 'velog' : userName}</div>
     </div>
   );
 };
