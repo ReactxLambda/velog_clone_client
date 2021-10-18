@@ -5,12 +5,18 @@ import { HeaderButtonContainer } from './HeaderButtonContainer';
 import './Style/Header.scss';
 import UserNameLogContainer from './UserNameLogContainer';
 
-export const Header: React.FC = () => {
+type HeaderType = {
+  userImage: string;
+  userName: string;
+  setUserName: (p1: string) => void;
+  setUserImage: (p1: string) => void;
+};
+export const Header: React.FC<HeaderType> = ({ userImage, userName, setUserName, setUserImage }) => {
   return (
     <div className={'velog_header_wrapper'}>
       <div className={'velog_header'}>
-        <UserNameLogContainer />
-        <HeaderButtonContainer />
+        <UserNameLogContainer userName={userName} />
+        <HeaderButtonContainer userImage={userImage} setUserName={setUserName} setUserImage={setUserImage} />
       </div>
     </div>
   );

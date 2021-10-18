@@ -127,7 +127,17 @@ const BootstrapInput = withStyles((theme: Theme) =>
   }),
 )(InputBase);
 
-const HomePage: React.FC = ({ history, match }: any) => {
+type HomePageType = {
+  userName: string;
+  setUserName: (p1: string) => void;
+  userImage: string;
+  setUserImage: (p1: string) => void;
+};
+
+const HomePage: React.FC<HomePageType> = (
+  { history, match }: any,
+  { userName, setUserName, userImage, setUserImage }: HomePageType,
+) => {
   const style = {
     marginTop: '150px',
   };
@@ -162,7 +172,7 @@ const HomePage: React.FC = ({ history, match }: any) => {
   };
   return (
     <div>
-      <Header></Header>
+      <Header userName={userName} setUserName={setUserName} userImage={userImage} setUserImage={setUserImage}></Header>
       {/*<Tabs
         value={valueTab}
         onChange={handleChangeTab}

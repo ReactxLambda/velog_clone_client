@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Style/ContentsViewerPage.scss';
 import { MockDataType, ViewerMockData } from './MockData';
 import '../../Component/ContentsEditing/Style/Tag.scss';
@@ -6,7 +6,19 @@ import '../ContentsEditing/Style/ContentsEditing.scss';
 import highlighting from '../../Common/highlighting';
 import { Button } from '@material-ui/core';
 import { Header } from '../Global/Header/Header';
-export const ContentsViewerPage: React.FC = () => {
+
+type ContentsViewerPageType = {
+  userName: string;
+  setUserName: (p1: string) => void;
+  userImage: string;
+  setUserImage: (p1: string) => void;
+};
+export const ContentsViewerPage: React.FC<ContentsViewerPageType> = ({
+  userName,
+  setUserName,
+  userImage,
+  setUserImage,
+}) => {
   const hljs = require('highlight.js');
   const markdown = require('markdown-it')({
     highlight: function (str: string, lang: string) {
@@ -18,9 +30,10 @@ export const ContentsViewerPage: React.FC = () => {
     const MarkdownViewerHTML: HTMLElement = document.getElementById('markdown-viewer') as HTMLElement;
     MarkdownViewerHTML.innerHTML = contents;
   });
+
   return (
     <div className={'ViewerPage'}>
-      <Header />
+      <Header userName={userName} setUserName={setUserName} userImage={userImage} setUserImage={setUserImage} />
       <div className={'ViewerPage_warpper'}>
         <link
           rel="stylesheet"
