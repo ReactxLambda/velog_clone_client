@@ -1,16 +1,15 @@
 import { Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import UserPage from './UserPage';
-import AboutPage from './AboutPage';
 
 const VelogPage: React.FC = ({ match }: any) => {
-  const { username } = match.params;
+  // const { username } = match.params;
+  // console.log(username);
   return (
     <div>
       <Switch>
-        <Route path="/@:username" exact component={UserPage} />
+        <Route path={['/@:username', '/@:username/:tab(series|about)']} exact component={UserPage} />
         {/* <Route path="/@:username/series" component={SeriesTab} /> */}
-        <Route path="/@:username/about" component={AboutPage} />
       </Switch>
     </div>
   );

@@ -7,6 +7,7 @@ import ReadingListPage from './Page/readingList/ReadingListPage';
 import TestPage from './Page/Test/Responsive';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import VelogPage from './Page/Velog/VelogPage';
+import UserPage from './Page/Velog/UserPage';
 
 function App() {
   const markdownTextArea = true;
@@ -37,6 +38,7 @@ function App() {
             <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
             <Route path="/test" component={TestPage} />
             <Route path="/@:username" component={VelogPage} />
+            {/* <Route path={['/@:username', '/@:username/:tab(series|about)']} component={UserPage} /> */}
           </CssBaseline>
         </Switch>
       </BrowserRouter>

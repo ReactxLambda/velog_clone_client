@@ -1,27 +1,23 @@
 import { useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { Header } from '../Global/Header/Header';
 import './UserPage.scss';
-const UserPage: React.FC = ({ match }: any) => {
+import VelogHeader from './VelogHeader';
+import AboutTab from './AboutTab';
+import UserPostsTab from './UserPostsTab';
+
+const UserPage: React.FC = ({ match, history }: any) => {
+  const { username, tab } = match.params;
+  console.log(`tab : ${tab}`);
+  let [active, setActive] = useState(tab === undefined ? 'post' : tab);
+
   return (
     <div>
       <Header></Header>
       <div className="velogWrapper">
-        <div className="velogProfile">
-          <div className="profile">
-            <a href="">
-              <img src="/images/gitlab.png"></img>
-            </a>
-            <div className="info">
-              <div className="name">
-                <a href="">사용자명</a>
-              </div>
-              <div className="description"></div>
-            </div>
-          </div>
-          <div className="underline"></div>
-        </div>
-        <div className="velogTabs"></div>
-        <div></div>
+        <VelogHeader username={username} active={active} setActive={setActive} />
+        <Route path="/@:username" exact component={UserPostsTab} />
+        <Route path="/@:username/about" component={AboutTab} />
       </div>
     </div>
   );

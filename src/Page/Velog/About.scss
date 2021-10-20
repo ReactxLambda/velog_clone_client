@@ -1,0 +1,73 @@
+.aboutWrapper {
+  width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.about {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+.about img {
+  width: 20rem;
+  height: 20rem;
+  margin-bottom: 2rem;
+  display: block;
+}
+.aboutEmptyMessage {
+  font-size: 2rem;
+  color: rgb(134, 142, 150);
+  margin-bottom: 2rem;
+}
+.aboutButton {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: rgb(18, 184, 134);
+  color: white;
+  border-radius: 4px;
+  padding: 0px 1.125rem;
+  height: 2.5rem;
+  font-size: 1.125rem;
+}
+
+.aboutSaveWrapper {
+  display: flex;
+  margin-bottom: 1.5rem;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+}
+
+.aboutSave {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: rgb(18, 184, 134);
+  color: white;
+  border-radius: 4px;
+  padding: 0px 1.125rem;
+  height: 2.5rem;
+  font-size: 1.125rem;
+}
+
+.abouWriteWrapper {
+}
+.aboutWrite {
+  border: none;
+  display: none;
+}
