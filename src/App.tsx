@@ -7,7 +7,8 @@ import ReadingListPage from './Page/readingList/ReadingListPage';
 import TestPage from './Page/Test/Responsive';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ContentsViewerPage } from './Page/ContentsViewerPage/ContentsViewerPage';
-
+import UserCreatePage from './Page/UserCreatePage/UserCreatePage';
+import './index.css';
 function App() {
   const markdownTextArea = true;
   const [textContents, setTextContents] = useState('');
@@ -61,6 +62,7 @@ function App() {
             {/* 임시 path*/}
             <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
             <Route path="/test" component={TestPage} />
+            <Route path="/register" component={UserCreatePage} />
           </CssBaseline>
         </Switch>
       </BrowserRouter>

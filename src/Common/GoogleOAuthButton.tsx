@@ -8,11 +8,12 @@ const responseGoogle = async (
   setUserName: (p1: string) => void,
   setUserImage: (p1: string) => void,
 ): Promise<void> => {
+  console.log(response);
   if (isSuccess) {
     const googleId: string = response.googleId;
-    const googleNickName: string = response.it.Re;
-    const googleEmail: string = response.it.Tt;
-    const googleIdImage: string = response.it.lK;
+    const googleNickName: string = response.profileObj.name;
+    const googleEmail: string = response.profileObj.email;
+    const googleIdImage: string = response.profileObj.imageUrl;
     if (!(await isUserExist(googleId))) {
       insertUser(googleId, googleEmail, googleIdImage);
       console.log('User is not exist');

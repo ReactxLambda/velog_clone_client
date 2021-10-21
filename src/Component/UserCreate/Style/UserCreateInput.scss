@@ -1,0 +1,38 @@
+.UserCreateInput {
+  margin-bottom: 1.5rem;
+}
+.UserCreateInput_label {
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: rgb(33, 37, 41);
+  margin-bottom: 1rem;
+  transition: all 0.125s ease-in 0s;
+}
+.UserCreateInput_input_group {
+  display: inline-block;
+  max-width: 100%;
+}
+.UserCreateInput_width_maker {
+  max-width: 100%;
+  display: inline-block;
+  visibility: hidden;
+  font-size: 1.5rem;
+  overflow: hidden;
+  line-height: 0;
+}
+.UserCreateInput_input {
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: rgb(73, 80, 87);
+  transition: all 0.125s ease-in 0s;
+}
+
+.UserCreateInput_input_wrapper {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgb(73, 80, 87);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
