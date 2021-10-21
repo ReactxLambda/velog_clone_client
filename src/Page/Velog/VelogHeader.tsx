@@ -10,6 +10,8 @@ const VelogHeader: React.FC<VelogHeader> = ({ username, active, setActive, match
 
   const tabUnerline = (active: any) => {
     let style = {};
+    if (match.url.indexOf('about') !== -1) active = 'about';
+    else active = 'post';
     if (active === 'post') style = { left: '0%' };
     else if (active === 'series') style = { left: '33.3333%' };
     // else if (active === 'about') style = { left: '66.6666%' };
