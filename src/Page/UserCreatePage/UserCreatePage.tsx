@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router';
 import BottomBar from '../../Component/ContentsEditing/BottomBar';
 import { BottomButtonBar } from '../../Component/UserCreate/BottomButtonBar';
 import { UserCreateInput } from '../../Component/UserCreate/UserCreateInput';
@@ -8,6 +8,7 @@ import './Style/UserCreatePage.scss';
 type UserCreatePageType = {};
 const UserCreatePage: React.FC<UserCreatePageType> = ({}) => {
   const location = useLocation();
+  const history = useHistory();
   const locationData: any = location.state;
   const userName: string = locationData.userName;
   const userEmail: string = locationData.userEmail;

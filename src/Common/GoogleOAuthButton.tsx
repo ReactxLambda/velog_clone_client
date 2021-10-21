@@ -21,7 +21,6 @@ const responseGoogle = async (
     if (await isUserExist(googleId)) {
       // insertUser(googleId, googleEmail, googleIdImage);
       userName = googleNickName;
-
       console.log(userName);
       console.log('User is not exist');
       setIsUserExistMap({ userName: userName, userEmail: googleEmail, userImage: googleIdImage, isUserExist: false });

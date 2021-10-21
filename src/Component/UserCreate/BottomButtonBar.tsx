@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import { insertUser } from '../../Query/UserQuery';
 import './Style/BottomButtonBar.scss';
 type BottomButtonBarType = {
@@ -18,10 +19,16 @@ export const BottomButtonBar: React.FC<BottomButtonBarType> = ({
   const onClick = () => {
     insertUser(userId_c, userEmail, userImage, userIntroduce_c, '');
   };
+  const history = useHistory();
+  const onBackClick = () => {
+    history.goBack();
+  };
   return (
     <div className="BottomButtonBar">
       <div className="BottomButtonBar_Buttons">
-        <button className="BottomButtonBar_Buttons_cancel">취소</button>
+        <button className="BottomButtonBar_Buttons_cancel" onClick={onBackClick}>
+          취소
+        </button>
         <button className="BottomButtonBar_Buttons_next" onClick={onClick}>
           다음
         </button>
