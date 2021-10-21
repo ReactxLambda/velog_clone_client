@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 const UserPostsTab: React.FC = ({ match }: any) => {
   const { username, tab } = match.params;
   let [searchWord, setSearchWord] = useState('');
+  let [tagActive, setTagActive] = useState('');
+  let [tags, setTags] = useState([]);
   return (
     <div>
       <div className="searchWrapper">
@@ -34,14 +36,14 @@ const UserPostsTab: React.FC = ({ match }: any) => {
                 </li>
               </ul>
             </div>
-            <div className="mbTags">
-              <Link to="" className="mbTag">
-                전체보기<span>({1})</span>
-              </Link>
-              <Link to="" className="mbTagActive">
-                태그<span>({1})</span>
-              </Link>
-            </div>
+          </div>
+          <div className="mbTags">
+            <Link to="" className="mbTag">
+              전체보기<span>({1})</span>
+            </Link>
+            <Link to="" className="mbTagActive">
+              태그<span>({1})</span>
+            </Link>
           </div>
         </div>
       </div>
