@@ -38,10 +38,10 @@ const GoogleOAuthButton: React.FC<GoogleOAuthButtonType> = ({ setUserName, setUs
   const history = useHistory();
 
   useEffect(() => {
-    if (!test) {
+    if (!isUserExist) {
       history.push('/register');
     }
-  }, [test]);
+  }, [isUserExist]);
 
   return (
     <GoogleLogin
