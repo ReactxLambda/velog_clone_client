@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import BottomBar from '../../Component/ContentsEditing/BottomBar';
+import { BottomButtonBar } from '../../Component/UserCreate/BottomButtonBar';
 import { UserCreateInput } from '../../Component/UserCreate/UserCreateInput';
 import './Style/UserCreatePage.scss';
 type UserCreatePageType = {};
@@ -20,6 +22,7 @@ const UserCreatePage: React.FC<UserCreatePageType> = ({}) => {
           placeholder={'당신을 한 줄로 소개해보세요'}
         />
       </div>
+      <BottomButtonBar userName_c={userName_c} userId_c={userId_c} userIntroduce_c={userIntroduce_c}></BottomButtonBar>
     </div>
   );
 };
