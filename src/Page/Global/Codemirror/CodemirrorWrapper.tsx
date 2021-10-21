@@ -4,15 +4,17 @@ import 'codemirror/addon/display/placeholder';
 import 'codemirror/lib/codemirror.css';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import './Style/CodemirrorWrapper.scss';
-type CodeMirrorWrapper = {
+type CodeMirrorWrapperType = {
   onChange: (p1: string) => void;
   placeholder: string;
+  value: string;
 };
-export const CodeMirrorWrapper: React.FC<CodeMirrorWrapper> = ({ onChange, placeholder }) => {
+export const CodeMirrorWrapper: React.FC<CodeMirrorWrapperType> = ({ value, onChange, placeholder }) => {
   return (
     <Fragment>
       <CodeMirror
         options={{
+          value: value,
           mode: 'markdown',
           styleActiveLine: true,
           line: true,
