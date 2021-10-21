@@ -1,20 +1,20 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import './UserPage.scss';
-type VelogHeader = { username: string; active: string; setActive: (p1: string) => void };
+type VelogHeader = { username: string; active: string; setActive: (p1: string) => void; match: any };
 
-const tabUnerline = (active: any) => {
-  let style = {};
-  if (active === 'post') style = { left: '0%' };
-  else if (active === 'series') style = { left: '33.3333%' };
-  // else if (active === 'about') style = { left: '66.6666%' };
-  else if (active === 'about') style = { left: '50%' };
-  return style;
-};
-
-const VelogHeader: React.FC<VelogHeader> = ({ username, active, setActive }: any) => {
+const VelogHeader: React.FC<VelogHeader> = ({ username, active, setActive, match }: any) => {
   const handleClickTab = (type: string) => {
     setActive(type);
+  };
+
+  const tabUnerline = (active: any) => {
+    let style = {};
+    if (active === 'post') style = { left: '0%' };
+    else if (active === 'series') style = { left: '33.3333%' };
+    // else if (active === 'about') style = { left: '66.6666%' };
+    else if (active === 'about') style = { left: '50%' };
+    return style;
   };
   return (
     <Fragment>

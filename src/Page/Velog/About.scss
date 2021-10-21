@@ -65,9 +65,23 @@
   font-size: 1.125rem;
 }
 
-.abouWriteWrapper {
+.aboutContentWrapper {
+  width: 768px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.aboutWrite {
-  border: none;
-  display: none;
+.aboutContent {
+  font-size: 1.125rem;
+  color: rgb(34, 36, 38);
+  line-height: 1.7;
+  letter-spacing: -0.004em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.aboutContent p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }

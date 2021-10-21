@@ -6,16 +6,16 @@ import VelogHeader from './VelogHeader';
 import AboutTab from './AboutTab';
 import UserPostsTab from './UserPostsTab';
 
-const UserPage: React.FC = ({ match, history }: any) => {
+const UserPage: React.FC = ({ match }: any) => {
   const { username, tab } = match.params;
   console.log(`tab : ${tab}`);
   let [active, setActive] = useState(tab === undefined ? 'post' : tab);
 
   return (
-    <div>
+    <div className="velogUserPageWrapper">
       <Header></Header>
       <div className="velogWrapper">
-        <VelogHeader username={username} active={active} setActive={setActive} />
+        <VelogHeader username={username} active={active} setActive={setActive} match={match} />
         <Route path="/@:username" exact component={UserPostsTab} />
         <Route path="/@:username/about" component={AboutTab} />
       </div>
