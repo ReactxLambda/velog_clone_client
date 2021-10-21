@@ -60,7 +60,7 @@ export const ContentsViewerPage: React.FC<ContentsViewerPageType> = ({
             </div>
           ))}
         </div>
-        <div id="markdown-viewer" className={'contents-viewer'}>
+        <div id="markdown-viewer" className={'viewerPage_contents_viewer'}>
           {contents}
         </div>
         {/* <div className={'ViewerPage_warpper_editor_like_container'}>like container</div> */}
