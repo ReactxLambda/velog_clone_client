@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router';
 import BottomBar from '../../Component/ContentsEditing/BottomBar';
 import { BottomButtonBar } from '../../Component/UserCreate/BottomButtonBar';
 import { UserCreateInput } from '../../Component/UserCreate/UserCreateInput';
 import './Style/UserCreatePage.scss';
 type UserCreatePageType = {};
 const UserCreatePage: React.FC<UserCreatePageType> = ({}) => {
+  const location = useLocation();
+  const locationData: any = location.state;
+  const userName: string = locationData.userName;
   const [userName_c, setUserName_c] = useState('');
-  const [userId_c, setUserId_c] = useState('');
+  const [userId_c, setUserId_c] = useState(userName);
   const [userIntroduce_c, setUserIntroduce_c] = useState('');
+
   return (
     <div className="UserCreatePage_wrapper">
       <h1 className="UserCreatePage_Hello">환영합니다!</h1>
       <div className="UserCreatePage_Hello_description">기본 회원 정보를 등록해주세요.</div>
       <div className="UserCreatePage_contents">
         <UserCreateInput label={'이름'} input={userName_c} setInput={setUserName_c} placeholder={'이름을 입력하세요'} />
-        <UserCreateInput label={'아이디'} input={userId_c} setInput={setUserId_c} />
+        <UserCreateInput label={'아이디'} input={userId_c} setInput={setUserId_c} placeholder={'아이디를 입력하세요'} />
         <UserCreateInput
           label={'한줄 소개'}
           input={userIntroduce_c}

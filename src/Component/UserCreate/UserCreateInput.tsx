@@ -18,6 +18,7 @@ export const UserCreateInput: React.FC<UserCreateInputType> = ({ label, input, s
         <div className={'UserCreateInput_input_wrapper'}>
           <input
             className={'UserCreateInput_input'}
+            value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={placeholder}
           />

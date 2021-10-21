@@ -8,18 +8,23 @@ const responseGoogle = async (
   isSuccess: boolean,
   setUserName: (p1: string) => void,
   setUserImage: (p1: string) => void,
-  setIsUserExist: (p1: boolean) => void,
+  setIsUserExistMap: (any: any) => void,
+  userName: string,
 ): Promise<void> => {
   console.log(response);
   if (isSuccess) {
     const googleId: string = response.googleId;
-    const googleNickName: string = response.profileObj.name;
     const googleEmail: string = response.profileObj.email;
+    const googleNickName: string = googleEmail.split('@')[0];
     const googleIdImage: string = response.profileObj.imageUrl;
-    if (!(await isUserExist(googleId))) {
+
+    if (await isUserExist(googleId)) {
       // insertUser(googleId, googleEmail, googleIdImage);
+      userName = googleNickName;
+
+      console.log(userName);
       console.log('User is not exist');
-      setIsUserExist(false);
+      setIsUserExistMap({ userName: userName, isUserExist: false });
     } else {
       setUserName(googleNickName);
       setUserImage(googleIdImage);
@@ -29,19 +34,22 @@ const responseGoogle = async (
 };
 
 type GoogleOAuthButtonType = {
+  userName: string;
   setUserName: (p1: string) => void;
   setUserImage: (p1: string) => void;
 };
 const GoogleOAuthButton: React.FC<GoogleOAuthButtonType> = ({ setUserName, setUserImage }) => {
   console.log(process.env.REACT_APP_CLIENT_ID as string);
-  const [isUserExist, setIsUserExist] = useState(true);
+  const [isUserExistMap, setIsUserExistMap] = useState({ userName: '', isUserExist: true });
   const history = useHistory();
+  var userName = '';
 
   useEffect(() => {
-    if (!isUserExist) {
-      history.push('/register');
+    if (!isUserExistMap.isUserExist) {
+      console.log('하이');
+      history.push({ pathname: '/register', state: { userName: isUserExistMap.userName } });
     }
-  }, [isUserExist]);
+  }, [isUserExistMap]);
 
   return (
     <GoogleLogin
@@ -52,8 +60,8 @@ const GoogleOAuthButton: React.FC<GoogleOAuthButtonType> = ({ setUserName, setUs
         </button>
       )}
       buttonText="Login"
-      onSuccess={(res) => responseGoogle(res, true, setUserName, setUserImage, setIsUserExist)}
-      onFailure={(res) => responseGoogle(res, false, setUserName, setUserImage, setIsUserExist)}
+      onSuccess={(res) => responseGoogle(res, true, setUserName, setUserImage, setIsUserExistMap, userName)}
+      onFailure={(res) => responseGoogle(res, false, setUserName, setUserImage, setIsUserExistMap, userName)}
       cookiePolicy={'single_host_origin'}
     />
   );

@@ -7,11 +7,13 @@ type HeaderButtonContainerType = {
   userImage: string;
   setUserName: (p1: string) => void;
   setUserImage: (p1: string) => void;
+  userName: string;
 };
 export const HeaderButtonContainer: React.FC<HeaderButtonContainerType> = ({
   userImage,
   setUserName,
   setUserImage,
+  userName,
 }) => {
   const test: boolean = true;
   // const userImage = UserInfoStore.getState().userImageLink;
@@ -22,7 +24,7 @@ export const HeaderButtonContainer: React.FC<HeaderButtonContainerType> = ({
       </IconButton>
       {userImage === '' ? (
         <div>
-          <GoogleOAuthButton setUserName={setUserName} setUserImage={setUserImage} />
+          <GoogleOAuthButton userName={userName} setUserName={setUserName} setUserImage={setUserImage} />
         </div>
       ) : (
         <Fragment>

@@ -16,7 +16,12 @@ export const Header: React.FC<HeaderType> = ({ userImage, userName, setUserName,
     <div className={'velog_header_wrapper'}>
       <div className={'velog_header'}>
         <UserNameLogContainer userName={userName} />
-        <HeaderButtonContainer userImage={userImage} setUserName={setUserName} setUserImage={setUserImage} />
+        <HeaderButtonContainer
+          userName={userName}
+          userImage={userImage}
+          setUserName={setUserName}
+          setUserImage={setUserImage}
+        />
       </div>
     </div>
   );
