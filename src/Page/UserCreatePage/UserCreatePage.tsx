@@ -3,12 +3,15 @@ import { useLocation } from 'react-router';
 import BottomBar from '../../Component/ContentsEditing/BottomBar';
 import { BottomButtonBar } from '../../Component/UserCreate/BottomButtonBar';
 import { UserCreateInput } from '../../Component/UserCreate/UserCreateInput';
+import { insertUser } from '../../Query/UserQuery';
 import './Style/UserCreatePage.scss';
 type UserCreatePageType = {};
 const UserCreatePage: React.FC<UserCreatePageType> = ({}) => {
   const location = useLocation();
   const locationData: any = location.state;
   const userName: string = locationData.userName;
+  const userEmail: string = locationData.userEmail;
+  const userImage: string = locationData.userImage;
   const [userName_c, setUserName_c] = useState('');
   const [userId_c, setUserId_c] = useState(userName);
   const [userIntroduce_c, setUserIntroduce_c] = useState('');
@@ -27,7 +30,13 @@ const UserCreatePage: React.FC<UserCreatePageType> = ({}) => {
           placeholder={'당신을 한 줄로 소개해보세요'}
         />
       </div>
-      <BottomButtonBar userName_c={userName_c} userId_c={userId_c} userIntroduce_c={userIntroduce_c}></BottomButtonBar>
+      <BottomButtonBar
+        userImage={userImage}
+        userEmail={userEmail}
+        userName_c={userName_c}
+        userId_c={userId_c}
+        userIntroduce_c={userIntroduce_c}
+      ></BottomButtonBar>
     </div>
   );
 };

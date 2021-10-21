@@ -24,7 +24,7 @@ const responseGoogle = async (
 
       console.log(userName);
       console.log('User is not exist');
-      setIsUserExistMap({ userName: userName, isUserExist: false });
+      setIsUserExistMap({ userName: userName, userEmail: googleEmail, userImage: googleIdImage, isUserExist: false });
     } else {
       setUserName(googleNickName);
       setUserImage(googleIdImage);
@@ -40,14 +40,26 @@ type GoogleOAuthButtonType = {
 };
 const GoogleOAuthButton: React.FC<GoogleOAuthButtonType> = ({ setUserName, setUserImage }) => {
   console.log(process.env.REACT_APP_CLIENT_ID as string);
-  const [isUserExistMap, setIsUserExistMap] = useState({ userName: '', isUserExist: true });
+  const [isUserExistMap, setIsUserExistMap] = useState({
+    userName: '',
+    userEmail: '',
+    userImage: '',
+    isUserExist: true,
+  });
   const history = useHistory();
   var userName = '';
 
   useEffect(() => {
     if (!isUserExistMap.isUserExist) {
       console.log('하이');
-      history.push({ pathname: '/register', state: { userName: isUserExistMap.userName } });
+      history.push({
+        pathname: '/register',
+        state: {
+          userName: isUserExistMap.userName,
+          userEmail: isUserExistMap.userEmail,
+          userImage: isUserExistMap.userImage,
+        },
+      });
     }
   }, [isUserExistMap]);
 
