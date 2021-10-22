@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 import { CodeMirrorWrapper } from '../Global/Codemirror/CodemirrorWrapper';
-import './About.scss';
+import './AboutTab.scss';
 const AboutTab: React.FC = ({ match }: any) => {
   //I : 소개글 없을 경우
   //E : 소개글 작성할 수 있는 경우
