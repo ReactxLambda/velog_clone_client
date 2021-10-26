@@ -19,7 +19,7 @@ const responseGoogle = async (
     const googleNickName: string = googleEmail.split('@')[0];
     const googleIdImage: string = response.profileObj.imageUrl;
 
-    if (!(await isUserExist(googleId))) {
+    if (await isUserExist(googleId)) {
       // insertUser(googleId, googleEmail, googleIdImage);
       userName = googleNickName;
       console.log(userName);

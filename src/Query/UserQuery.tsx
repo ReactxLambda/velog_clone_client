@@ -17,25 +17,27 @@ query {
 `;
 
 const userInsertMutation = (
-  id: string,
-  email: string,
   velog_name: string,
+  email: string,
   image: string,
-  token: string,
   password?: string,
   introduction?: string,
 ) => `
 mutation {
   createOneuser(data: { 
-      id: "${id}",
+      id: "${velog_name}",
       password: "${password !== undefined ? password : ''}",
       email: "${email}",
-      velog_name : "${velog_name}",
-      token : "${token}"
       introduction: "${introduction !== undefined ? introduction : ''}",
       image: "${image}" }) 
       {
-          id
+        id
+        email
+        velog_name
+        introduction
+        image
+        social
+        token
       }
 }
 `;
@@ -59,13 +61,16 @@ export const insertUser = async (
   token: string,
   introduction?: string,
   password?: string,
-): Promise<boolean> => {
+): Promise<UserType> => {
   const response: any = await client.mutate({
-    mutation: gqlLogger(userInsertMutation(id, email, velog_name, image, token, password, introduction)),
+    mutation: gqlLogger(
+      userInsertMutation((velog_name = velog_name + 15), (email = email + 15), image, password, introduction),
+    ),
   });
   console.log(`Id : ${response.data.createOneuser.id}`);
-  if (response.data.createOneuser.id === null) return false;
-  else return true;
+  return response.data.createOneuser as UserType;
+  // if (response.data.createOneuser.id === null) return false;
+  // else return true;
 };
 
 export const isUserExist = async (userId: string): Promise<boolean> => {

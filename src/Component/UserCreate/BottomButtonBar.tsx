@@ -1,5 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import { setUserStorage } from '../../Common/UserLocalStorage';
+import { UserType } from '../../Page/Global/GlobalType/GlobalType';
 import { insertUser } from '../../Query/UserQuery';
 import './Style/BottomButtonBar.scss';
 type BottomButtonBarType = {
@@ -16,8 +18,10 @@ export const BottomButtonBar: React.FC<BottomButtonBarType> = ({
   userIntroduce_c,
   userEmail,
 }) => {
-  const onClick = () => {
-    insertUser(userId_c, userEmail, userName_c, userImage, userIntroduce_c, '');
+  const onClick = async () => {
+    const result: UserType = await insertUser(userId_c, userEmail, userName_c, userImage, userIntroduce_c, '');
+    setUserStorage(result);
+    if (result) history.goBack();
   };
   const history = useHistory();
   const onBackClick = () => {
