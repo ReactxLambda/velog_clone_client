@@ -37,7 +37,7 @@ function App() {
         <Switch>
           <CssBaseline>
             <Route path="/" component={HomePage} exact />
-            <Route path="/:mode(trending|recent|following)" component={() => <HomePage />} />
+            <Route path="/:mode(trending|recent|following)" component={HomePage} />
             <Route path="/write" component={ContentsEditing} exact />
             <Route path="/viewer" component={() => <ContentsViewerPage />} />
             {/* 임시 path*/}
