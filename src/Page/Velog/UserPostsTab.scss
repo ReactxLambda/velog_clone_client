@@ -170,6 +170,7 @@
 .tagsWrapper {
   margin-bottom: -0.875rem;
 }
+
 .velogContents .subInfo {
   display: flex;
   -webkit-box-align: center;
@@ -178,7 +179,7 @@
   color: rgb(134, 142, 150);
   font-size: 0.875rem;
 }
-.velogContents .separator {
+.velogContents .subInfoSeparator {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
@@ -198,6 +199,27 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
+}
+
+.nonePosts {
+  width: 100%;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+
+.nonePosts img {
+  width: 20rem;
+}
+
+.noneMessage {
+  font-size: 2rem;
+  color: rgb(134, 142, 150);
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 768px) {

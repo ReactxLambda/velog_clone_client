@@ -1,0 +1,87 @@
+.tagsHeaderWrapper {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+.tagsHeader {
+  display: flex;
+  position: relative;
+}
+
+.tagsHeader a {
+  width: 8rem;
+  height: 3rem;
+  font-size: 1.125rem;
+  color: rgb(134, 142, 150);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.tagActive {
+  font-weight: bold !important;
+  color: rgb(32, 201, 151) !important;
+}
+
+.tagTabUnderline {
+  height: 2px;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  background: rgb(32, 201, 151);
+  width: 50%;
+}
+
+.tagsContents {
+  margin: 4rem auto 0px;
+  width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tagContent {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 25%;
+  height: 12rem;
+}
+
+.tagCount {
+  font-size: 0.875rem;
+  color: rgb(173, 181, 189);
+}
+.tagTitle {
+  margin-bottom: 0.875rem;
+  background: rgb(241, 243, 245);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 2rem;
+  border-radius: 1rem;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-right: 0.875rem;
+  color: rgb(12, 166, 120);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.tagContent p {
+  margin-top: 0.125rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  font-size: 0.875rem;
+  color: rgb(73, 80, 87);
+  line-height: 1.5;
+}
