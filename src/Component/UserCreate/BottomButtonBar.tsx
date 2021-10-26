@@ -17,7 +17,7 @@ export const BottomButtonBar: React.FC<BottomButtonBarType> = ({
   userEmail,
 }) => {
   const onClick = () => {
-    insertUser(userId_c, userEmail, userImage, userIntroduce_c, '');
+    insertUser(userId_c, userEmail, userName_c, userImage, userIntroduce_c, '');
   };
   const history = useHistory();
   const onBackClick = () => {

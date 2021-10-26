@@ -2,7 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import GoogleLogin from 'react-google-login';
 import { useHistory } from 'react-router-dom';
 import { getUserInfo, insertUser, isUserExist } from '../Query/UserQuery';
-
+import { UserType } from '../Page/Global/GlobalType/GlobalType';
+import { setUserStorage } from './UserLocalStorage';
 const responseGoogle = async (
   response: any,
   isSuccess: boolean,
@@ -18,15 +19,18 @@ const responseGoogle = async (
     const googleNickName: string = googleEmail.split('@')[0];
     const googleIdImage: string = response.profileObj.imageUrl;
 
-    if (await isUserExist(googleId)) {
+    if (!(await isUserExist(googleId))) {
       // insertUser(googleId, googleEmail, googleIdImage);
       userName = googleNickName;
       console.log(userName);
       console.log('User is not exist');
       setIsUserExistMap({ userName: userName, userEmail: googleEmail, userImage: googleIdImage, isUserExist: false });
     } else {
-      setUserName(googleNickName);
-      setUserImage(googleIdImage);
+      const userInfo: UserType = await getUserInfo(googleId);
+      setUserStorage(userInfo);
+      // window.localStorage.setItem('CURRENT_USER', JSON.stringify(CURRENT_USER));
+      setUserName(userInfo.velog_name);
+      setUserImage(userInfo.image);
       console.log('User is exist');
     }
   }
@@ -50,7 +54,6 @@ const GoogleOAuthButton: React.FC<GoogleOAuthButtonType> = ({ setUserName, setUs
 
   useEffect(() => {
     if (!isUserExistMap.isUserExist) {
-      console.log('하이');
       history.push({
         pathname: '/register',
         state: {

@@ -14,9 +14,6 @@ function App() {
   const [textContents, setTextContents] = useState('');
   const markdownViewer = false;
 
-  const [userName, setUserName] = useState('');
-  const [userImage, setUserImage] = useState('');
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -36,29 +33,9 @@ function App() {
         <Switch>
           <CssBaseline>
             <Route path="/" component={HomePage} exact />
-            <Route
-              path="/:mode(trending|recent|following)"
-              component={() => (
-                <HomePage
-                  userName={userName}
-                  setUserName={setUserName}
-                  userImage={userImage}
-                  setUserImage={setUserImage}
-                />
-              )}
-            />
+            <Route path="/:mode(trending|recent|following)" component={() => <HomePage />} />
             <Route path="/write" component={ContentsEditing} exact />
-            <Route
-              path="/viewer"
-              component={() => (
-                <ContentsViewerPage
-                  userName={userName}
-                  setUserName={setUserName}
-                  userImage={userImage}
-                  setUserImage={setUserImage}
-                />
-              )}
-            />
+            <Route path="/viewer" component={() => <ContentsViewerPage />} />
             {/* 임시 path*/}
             <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
             <Route path="/test" component={TestPage} />

@@ -1,21 +1,7 @@
 import client from '../Common/apollo';
 import { gql } from '@apollo/client';
+import { UserType } from '../Page/Global/GlobalType/GlobalType';
 
-export type social = {
-  git: string;
-  home: string;
-  email: string;
-};
-
-export type UserType = {
-  id: string;
-  email: string;
-  velog_name: string;
-  introduction: string;
-  image: string;
-  social: social;
-  token: string;
-};
 const userInfoQuery = (userId: string): string => `
 query {
   user(where: { id: "${userId}" }) {
@@ -30,12 +16,22 @@ query {
 }
 `;
 
-const userInsertMutation = (id: string, email: string, image: string, password?: string, introduction?: string) => `
+const userInsertMutation = (
+  id: string,
+  email: string,
+  velog_name: string,
+  image: string,
+  token: string,
+  password?: string,
+  introduction?: string,
+) => `
 mutation {
   createOneuser(data: { 
       id: "${id}",
       password: "${password !== undefined ? password : ''}",
       email: "${email}",
+      velog_name : "${velog_name}",
+      token : "${token}"
       introduction: "${introduction !== undefined ? introduction : ''}",
       image: "${image}" }) 
       {
@@ -51,19 +47,21 @@ export const getUserInfo = async (userId: string): Promise<UserType> => {
   const response: any = await client.query({
     query: gqlLogger(userInfoQuery(userId)),
   });
-  const userInfo: UserType = response.data;
+  const userInfo: UserType = response.data.user;
   return userInfo;
 };
 
 export const insertUser = async (
   id: string,
   email: string,
+  velog_name: string,
   image: string,
+  token: string,
   introduction?: string,
   password?: string,
 ): Promise<boolean> => {
   const response: any = await client.mutate({
-    mutation: gqlLogger(userInsertMutation(id, email, image, password, introduction)),
+    mutation: gqlLogger(userInsertMutation(id, email, velog_name, image, token, password, introduction)),
   });
   console.log(`Id : ${response.data.createOneuser.id}`);
   if (response.data.createOneuser.id === null) return false;
