@@ -9,7 +9,7 @@ import SavingComponent from '../../Component/ContentsEditing/SavingComponent/Sav
 
 const ContentsEditing: React.FC = () => {
   const [contents, setContents] = useState(''); // Text contents
-  const [viewerContents, setViewerContents] = useState(''); // view contents
+  const [viewerContents, setViewerContents] = useState('하하하하하하'); // view contents
   const [header, setHeader] = useState(''); // set view header
   const [tags, setTags]: [string[], (any: any) => void] = useState([]);
   const [isShowSavingComponent, setIsShowSavingComponent] = useState(false);
