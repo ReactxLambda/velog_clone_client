@@ -3,6 +3,7 @@ import { ArrowDropDown, Search } from '@material-ui/icons';
 import React, { Fragment } from 'react';
 import GoogleOAuthButton from '../../../Common/GoogleOAuthButton';
 import { Link } from 'react-router-dom';
+import { MenuContainer } from './Menu';
 type HeaderButtonContainerType = {
   userImage: string;
   setUserName: (p1: string) => void;
@@ -33,7 +34,7 @@ export const HeaderButtonContainer: React.FC<HeaderButtonContainerType> = ({
           </Link>
           <div className="velog_header_button_container_user_menu">
             <img src={userImage} />
-            <ArrowDropDown />
+            <MenuContainer />
           </div>
         </Fragment>
       )}

@@ -10,9 +10,9 @@ const UserCreatePage: React.FC<UserCreatePageType> = ({}) => {
   const location = useLocation();
   const history = useHistory();
   const locationData: any = location.state;
-  const userName: string = locationData.userName;
-  const userEmail: string = locationData.userEmail;
-  const userImage: string = locationData.userImage;
+  const userName: string = locationData !== undefined ? locationData.userName : '';
+  const userEmail: string = locationData !== undefined ? locationData.userEmail : '';
+  const userImage: string = locationData !== undefined ? locationData.userImage : '';
   const [userName_c, setUserName_c] = useState('');
   const [userId_c, setUserId_c] = useState(userName);
   const [userIntroduce_c, setUserIntroduce_c] = useState('');
