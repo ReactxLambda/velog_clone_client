@@ -2,7 +2,7 @@ import { IconButton } from '@material-ui/core';
 import { ArrowDropDown, Search } from '@material-ui/icons';
 import React, { Fragment } from 'react';
 import GoogleOAuthButton from '../../../Common/GoogleOAuthButton';
-// import { UserInfoStore } from '../../../Store/user';
+import { Link } from 'react-router-dom';
 type HeaderButtonContainerType = {
   userImage: string;
   setUserName: (p1: string) => void;
@@ -16,7 +16,7 @@ export const HeaderButtonContainer: React.FC<HeaderButtonContainerType> = ({
   userName,
 }) => {
   const test: boolean = true;
-  // const userImage = UserInfoStore.getState().userImageLink;
+  const handleNewPost = () => {};
   return (
     <div className={'velog_header_button_container'}>
       <IconButton>
@@ -28,7 +28,9 @@ export const HeaderButtonContainer: React.FC<HeaderButtonContainerType> = ({
         </div>
       ) : (
         <Fragment>
-          <button className="velog_header_button_container_new_post">새 글 작성</button>
+          <Link to="/write">
+            <button className="velog_header_button_container_new_post">새 글 작성</button>
+          </Link>
           <div className="velog_header_button_container_user_menu">
             <img src={userImage} />
             <ArrowDropDown />

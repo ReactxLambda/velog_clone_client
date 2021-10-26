@@ -9,6 +9,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ContentsViewerPage } from './Page/ContentsViewerPage/ContentsViewerPage';
 import UserCreatePage from './Page/UserCreatePage/UserCreatePage';
 import './index.css';
+import VelogPage from './Page/Velog/VelogPage';
+
+import TagsPage from './Page/tags/TagsListPage';
+
 function App() {
   const markdownTextArea = true;
   const [textContents, setTextContents] = useState('');
@@ -40,6 +44,9 @@ function App() {
             <Route path="/lists/:type(liked|read)" component={ReadingListPage} />
             <Route path="/test" component={TestPage} />
             <Route path="/register" component={UserCreatePage} />
+            <Route path="/@:username" component={VelogPage} />
+            <Route path="/tags" component={TagsPage} />
+            {/* <Route path={['/@:username', '/@:username/:tab(series|about)']} component={UserPage} /> */}
           </CssBaseline>
         </Switch>
       </BrowserRouter>

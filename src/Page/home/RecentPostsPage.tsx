@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import PostCard from '../../Component/post/PostCard';
 import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
-
+import './PostsPage.scss';
 import Wrapper from '../../Component/post/Wrapper';
 import { gql } from '@apollo/client';
 import client from '../../Common/apollo';
@@ -155,7 +155,7 @@ const RecentPostsPage: React.FC = () => {
   // }, [data]);
 
   return (
-    <Box display="flex" flexWrap="wrap" mx={20} mt={3}>
+    <div className="posts_wrapper">
       {
         /*테스트
       Element {inView.toString()}*/
@@ -183,7 +183,7 @@ const RecentPostsPage: React.FC = () => {
           );
         })}
       {loading && posts.length == 0 && <h1>Loading 중입니다.</h1>}
-    </Box>
+    </div>
   );
 };
 export default RecentPostsPage;

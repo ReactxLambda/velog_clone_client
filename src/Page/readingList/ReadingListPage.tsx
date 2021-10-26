@@ -1,238 +1,26 @@
-import React, { Fragment, useState, useEffect, useCallback } from 'react';
-import PostCard from '../../Component/post/PostCard';
-import { Box, Container, Tab, Tabs } from '@material-ui/core';
-import { RouteComponentProps } from 'react-router-dom';
-import Wrapper from '../../Component/post/Wrapper';
-import { useInView } from 'react-intersection-observer';
+import React, { useState, useEffect } from 'react';
 
-const data = () => {
-  //받아서 넘길꺼니가아?
-  let array = [
-    {
-      id: ' 1',
-      title: 'title1',
-      content:
-        'content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1',
-      date: 'date1',
-      CntCmmt: 1,
-      fileURL: 'fileURL1',
-    },
-    {
-      id: '2',
-      title: 'title2',
-      content: 'content2',
-      date: 'date2',
-      CntCmmt: 2,
-      fileURL: 'fileUR2',
-    },
-    {
-      id: '3',
-      title: 'title3',
-      content: 'content3',
-      date: 'date3',
-      CntCmmt: 3,
-      fileURL: 'fileUR3',
-    },
-    {
-      id: '4',
-      title: 'title4',
-      content: 'content4',
-      date: 'date4',
-      CntCmmt: 4,
-      fileURL: 'fileUR4',
-    },
-    {
-      id: '5',
-      title: 'title5',
-      content: 'content5',
-      date: 'date5',
-      CntCmmt: 5,
-      fileURL: 'fileUR5',
-    },
-    {
-      id: '6',
-      title: 'title6',
-      content: 'content6',
-      date: 'date6',
-      CntCmmt: 6,
-      fileURL: 'fileUR6',
-    },
-    {
-      id: '7',
-      title: 'title7',
-      content: 'content7',
-      date: 'date7',
-      CntCmmt: 71,
-      fileURL: 'fileUR71',
-    },
-    {
-      id: ' 8',
-      title: 'title8',
-      content: 'content8',
-      date: 'date8',
-      CntCmmt: 81,
-      fileURL: 'fileUR81',
-    },
+import { RouteComponentProps, Route } from 'react-router-dom';
+import { Header } from '../Global/Header/Header';
 
-    {
-      id: '9',
-      title: 'title9',
-      content: 'content9',
-      date: 'date9',
-      CntCmmt: 91,
-      fileURL: 'fileUR91',
-    },
-    {
-      id: '10',
-      title: 'title10',
-      content: 'content10',
-      date: 'date10',
-      CntCmmt: 10,
-      fileURL: 'fileURL10',
-    },
-    {
-      id: '11',
-      title: 'title11',
-      content: 'content11',
-      date: 'date11',
-      CntCmmt: 111,
-      fileURL: 'fileUR111',
-    },
-    {
-      id: '12',
-      title: 'title12',
-      content: 'content12',
-      date: 'date12',
-      CntCmmt: 121,
-      fileURL: 'fileUR121',
-    },
+import LikedPostsPage from './LikedPostsPage';
+import ReadingMenus from './ReadingMenus';
+import ReadPostsPage from './ReadPostsPage';
 
-    {
-      id: '13',
-      title: 'title13',
-      content: 'content13',
-      date: 'date13',
-      CntCmmt: 131,
-      fileURL: 'fileUR131',
-    },
-    {
-      id: '14',
-      title: 'title14',
-      content: 'content14',
-      date: 'date14',
-      CntCmmt: 141,
-      fileURL: 'fileUR141',
-    },
-    {
-      id: '15',
-      title: 'title15',
-      content: 'content15',
-      date: 'date15',
-      CntCmmt: 151,
-      fileURL: 'fileUR151',
-    },
-    {
-      id: '16',
-      title: 'title16',
-      content: 'content16',
-      date: 'date16',
-      CntCmmt: 161,
-      fileURL: 'fileUR161',
-    },
-  ];
-
-  return array;
-};
 type ReadingListPageProps = {} & RouteComponentProps<{
-  type: 'liked' | 'read';
+  type: string;
 }>;
-const ReadingListPage: React.FC<ReadingListPageProps> = ({ match }) => {
-  const { type } = match.params;
-  console.log(type);
-
-  let [dataArray, setDataArray] = useState(data);
-
-  const [value, setValue] = useState(0);
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
-  };
-
-  const [items, setItems] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-
-  const [ref, inView] = useInView();
-  console.log('ref의 타입은????? : ', typeof ref);
-
-  // 서버에서 아이템을 가지고 오는 함수
-  const getItems = useCallback(async () => {
-    // setLoading(true)
-    // await axios.get(`${Your Server Url}/page=${page}`).then((res) => {
-    //   setItems(prevState => [...prevState, res])
-    // })
-    // setLoading(false)
-    console.log('계속 불러오나? ');
-  }, [page]);
-
-  // `getItems` 가 바뀔 때 마다 함수 실행
-  useEffect(() => {
-    getItems();
-  }, [getItems]);
-
-  useEffect(() => {
-    // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
-    console.log('befor inView : ', inView);
-    console.log('befor loading : ', loading);
-    if (inView && !loading) {
-      setPage((prevState) => prevState + 1);
-    }
-    console.log('after inView : ', inView);
-    console.log('after loading : ', loading);
-  }, [inView, loading]);
+const ReadingListPage: React.FC<ReadingListPageProps> = ({ match, history }) => {
+  const [type, setType] = useState(match.url === '/lists/read' ? true : false);
   return (
-    <div
-      style={{
-        overflowY: 'auto',
-        height: '100%',
-      }}
-    >
-      <h3>읽기목록</h3>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        variant="fullWidth"
-        indicatorColor="primary"
-        textColor="primary"
-        aria-label="icon label tabs example"
-      >
-        <Tab label="좋아한 포스트" />
-        <Tab label="최근 읽은 포스트" />
-      </Tabs>
-      <div
-        style={{
-          height: '600px',
-        }}
-      >
-        <Box display="flex" flexWrap="wrap" mx={25} mt={3}>
-          {/*테스트
-      Element {inView.toString()}*/}
-          {dataArray.map((value, idx) => {
-            console.log('dataArray.length  : ', dataArray.length);
-            console.log('idx  : ', idx);
-
-            return (
-              <Fragment>
-                {/* {dataArray.length - 1 == idx ? (
-                  <Wrapper ref={ref}>
-                    <PostCard post={value}></PostCard>
-                  </Wrapper>
-                ) : (
-                  <PostCard post={value}></PostCard>
-                )} */}
-              </Fragment>
-            );
-          })}
-        </Box>
+    <div>
+      <Header></Header>
+      <div className="homepage_container">
+        <ReadingMenus type={type} history={history} />
+        <div className="homepage_contents">
+          <Route path={['/lists/liked']} component={LikedPostsPage} />
+          <Route path={['/lists/read']} component={ReadPostsPage} />
+        </div>
       </div>
     </div>
   );

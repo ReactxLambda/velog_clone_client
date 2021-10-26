@@ -2,17 +2,14 @@ import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import PostCard from '../../Component/post/PostCard';
 import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
+import '../home/PostsPage.scss';
 import Wrapper from '../../Component/post/Wrapper';
-
 import { gql } from '@apollo/client';
 import client from '../../Common/apollo';
 import { useQuery, NetworkStatus } from '@apollo/react-hooks';
-import { RouteComponentProps } from 'react-router-dom';
-import './PostsPage.scss';
-
 //https://slog.website/post/8
-type TrendingPostsPage = { term: string };
-const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
+
+const LikedPostsPage: React.FC = () => {
   // const [items, setItems] = useState([]);
   // const [page, setPage] = useState(1);
   // const [loading, setLoading] = useState(false);
@@ -26,16 +23,13 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
   // let [count, setCount] = useState(12);
   // let count = 12;
   const [count, setCount]: [number, (number: number) => void] = useState(8);
-  console.log(`trending term : ${term}`);
+
   const GET_POST = gql`
     query {
-      posts_trend(
-        take:8,
-        interval : "${term}"
-      ) {
+      posts(take: 8, orderBy: { created_at: desc }) {
         id
         thumbnail
-        title 
+        title
         url
         user_id
         content
@@ -88,12 +82,9 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
     console.log('loading', loading);
     console.log('loading networkStatus : ', networkStatus);
 
-    if (!loading && data !== undefined) {
-      setPosts(posts.concat(data.posts_trend));
+    if (!loading) {
+      setPosts(posts.concat(data.posts));
     }
-    // else if (!loading && data === undefined) {
-    //   setPosts([]);
-    // }
   }, [loading]);
 
   // const fetchPosts = async () => {
@@ -114,10 +105,12 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
         .query({
           query: gql`
             query {
-              posts_trend (
+              posts (
+                orderBy : {
+                  created_at : desc
+                } ,
                 take : 4,
-                skip:${count},
-                interval : "${term}"
+                skip:${count}
               ){
                 id
                 thumbnail
@@ -133,14 +126,14 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
                 }
               }
             }
-      `,
+          `,
         })
         .then((response) => {
           console.log('count :', count);
-          console.log('response.data.posts_trend.length  :', response.data.posts_trend.length);
-          if (response.data.posts_trend.length === 0) {
-          } else if (response.data.posts_trend.length != 0) {
-            setPosts(posts.concat(response.data.posts_trend));
+          console.log('response.data.posts.length  :', response.data.posts.length);
+          if (response.data.posts.length === 0) {
+          } else if (response.data.posts.length != 0) {
+            setPosts(posts.concat(response.data.posts));
           }
         });
 
@@ -155,19 +148,11 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
   // useEffect(() => {
   //   console.log('loading : ', loading);
   //   console.log('data : ', data);
-  //   if (!loading && data.posts_trend.length > 0) {
+  //   if (!loading && data.posts.length > 0) {
   //     console.log('posts에 state 값 set ');
-  //     // setPosts(posts.concat(data.posts_trend));
+  //     // setPosts(posts.concat(data.posts));
   //   }
   // }, [data]);
-
-  const onSignIn = (googleUser:any) => {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  }
 
   return (
     <div className="posts_wrapper">
@@ -198,8 +183,7 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
           );
         })}
       {loading && posts.length == 0 && <h1>Loading 중입니다.</h1>}
-      {!loading && posts.length == 0 && <h1>데이터가 존재하지 않습니다.</h1>}
     </div>
   );
 };
-export default TrendingPostsPage;
+export default LikedPostsPage;

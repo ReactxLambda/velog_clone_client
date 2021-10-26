@@ -14,7 +14,6 @@ export const CodeMirrorWrapper: React.FC<CodeMirrorWrapperType> = ({ value, onCh
     <Fragment>
       <CodeMirror
         options={{
-          value: value,
           mode: 'markdown',
           styleActiveLine: true,
           line: true,
@@ -23,6 +22,7 @@ export const CodeMirrorWrapper: React.FC<CodeMirrorWrapperType> = ({ value, onCh
           allowDropFileTypes: ['png'],
           placeholder: placeholder,
         }}
+        value={value}
         onChange={(editor: any, data: any, value: string): void => {
           onChange(value);
         }}
