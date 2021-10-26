@@ -13,6 +13,8 @@ import VelogPage from './Page/Velog/VelogPage';
 
 import TagsPage from './Page/tags/TagsListPage';
 
+import SavesPage from './Page/SavesPage';
+
 function App() {
   const markdownTextArea = true;
   const [textContents, setTextContents] = useState('');
@@ -46,6 +48,7 @@ function App() {
             <Route path="/register" component={UserCreatePage} />
             <Route path="/@:username" component={VelogPage} />
             <Route path="/tags" component={TagsPage} />
+            <Route path="/saves" component={SavesPage} />
             {/* <Route path={['/@:username', '/@:username/:tab(series|about)']} component={UserPage} /> */}
           </CssBaseline>
         </Switch>

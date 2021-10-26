@@ -1,0 +1,59 @@
+.savesPagesWrapper {
+  width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+}
+
+.savesPagesWrapper h1 {
+  line-height: 1.5;
+  font-size: 3rem;
+  margin-top: 0px;
+  margin-bottom: 3rem;
+  color: rgb(52, 58, 64);
+}
+
+.saveContent {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.saveContent h3 {
+  font-size: 1.5rem;
+  margin-top: 0px;
+  margin-bottom: 1.5rem;
+  color: rgb(52, 58, 64);
+}
+.saveContent a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.saveContent p {
+  font-size: 1rem;
+  margin-top: 0px;
+  margin-bottom: 1rem;
+  color: rgb(73, 80, 87);
+}
+
+.savesSubInfo {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.savesSubInfoTime {
+  color: rgb(134, 142, 150);
+}
+.savesSubInfoRemove {
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgb(52, 58, 64);
+  outline: none;
+  border: none;
+  background: none;
+  font-size: inherit;
+  padding: 0 px;
+}
