@@ -8,34 +8,24 @@ import { gql } from '@apollo/client';
 import client from '../../Common/apollo';
 import { useQuery, NetworkStatus } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router-dom';
+import './PostsPage.scss';
+
 //https://slog.website/post/8
-type TrendingPostsPage = {} & RouteComponentProps<{
-  type: 'day' | 'week' | 'month' | 'year';
-}>;
-const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ match }) => {
-  let { type } = match.params;
-  if (type == undefined) type = 'week';
-
-  console.log(type);
-  // const [items, setItems] = useState([]);
-  // const [page, setPage] = useState(1);
-  // const [loading, setLoading] = useState(false);
-
+type TrendingPostsPage = { term: string };
+const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
   //게시물 리스트
   let [posts, setPosts] = useState([]);
   const [ref, inView] = useInView({
     threshold: 0.5, // 해당 부분이 50%이상 보일 때 0~1사이
   });
 
-  // let [count, setCount] = useState(12);
-  // let count = 12;
   const [count, setCount]: [number, (number: number) => void] = useState(8);
-
+  console.log(`trending term : ${term}`);
   const GET_POST = gql`
     query {
       posts_trend(
         take:8,
-        interval : "${type}"
+        interval : "${term}"
       ) {
         id
         thumbnail
@@ -52,31 +42,6 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ match }) => {
       }
     }
   `;
-
-  // const GET_POST = gql`
-  // query($take : int!){
-  //   posts (
-  //     take:$take
-  //   ){
-  //     id
-  //     thumbnail
-  //     title
-  //     url
-  //     user_id
-  //     content
-  //     created_at
-  //     interest {
-  //       created_at
-  //       user {
-  //         id
-  //       }
-  //     }
-  //   }
-  // }
-  // `;
-
-  //https://www.apollographql.com/docs/react/pagination/core-api/#the-fetchmore-function
-  //fetchMore? reFecth?
 
   //refetch시 loading 동작 x -> networkStatus / notifyOnNetworkStatusChange: true 사용
   const { loading, error, data, fetchMore, networkStatus } = useQuery(GET_POST, {
@@ -121,7 +86,7 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ match }) => {
               posts_trend (
                 take : 4,
                 skip:${count},
-                interval : "${type}"
+                interval : "${term}"
               ){
                 id
                 thumbnail
@@ -148,7 +113,6 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ match }) => {
           }
         });
 
-      // setPosts(posts.concat(data));
       console.log('함수 밖loading : ', loading);
       console.log('NetworkStatus : ', NetworkStatus.fetchMore);
       console.log('NetworkStatus : ', NetworkStatus.ready);
@@ -156,31 +120,19 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ match }) => {
     }
   }, [inView]);
 
-  // useEffect(() => {
-  //   console.log('loading : ', loading);
-  //   console.log('data : ', data);
-  //   if (!loading && data.posts_trend.length > 0) {
-  //     console.log('posts에 state 값 set ');
-  //     // setPosts(posts.concat(data.posts_trend));
-  //   }
-  // }, [data]);
+  const onSignIn = (googleUser: any) => {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  };
 
   return (
-    <Box display="flex" flexWrap="wrap" mx={20} mt={3}>
-      {
-        /*테스트
-      Element {inView.toString()}*/
-        // console.log(data);
-        console.log(posts)
-      }
-
+    <div className="posts_wrapper">
       {!loading &&
         posts.length > 0 &&
         posts.map((value, idx) => {
-          // console.log('posts.length  : ', posts.length);
-          // console.log('posts.length  : ', posts.length);
-          // console.log('idx  : ', idx);
-
           return (
             <Fragment>
               {posts.length - 1 == idx ? (
@@ -195,7 +147,7 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ match }) => {
         })}
       {loading && posts.length == 0 && <h1>Loading 중입니다.</h1>}
       {!loading && posts.length == 0 && <h1>데이터가 존재하지 않습니다.</h1>}
-    </Box>
+    </div>
   );
 };
 export default TrendingPostsPage;

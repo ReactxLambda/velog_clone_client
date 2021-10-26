@@ -15,6 +15,7 @@ const ButtonContainer: React.FC<ButtonContainerType> = ({ codeMirror, codeMirror
   const [lineHeight, setLineHeight] = useState(0);
   const [linkModalVisible, setLinkModalVisible] = useState(false);
   const [link, setLink] = useState('');
+
   const isEmptyString = (p1: string) => {
     return p1 === '' ? '텍스트' : p1;
   };

@@ -1,0 +1,39 @@
+.UserCreatePage_wrapper {
+  width: 768px;
+  margin: 100px auto 0px;
+  line-height: 1.5;
+  background: white;
+}
+
+.UserCreatePage_Hello {
+  font-size: 4rem;
+  color: rgb(33, 37, 41);
+  font-weight: bolder;
+  margin: 0px;
+}
+
+.UserCreatePage_Hello_description {
+  font-size: 1.5rem;
+  color: rgb(33, 37, 41);
+  margin-bottom: 1rem;
+}
+
+.UserCreatePage_contents {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .UserCreatePage_wrapper {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 4rem;
+  }
+  .UserCreatePage_Hello {
+    font-size: 3rem;
+  }
+  .UserCreatePage_Hello_description {
+    font-size: 1rem;
+  }
+}

@@ -2,14 +2,14 @@ import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import PostCard from '../../Component/post/PostCard';
 import { Box, Container } from '@material-ui/core';
 import { useInView } from 'react-intersection-observer';
-import './PostsPage.scss';
+import '../home/PostsPage.scss';
 import Wrapper from '../../Component/post/Wrapper';
 import { gql } from '@apollo/client';
 import client from '../../Common/apollo';
 import { useQuery, NetworkStatus } from '@apollo/react-hooks';
 //https://slog.website/post/8
 
-const RecentPostsPage: React.FC = () => {
+const LikedPostsPage: React.FC = () => {
   // const [items, setItems] = useState([]);
   // const [page, setPage] = useState(1);
   // const [loading, setLoading] = useState(false);
@@ -183,8 +183,7 @@ const RecentPostsPage: React.FC = () => {
           );
         })}
       {loading && posts.length == 0 && <h1>Loading 중입니다.</h1>}
-      {!loading && posts.length == 0 && <h1>데이터가 존재하지 않습니다.</h1>}
     </div>
   );
 };
-export default RecentPostsPage;
+export default LikedPostsPage;
