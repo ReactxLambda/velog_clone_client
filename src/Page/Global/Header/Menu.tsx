@@ -29,14 +29,6 @@ export const MenuContainer: React.FC = () => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
