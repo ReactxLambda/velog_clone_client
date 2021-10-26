@@ -183,6 +183,7 @@ const RecentPostsPage: React.FC = () => {
           );
         })}
       {loading && posts.length == 0 && <h1>Loading 중입니다.</h1>}
+      {!loading && posts.length == 0 && <h1>데이터가 존재하지 않습니다.</h1>}
     </div>
   );
 };

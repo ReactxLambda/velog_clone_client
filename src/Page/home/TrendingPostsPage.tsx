@@ -13,18 +13,12 @@ import './PostsPage.scss';
 //https://slog.website/post/8
 type TrendingPostsPage = { term: string };
 const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
-  // const [items, setItems] = useState([]);
-  // const [page, setPage] = useState(1);
-  // const [loading, setLoading] = useState(false);
-
   //게시물 리스트
   let [posts, setPosts] = useState([]);
   const [ref, inView] = useInView({
     threshold: 0.5, // 해당 부분이 50%이상 보일 때 0~1사이
   });
 
-  // let [count, setCount] = useState(12);
-  // let count = 12;
   const [count, setCount]: [number, (number: number) => void] = useState(8);
   console.log(`trending term : ${term}`);
   const GET_POST = gql`
@@ -48,31 +42,6 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
       }
     }
   `;
-
-  // const GET_POST = gql`
-  // query($take : int!){
-  //   posts (
-  //     take:$take
-  //   ){
-  //     id
-  //     thumbnail
-  //     title
-  //     url
-  //     user_id
-  //     content
-  //     created_at
-  //     interest {
-  //       created_at
-  //       user {
-  //         id
-  //       }
-  //     }
-  //   }
-  // }
-  // `;
-
-  //https://www.apollographql.com/docs/react/pagination/core-api/#the-fetchmore-function
-  //fetchMore? reFecth?
 
   //refetch시 loading 동작 x -> networkStatus / notifyOnNetworkStatusChange: true 사용
   const { loading, error, data, fetchMore, networkStatus } = useQuery(GET_POST, {
@@ -144,7 +113,6 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
           }
         });
 
-      // setPosts(posts.concat(data));
       console.log('함수 밖loading : ', loading);
       console.log('NetworkStatus : ', NetworkStatus.fetchMore);
       console.log('NetworkStatus : ', NetworkStatus.ready);
@@ -152,31 +120,11 @@ const TrendingPostsPage: React.FC<TrendingPostsPage> = ({ term }) => {
     }
   }, [inView]);
 
-  // useEffect(() => {
-  //   console.log('loading : ', loading);
-  //   console.log('data : ', data);
-  //   if (!loading && data.posts_trend.length > 0) {
-  //     console.log('posts에 state 값 set ');
-  //     // setPosts(posts.concat(data.posts_trend));
-  //   }
-  // }, [data]);
-
   return (
     <div className="posts_wrapper">
-      {
-        /*테스트
-      Element {inView.toString()}*/
-        // console.log(data);
-        console.log(posts)
-      }
-
       {!loading &&
         posts.length > 0 &&
         posts.map((value, idx) => {
-          // console.log('posts.length  : ', posts.length);
-          // console.log('posts.length  : ', posts.length);
-          // console.log('idx  : ', idx);
-
           return (
             <Fragment>
               {posts.length - 1 == idx ? (

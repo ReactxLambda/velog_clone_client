@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { gql } from '@apollo/client';
 import client from '../../Common/apollo';
 import QueryString from 'qs';
-const contentsData = [
+const contentsData: any = [
   { title: '제목1', description: '설명1', tags: ['태그1', '태그2', '태그3'], date: '20211006', comments: 5 },
   { title: '제목2', description: '설명2', tags: ['태그2', '태그3'], date: '20211008', comments: 3 },
   { title: '제목3', description: '설명3', tags: ['태그1'], date: '20211006', comments: 1 },
@@ -98,13 +98,14 @@ const UserPostsTab: React.FC = ({ match, location }: any) => {
                 </li>
                 {tags.length > 0 &&
                   tags.map((tag, index) => {
-                    console.log(tag.name);
-                    <li className={tagActive === tag.name ? 'pcTagActive' : 'pcTag'}>
-                      <Link to={`/@${username}?tag=${tag.name}`} onClick={() => handlerTagClick(tag.name)}>
-                        {tag.name}
-                      </Link>
-                      <span>({1})</span>
-                    </li>;
+                    return (
+                      <li className={tagActive === tag.name ? 'pcTagActive' : 'pcTag'}>
+                        <Link to={`/@${username}?tag=${tag.name}`} onClick={() => handlerTagClick(tag.name)}>
+                          {tag.name}
+                        </Link>
+                        <span>({1})</span>
+                      </li>
+                    );
                   })}
               </ul>
             </div>
@@ -118,40 +119,58 @@ const UserPostsTab: React.FC = ({ match, location }: any) => {
               전체보기<span>({1})</span>
             </Link>
             {tags.map((tag, index) => {
-              <Link to={`/@${username}?tag=${tag.name}`} className={tagActive === tag.name ? 'mbTagActive' : 'mbTag'}>
-                {tag.name}
-                <span>({tag.name}갯수)</span>
-              </Link>;
+              return (
+                <Link
+                  to={`/@${username}?tag=${tag.name}`}
+                  className={tagActive === tag.name ? 'mbTagActive' : 'mbTag'}
+                  onClick={() => handlerTagClick(tag.name)}
+                >
+                  {tag.name}
+                  <span>({tag.name}갯수)</span>
+                </Link>
+              );
             })}
           </div>
         </div>
       </div>
+
       <div className="velogContentWrapper">
-        <div className="velogContents">
-          {/**한개의 데이터*/}
-          {contents.length > 0 &&
-            contents.map((content, index) => {
-              <div className="content">
-                <Link to={`/@${username}/${content.title}`}>
-                  <h2>{content.title}</h2>
-                </Link>
-                <p>{content.description}</p>
-                {content.tags.map((value) => {
-                  // content d안에 tags배열들 가져오기
-                  <div className="tagsWrapper">
-                    <Link to={`/tags/${value}`} className="velogTag">
-                      {value}
-                    </Link>
-                  </div>;
-                })}
-                <div className="subInfo">
-                  <span>{content.date}</span>
-                  <div className="separator">·</div>
-                  <span>{content.comments}개의 댓글</span>
+        {contents.length > 0 ? (
+          <div className="velogContents">
+            {/**한개의 데이터*/}
+            {contents.map((content: any) => {
+              console.log(content.title);
+              return (
+                <div className="content">
+                  <Link to={`/@${username}/${content.title}`}>
+                    <h2>{content.title}</h2>
+                  </Link>
+                  <p>{content.description}</p>
+                  {content.tags.map((value: any) => {
+                    // content d안에 tags배열들 가져오기
+                    return (
+                      <div className="tagsWrapper">
+                        <Link to={`/tags/${value}`} className="velogTag">
+                          {value}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                  <div className="subInfo">
+                    <span>{content.date}</span>
+                    <div className="subInfoSeparator">·</div>
+                    <span>{content.comments}개의 댓글</span>
+                  </div>
                 </div>
-              </div>;
+              );
             })}
-        </div>
+          </div>
+        ) : (
+          <div className="nonePosts">
+            <img src="https://static.velog.io/static/media/undraw_blank_canvas_3rbb.35e81baf.svg" />
+            <div className="noneMessage">포스트가 없습니다.</div>
+          </div>
+        )}
       </div>
     </div>
   );
